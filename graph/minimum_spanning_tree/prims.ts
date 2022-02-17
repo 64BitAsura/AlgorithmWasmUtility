@@ -3,9 +3,10 @@ function findMinEdgeVertex(
   mst: StaticArray<boolean>
 ): i32 {
   let minWeight = I32.MAX_VALUE;
-  let minVertexIndex = -1;
+  let minVertexIndex: i32 = 0;
   mst.forEach((visited, vertexIndex) => {
-    if (!visited && minimumWeightedEdgeByVertex[vertexIndex] < minWeight) {
+    const isLess = (minimumWeightedEdgeByVertex[vertexIndex] < minWeight);
+    if (!visited && isLess) {
       minWeight = minimumWeightedEdgeByVertex[vertexIndex];
       minVertexIndex = vertexIndex;
     }
