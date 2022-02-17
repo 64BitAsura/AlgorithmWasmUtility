@@ -1,6 +1,6 @@
 
 function findMinEdgeVertex(minimumWeightedEdgeByVertex: StaticArray<i32>, mst: StaticArray<boolean>): i32{
-   let minWeight = I8.MAX_VALUE, minVertexIndex: i32;
+   let minWeight = I32.MAX_VALUE, minVertexIndex: i32;
    mst.forEach((visited, vertexIndex)=>{
      if(!visited && minimumWeightedEdgeByVertex[vertexIndex] < minWeight){
        minWeight = minimumWeightedEdgeByVertex[vertexIndex];
@@ -10,7 +10,7 @@ function findMinEdgeVertex(minimumWeightedEdgeByVertex: StaticArray<i32>, mst: S
    return minVertexIndex;
 }
 
-export function mst(graph: i32[][]): StaticArray<i32>{
+export function mst(graph: i32[][]): i32[]{
   const parent = new StaticArray<i32>(graph.length);
   const minimumWeightedEdgeByVertex = new StaticArray<i32>(graph.length).fill(I8.MAX_VALUE);
   const mst = new StaticArray<boolean>(graph.length).fill(false);
