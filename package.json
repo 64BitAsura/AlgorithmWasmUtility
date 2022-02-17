@@ -1,0 +1,20 @@
+{
+  "name": "wasmAlgorithms",
+  "version": "1.0.0",
+  "description": "test assemblyscript",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests",
+    "asbuild:untouched": "asc ./graph/**/*.ts --target debug",
+    "asbuild:optimized": "asc ./graph/**/*.ts --target release",
+    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@assemblyscript/loader": "^0.19.22"
+  },
+  "devDependencies": {
+    "assemblyscript": "^0.17.13"
+  }
+}

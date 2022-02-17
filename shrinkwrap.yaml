@@ -1,0 +1,32 @@
+dependencies:
+  '@assemblyscript/loader': 0.19.23
+devDependencies:
+  assemblyscript: 0.17.14
+packages:
+  /@assemblyscript/loader/0.19.23:
+    dev: false
+    resolution:
+      integrity: sha512-ulkCYfFbYj01ie1MDOyxv2F6SpRN1TOj7fQxbP07D6HmeR+gr2JLSmINKjga2emB+b1L2KGrFKBTc+e00p54nw==
+  /assemblyscript/0.17.14:
+    dependencies:
+      binaryen: 98.0.0-nightly.20201109
+      long: 4.0.0
+    dev: true
+    hasBin: true
+    resolution:
+      integrity: sha512-TLuwNvZAIH26wu2puKpAJokzLp10kJkVXxbgDjFFmbW9VF/qg7rkmi0hjsiu41bjoH1UaVgY4vYvbbUeOHtKyg==
+  /binaryen/98.0.0-nightly.20201109:
+    dev: true
+    hasBin: true
+    resolution:
+      integrity: sha512-iRarAqdH5lMWlMBzrDuJgLYJR2g4QXk93iYE2zpr6gEZkb/jCgDpPUXdhuN11Ge1zZ/6By4DwA1mmifcx7FWaw==
+  /long/4.0.0:
+    dev: true
+    resolution:
+      integrity: sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==
+registry: 'https://registry.npmjs.org/'
+shrinkwrapMinorVersion: 9
+shrinkwrapVersion: 3
+specifiers:
+  '@assemblyscript/loader': ^0.19.22
+  assemblyscript: ^0.17.13
