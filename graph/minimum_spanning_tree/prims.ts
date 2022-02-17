@@ -2,13 +2,12 @@ function findMinEdgeVertex(
   minimumWeightedEdgeByVertex: StaticArray<i32>,
   mst: StaticArray<boolean>
 ): i32 {
-  let minWeight = I32.MAX_VALUE;
-  let minVertexIndex: i32 = 0;
+  let minWeight = I32.MAX_VALUE, minVertexIndex: i32=0;
   mst.forEach((visited, vertexIndex) => {
     const isLess = (minimumWeightedEdgeByVertex[vertexIndex] < minWeight);
     if (!visited && isLess) {
-      minWeight = minimumWeightedEdgeByVertex[vertexIndex];
       minVertexIndex = vertexIndex;
+      minWeight = minimumWeightedEdgeByVertex[vertexIndex];
     }
   });
   return minVertexIndex;
