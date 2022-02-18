@@ -1,6 +1,6 @@
 function findMinEdgeVertex(
-  minimumWeightedEdgeByVertex: StaticArray<i32>,
-  mst: StaticArray<boolean>
+  minimumWeightedEdgeByVertex: Int32Array,
+  mst: Array<boolean>
 ): i32 {
   let minWeight = I32.MAX_VALUE;
   let minVertexIndex: i32=0;
@@ -16,10 +16,10 @@ function findMinEdgeVertex(
 
 export function mst(graph: i32[][]): i32[] {
   const parent = new StaticArray<i32>(graph.length);
-  const minimumWeightedEdgeByVertex = new StaticArray<i32>(graph.length).fill(
+  const minimumWeightedEdgeByVertex = new Int32Array(graph.length).fill(
     I32.MAX_VALUE
   );
-  const mst = new StaticArray<boolean>(graph.length).fill(false);
+  const mst = new Array<boolean>(graph.length).fill(false);
 
   minimumWeightedEdgeByVertex[0] = 0;
   parent[0] = -1; // starting vertex can't have parent per say
