@@ -4,13 +4,14 @@ function findMinEdgeVertex(
 ): i32 {
   let minWeight = I32.MAX_VALUE;
   let minVertexIndex: i32=0;
-  mst.forEach((visited, vertexIndex) => {
+  for(let vertexIndex=0; vertexIndex < mst.length; vertexIndex++){  
+  const visited = mst[vertexIndex];
     const isLess = (minimumWeightedEdgeByVertex[vertexIndex] < minWeight);
     if (!visited && isLess) {
       minVertexIndex = vertexIndex;
       minWeight = minimumWeightedEdgeByVertex[vertexIndex];
     }
-  });
+  }
   return minVertexIndex;
 }
 
