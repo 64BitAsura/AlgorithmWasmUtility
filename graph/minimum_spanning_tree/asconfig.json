@@ -1,14 +1,14 @@
 {
   "targets": {
     "debug": {
-      "binaryFile": "mst.wasm",
-      "textFile": "mst.wat",
+      "binaryFile": "./mst.wasm",
+      "textFile": "./mst.wat",
       "sourceMap": true,
       "debug": true
     },
     "release": {
-      "binaryFile": "mst.wasm",
-      "textFile": "mst.wat",
+      "binaryFile": "./mst.wasm",
+      "textFile": "./mst.wat",
       "sourceMap": true,
       "optimizeLevel": 3,
       "shrinkLevel": 1,
