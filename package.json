@@ -1,14 +1,16 @@
 {
   "name": "wasmAlgorithms",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=15"
+  },
   "description": "test assemblyscript",
   "main": "index.js",
   "scripts": {
-    "test": "node tests",
+    "test": "jest",
     "asbuild:untouched": "asc ./graph/**/*.ts --target debug --config ./graph/**/asconfig.json",
     "asbuild:optimized": "asc ./graph/**/*.ts --target release --config ./graph/**/asconfig.json",
-    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
-    "test": "jest"
+    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized"
   },
   "author": "",
   "license": "ISC",
