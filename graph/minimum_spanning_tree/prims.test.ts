@@ -1,5 +1,5 @@
-import {instantiate} from "@assemblyscript/loader";
+//import {instantiate} from "@assemblyscript/loader";
 
 test('',()=>{
-  
+  //instantiate();
 });
