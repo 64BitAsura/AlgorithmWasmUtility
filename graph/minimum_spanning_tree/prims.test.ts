@@ -1,4 +1,4 @@
-import * as loader from "@assemblyscript/loader";
+import {instantiate} from "@assemblyscript/loader";
 
 test('',()=>{
   
