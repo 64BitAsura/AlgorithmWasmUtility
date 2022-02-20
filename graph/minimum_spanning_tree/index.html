@@ -1,8 +1,10 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-   
-<script>
-loader.instantiate(module_wasm, { /* imports */ })
+<script type="module" src="https://cdn.jsdelivr.net/npm/@assemblyscript/loader/index.js">
+  var module_wasm=new Uint8Array([0,97,115,109,1,0,0,0,1,6,1,96,1,127,1,127,3,2,1,0,5,3,1,0,0,7,16,2,3,102,105,98,0,0,6,109,101,109,111,114,121,2,0,10,53,1,51,1,3,127,65,1,33,1,32,0,65,0,74,4,64,3,64,32,0,65,1,107,34,0,4,64,32,1,32,2,106,33,3,32,1,33,2,32,3,33,1,12,1,11,11,32,1,15,11,65,0,11]);
+  console.log(instantiate);
+instantiate(module_wasm, { /* imports */ })
   .then(({ exports }) => {
     const {__pin,__unpin,__newArray,__getArray, VERTEX_ID, EDGE_ID} = exports;
     const output = document.getElementById('output');
