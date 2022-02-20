@@ -1,4 +1,6 @@
-<textarea id="output" style="height: 100%; width: 100%" readonly></textarea>
+<html>
+<head>
+   
 <script>
 loader.instantiate(module_wasm, { /* imports */ })
   .then(({ exports }) => {
@@ -9,3 +11,8 @@ loader.instantiate(module_wasm, { /* imports */ })
     
   })
 </script>
+</head> 
+  <body>
+    <textarea id="output" style="height: 100%; width: 100%" readonly></textarea>
+  </body>
+</html>
