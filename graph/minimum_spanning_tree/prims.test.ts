@@ -1,4 +1,4 @@
-//import {instantiate} from "@assemblyscript/loader";
+var loader = require("@assemblyscript/loader");
 
 test('',()=>{
   //instantiate();
