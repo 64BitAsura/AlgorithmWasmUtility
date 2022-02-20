@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "node tests",
-    "asbuild:untouched": "asc ./graph/**/*.ts --target debug --config ./asconfig.json",
-    "asbuild:optimized": "asc ./graph/**/*.ts --target release --config ./asconfig.json",
+    "asbuild:untouched": "asc ./graph/**/*.ts --target debug --config ./graph/**/asconfig.json",
+    "asbuild:optimized": "asc ./graph/**/*.ts --target release --config ./graph/**/asconfig.json",
     "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized"
   },
   "author": "",
