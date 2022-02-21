@@ -6,6 +6,9 @@ const wasmPath = path.resolve(__dirname, './mst.wasm');
 const buffer = fs.readFileSync(wasmPath);
 test('',()=>{
   loader.instantiate(buffer).then(({exports})=>{
-    console.log(exports);
+    const {__pin,__unpin,__newArray,__getArray, VERTEX_ID, EDGE_ID, mst} = exports;
+    const re = (__getArray(mst(__newArray(VERTEX_ID,[__newArray(EDGE_ID,[1,1,8])
+      ,__newArray(EDGE_ID,[12,2,4]),__newArray(EDGE_ID,[1,1,1])]))));
+    console.log(re);
   }).catch((error)=> console.log(error));
 });
