@@ -2,7 +2,7 @@
   "name": "wasmAlgorithms",
   "version": "1.0.0",
   "engines": {
-    "node": ">=15.0.0"
+    "node": "16.x"
   },
   "description": "test assemblyscript",
   "main": "index.js",
