@@ -1,4 +1,4 @@
-const loader = require("@assemblyscript/loader");
+const loader = require("@assemblyscript/loader/umd");
 
 test('',()=>{
   //instantiate();
