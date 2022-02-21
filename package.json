@@ -15,7 +15,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@assemblyscript/loader": "^0.19.23"
+    "@assemblyscript/loader": "^0.19.23",
+    "isomorphic-fetch": "^3.0.0"
   },
   "devDependencies": {
     "assemblyscript": "^0.19.23",
