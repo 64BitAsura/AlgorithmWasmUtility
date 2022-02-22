@@ -15,7 +15,7 @@ function findMinEdgeVertex(
   return minVertexIndex;
 }
 
-class MST{
+export class MST{
   parent: i32;
   vertex: i32;
 }
