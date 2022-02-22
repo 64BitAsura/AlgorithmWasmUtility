@@ -40,7 +40,7 @@ export function mst(graph: i32[][]): i32[] {
     }
   }
 
-  return [0].concat(parent.slice(0).map());
+  return parent.slice(0).map<i32>((parentToVertex: i32, vertex: i32)=>({parent: parentToVertex, vertex}));
 }
 
 export function ctod(parameter1: i32[]): i32[]{
