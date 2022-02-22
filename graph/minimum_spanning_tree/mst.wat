@@ -10,6 +10,7 @@
  (type $i32_i32_i32_i32_=>_none (func (param i32 i32 i32 i32)))
  (type $none_=>_i32 (func (result i32)))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
+ (global $graph/minimum_spanning_tree/prims/PARAMETER i32 (i32.const 3))
  (global $graph/minimum_spanning_tree/prims/EDGE_ID i32 (i32.const 3))
  (global $graph/minimum_spanning_tree/prims/VERTEX_ID i32 (i32.const 4))
  (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
@@ -52,10 +53,12 @@
  (data (i32.const 832) "\08\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02\t\00\00\00\00\00\00\02A\00\00\00\00\00\00$\t\00\00\00\00\00\00\01\t\00\00\02\00\00\00B\00\00\00\00\00\00\00")
  (table $0 1 funcref)
  (elem $0 (i32.const 1))
+ (export "PARAMETER" (global $graph/minimum_spanning_tree/prims/PARAMETER))
  (export "EDGE_ID" (global $graph/minimum_spanning_tree/prims/EDGE_ID))
  (export "VERTEX_ID" (global $graph/minimum_spanning_tree/prims/VERTEX_ID))
  (export "memory" (memory $0))
  (export "mst" (func $export:graph/minimum_spanning_tree/prims/mst))
+ (export "ctod" (func $export:graph/minimum_spanning_tree/prims/ctod))
  (start $~start)
  (func $~lib/rt/itcms/Object#set:nextWithColor (param $0 i32) (param $1 i32)
   local.get $0
@@ -4311,6 +4314,9 @@
   end
   local.get $3
  )
+ (func $graph/minimum_spanning_tree/prims/ctod (param $0 i32) (result i32)
+  local.get $0
+ )
  (func $~lib/rt/__visit_globals (param $0 i32)
   (local $1 i32)
   i32.const 336
@@ -5158,6 +5164,25 @@
   i32.store
   local.get $0
   call $graph/minimum_spanning_tree/prims/mst
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+ )
+ (func $export:graph/minimum_spanning_tree/prims/ctod (param $0 i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store
+  local.get $0
+  call $graph/minimum_spanning_tree/prims/ctod
   local.set $1
   global.get $~lib/memory/__stack_pointer
   i32.const 4
