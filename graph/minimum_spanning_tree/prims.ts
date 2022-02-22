@@ -15,7 +15,11 @@ function findMinEdgeVertex(
   return minVertexIndex;
 }
 
-export function mst(graph: i32[][]): i32[] {
+class MST{
+  parent: i32;
+  vertex: i32;
+}
+export function mst(graph: i32[][]): MST[] {
   const parent = new StaticArray<i32>(graph.length);
   const minimumWeightedEdgeByVertex = new Int32Array(graph.length).fill(
     I32.MAX_VALUE
@@ -40,15 +44,12 @@ export function mst(graph: i32[][]): i32[] {
     }
   }
 
-  return parent.slice(0).map<i32>((parentToVertex: i32, vertex: i32)=>({parent: parentToVertex, vertex}));
+  return parent.slice(0)
+         .map<MST>((parentToVertex: i32, vertex: i32, parent: i32[]): MST=>({parent: parentToVertex, vertex}));
 }
 
-export function ctod(parameter1: i32[]): i32[]{
-  return parameter1;
-}
 
-export const PARAMETER = idof<i32[]>();
-
+export const MST_ID = idof<MST[]>();
 export const EDGE_ID = idof<i32[]>();
 export const VERTEX_ID = idof<i32[][]>();
 
