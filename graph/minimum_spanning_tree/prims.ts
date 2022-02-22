@@ -42,5 +42,13 @@ export function mst(graph: i32[][]): i32[] {
 
   return parent.slice(1);
 }
+
+export function ctod(parameter1: i32[]): i32{
+  return parameter1.map((value)=>value+1);
+}
+
+export const PARAMETER = idof<i32[]>();
+
 export const EDGE_ID = idof<i32[]>();
 export const VERTEX_ID = idof<i32[][]>();
+
