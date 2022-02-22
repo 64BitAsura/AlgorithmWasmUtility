@@ -1,15 +1,15 @@
 {
   "targets": {
     "debug": {
-      "binaryFile": "./mst.wasm",
-      "textFile": "./mst.wat",
+      "binaryFile": "./prims-debug.wasm",
+      "textFile": "./prims-debug.wat",
       "sourceMap": true,
       "debug": true,
       "exportRuntime": true
     },
     "release": {
-      "binaryFile": "./mst.wasm",
-      "textFile": "./mst.wat",
+      "binaryFile": "./prims.wasm",
+      "textFile": "./prims.wat",
       "sourceMap": true,
       "optimizeLevel": 3,
       "shrinkLevel": 1,

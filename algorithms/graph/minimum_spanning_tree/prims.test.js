@@ -1,7 +1,7 @@
 const loader = require("@assemblyscript/loader/umd");
 const fs = require("fs");
 const path = require("path");
-const wasmPath = path.resolve(__dirname, './mst.wasm');
+const wasmPath = path.resolve(__dirname, './prims-debug.wasm');
 const buffer = fs.readFileSync(wasmPath);
 test('MST sanity',()=>{
   loader.instantiate(buffer).then(({exports})=>{
