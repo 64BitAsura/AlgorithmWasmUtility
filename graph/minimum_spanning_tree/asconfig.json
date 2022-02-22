@@ -4,7 +4,8 @@
       "binaryFile": "./mst.wasm",
       "textFile": "./mst.wat",
       "sourceMap": true,
-      "debug": true
+      "debug": true,
+      "exportRuntime": true
     },
     "release": {
       "binaryFile": "./mst.wasm",
