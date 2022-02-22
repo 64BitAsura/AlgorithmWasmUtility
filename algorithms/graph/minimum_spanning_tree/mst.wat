@@ -10,9 +10,9 @@
  (type $i32_i32_i32_i32_=>_none (func (param i32 i32 i32 i32)))
  (type $none_=>_i32 (func (result i32)))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
- (global $graph/minimum_spanning_tree/prims/MST_ID i32 (i32.const 4))
- (global $graph/minimum_spanning_tree/prims/EDGE_ID i32 (i32.const 5))
- (global $graph/minimum_spanning_tree/prims/VERTEX_ID i32 (i32.const 6))
+ (global $algorithms/graph/minimum_spanning_tree/prims/MST_ID i32 (i32.const 4))
+ (global $algorithms/graph/minimum_spanning_tree/prims/EDGE_ID i32 (i32.const 5))
+ (global $algorithms/graph/minimum_spanning_tree/prims/VERTEX_ID i32 (i32.const 6))
  (global $~lib/rt/itcms/total (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/threshold (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/state (mut i32) (i32.const 0))
@@ -32,7 +32,7 @@
  (global $~lib/builtins/i32.MAX_VALUE i32 (i32.const 2147483647))
  (global $~lib/number/I32.MAX_VALUE i32 (i32.const 2147483647))
  (global $~argumentsLength (mut i32) (i32.const 0))
- (global $graph/minimum_spanning_tree/prims/MST i32 (i32.const 3))
+ (global $algorithms/graph/minimum_spanning_tree/prims/MST i32 (i32.const 3))
  (global $~lib/rt/__rtti_base i32 (i32.const 992))
  (global $~lib/memory/__data_end i32 (i32.const 1084))
  (global $~lib/memory/__stack_pointer (mut i32) (i32.const 17468))
@@ -57,23 +57,23 @@
  (data (i32.const 924) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00(\00\00\00O\00b\00j\00e\00c\00t\00 \00i\00s\00 \00n\00o\00t\00 \00p\00i\00n\00n\00e\00d\00\00\00\00\00")
  (data (i32.const 992) "\0b\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\02\t\00\00\00\00\00\00\02A\00\00\00\00\00\00$\t\00\00\00\00\00\00\01\t\00\00\02\00\00\00B\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (table $0 2 funcref)
- (elem $0 (i32.const 1) $graph/minimum_spanning_tree/prims/mst~anonymous|0)
- (export "MST" (global $graph/minimum_spanning_tree/prims/MST))
- (export "MST_ID" (global $graph/minimum_spanning_tree/prims/MST_ID))
- (export "EDGE_ID" (global $graph/minimum_spanning_tree/prims/EDGE_ID))
- (export "VERTEX_ID" (global $graph/minimum_spanning_tree/prims/VERTEX_ID))
+ (elem $0 (i32.const 1) $algorithms/graph/minimum_spanning_tree/prims/mst~anonymous|0)
+ (export "MST" (global $algorithms/graph/minimum_spanning_tree/prims/MST))
+ (export "MST_ID" (global $algorithms/graph/minimum_spanning_tree/prims/MST_ID))
+ (export "EDGE_ID" (global $algorithms/graph/minimum_spanning_tree/prims/EDGE_ID))
+ (export "VERTEX_ID" (global $algorithms/graph/minimum_spanning_tree/prims/VERTEX_ID))
  (export "__new" (func $~lib/rt/itcms/__new))
  (export "__pin" (func $~lib/rt/itcms/__pin))
  (export "__unpin" (func $~lib/rt/itcms/__unpin))
  (export "__collect" (func $~lib/rt/itcms/__collect))
  (export "__rtti_base" (global $~lib/rt/__rtti_base))
  (export "memory" (memory $0))
- (export "MST#get:parent" (func $export:graph/minimum_spanning_tree/prims/MST#get:parent))
- (export "MST#set:parent" (func $export:graph/minimum_spanning_tree/prims/MST#set:parent))
- (export "MST#get:vertex" (func $export:graph/minimum_spanning_tree/prims/MST#get:vertex))
- (export "MST#set:vertex" (func $export:graph/minimum_spanning_tree/prims/MST#set:vertex))
- (export "MST#constructor" (func $export:graph/minimum_spanning_tree/prims/MST#constructor))
- (export "mst" (func $export:graph/minimum_spanning_tree/prims/mst))
+ (export "MST#get:parent" (func $export:algorithms/graph/minimum_spanning_tree/prims/MST#get:parent))
+ (export "MST#set:parent" (func $export:algorithms/graph/minimum_spanning_tree/prims/MST#set:parent))
+ (export "MST#get:vertex" (func $export:algorithms/graph/minimum_spanning_tree/prims/MST#get:vertex))
+ (export "MST#set:vertex" (func $export:algorithms/graph/minimum_spanning_tree/prims/MST#set:vertex))
+ (export "MST#constructor" (func $export:algorithms/graph/minimum_spanning_tree/prims/MST#constructor))
+ (export "mst" (func $export:algorithms/graph/minimum_spanning_tree/prims/mst))
  (start $~start)
  (func $~lib/rt/itcms/Object#set:nextWithColor (param $0 i32) (param $1 i32)
   local.get $0
@@ -2378,21 +2378,21 @@
   call $~lib/memory/memory.fill
   local.get $3
  )
- (func $graph/minimum_spanning_tree/prims/MST#set:parent (param $0 i32) (param $1 i32)
+ (func $algorithms/graph/minimum_spanning_tree/prims/MST#set:parent (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
   i32.store
  )
- (func $graph/minimum_spanning_tree/prims/MST#set:vertex (param $0 i32) (param $1 i32)
+ (func $algorithms/graph/minimum_spanning_tree/prims/MST#set:vertex (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
   i32.store offset=4
  )
- (func $graph/minimum_spanning_tree/prims/MST#get:parent (param $0 i32) (result i32)
+ (func $algorithms/graph/minimum_spanning_tree/prims/MST#get:parent (param $0 i32) (result i32)
   local.get $0
   i32.load
  )
- (func $graph/minimum_spanning_tree/prims/MST#get:vertex (param $0 i32) (result i32)
+ (func $algorithms/graph/minimum_spanning_tree/prims/MST#get:vertex (param $0 i32) (result i32)
   local.get $0
   i32.load offset=4
  )
@@ -2815,7 +2815,7 @@
   i32.add
   i32.load
  )
- (func $graph/minimum_spanning_tree/prims/findMinEdgeVertex (param $0 i32) (param $1 i32) (result i32)
+ (func $algorithms/graph/minimum_spanning_tree/prims/findMinEdgeVertex (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -4497,7 +4497,7 @@
    call $~lib/rt/itcms/__visit
   end
  )
- (func $~lib/array/Array<graph/minimum_spanning_tree/prims/MST>#__visit (param $0 i32) (param $1 i32)
+ (func $~lib/array/Array<algorithms/graph/minimum_spanning_tree/prims/MST>#__visit (param $0 i32) (param $1 i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -4542,10 +4542,10 @@
   local.get $1
   call $~lib/rt/itcms/__visit
  )
- (func $~lib/array/Array<graph/minimum_spanning_tree/prims/MST>~visit (param $0 i32) (param $1 i32)
+ (func $~lib/array/Array<algorithms/graph/minimum_spanning_tree/prims/MST>~visit (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
-  call $~lib/array/Array<graph/minimum_spanning_tree/prims/MST>#__visit
+  call $~lib/array/Array<algorithms/graph/minimum_spanning_tree/prims/MST>#__visit
  )
  (func $~lib/array/Array<i32>#__visit (param $0 i32) (param $1 i32)
   i32.const 0
@@ -4628,27 +4628,27 @@
   local.get $1
   call $~lib/array/Array<bool>#__visit
  )
- (func $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>graph/minimum_spanning_tree/prims/MST>#__visit (param $0 i32) (param $1 i32)
+ (func $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>algorithms/graph/minimum_spanning_tree/prims/MST>#__visit (param $0 i32) (param $1 i32)
   local.get $0
   i32.load offset=4
   local.get $1
   call $~lib/rt/itcms/__visit
  )
- (func $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>graph/minimum_spanning_tree/prims/MST>~visit (param $0 i32) (param $1 i32)
+ (func $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>algorithms/graph/minimum_spanning_tree/prims/MST>~visit (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
-  call $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>graph/minimum_spanning_tree/prims/MST>#__visit
+  call $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>algorithms/graph/minimum_spanning_tree/prims/MST>#__visit
  )
  (func $~lib/rt/__visit_members (param $0 i32) (param $1 i32)
   block $invalid
-   block $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>graph/minimum_spanning_tree/prims/MST>
+   block $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>algorithms/graph/minimum_spanning_tree/prims/MST>
     block $~lib/array/Array<bool>
      block $~lib/typedarray/Int32Array
       block $~lib/staticarray/StaticArray<i32>
        block $~lib/array/Array<~lib/array/Array<i32>>
         block $~lib/array/Array<i32>
-         block $~lib/array/Array<graph/minimum_spanning_tree/prims/MST>
-          block $graph/minimum_spanning_tree/prims/MST
+         block $~lib/array/Array<algorithms/graph/minimum_spanning_tree/prims/MST>
+          block $algorithms/graph/minimum_spanning_tree/prims/MST
            block $~lib/arraybuffer/ArrayBufferView
             block $~lib/string/String
              block $~lib/arraybuffer/ArrayBuffer
@@ -4656,7 +4656,7 @@
               i32.const 8
               i32.sub
               i32.load
-              br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $graph/minimum_spanning_tree/prims/MST $~lib/array/Array<graph/minimum_spanning_tree/prims/MST> $~lib/array/Array<i32> $~lib/array/Array<~lib/array/Array<i32>> $~lib/staticarray/StaticArray<i32> $~lib/typedarray/Int32Array $~lib/array/Array<bool> $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>graph/minimum_spanning_tree/prims/MST> $invalid
+              br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $algorithms/graph/minimum_spanning_tree/prims/MST $~lib/array/Array<algorithms/graph/minimum_spanning_tree/prims/MST> $~lib/array/Array<i32> $~lib/array/Array<~lib/array/Array<i32>> $~lib/staticarray/StaticArray<i32> $~lib/typedarray/Int32Array $~lib/array/Array<bool> $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>algorithms/graph/minimum_spanning_tree/prims/MST> $invalid
              end
              return
             end
@@ -4671,7 +4671,7 @@
          end
          local.get $0
          local.get $1
-         call $~lib/array/Array<graph/minimum_spanning_tree/prims/MST>~visit
+         call $~lib/array/Array<algorithms/graph/minimum_spanning_tree/prims/MST>~visit
          return
         end
         local.get $0
@@ -4698,7 +4698,7 @@
    end
    local.get $0
    local.get $1
-   call $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>graph/minimum_spanning_tree/prims/MST>~visit
+   call $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>algorithms/graph/minimum_spanning_tree/prims/MST>~visit
    return
   end
   unreachable
@@ -4735,7 +4735,7 @@
    unreachable
   end
  )
- (func $graph/minimum_spanning_tree/prims/mst (param $0 i32) (result i32)
+ (func $algorithms/graph/minimum_spanning_tree/prims/mst (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -4820,7 +4820,7 @@
    if
     local.get $2
     local.get $3
-    call $graph/minimum_spanning_tree/prims/findMinEdgeVertex
+    call $algorithms/graph/minimum_spanning_tree/prims/findMinEdgeVertex
     local.set $6
     local.get $3
     local.get $6
@@ -4923,7 +4923,7 @@
   local.get $9
   i32.store offset=16
   local.get $9
-  call $~lib/array/Array<i32>#map<graph/minimum_spanning_tree/prims/MST>
+  call $~lib/array/Array<i32>#map<algorithms/graph/minimum_spanning_tree/prims/MST>
   local.set $9
   global.get $~lib/memory/__stack_pointer
   i32.const 20
@@ -4931,7 +4931,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $9
  )
- (func $graph/minimum_spanning_tree/prims/MST#constructor (param $0 i32) (result i32)
+ (func $algorithms/graph/minimum_spanning_tree/prims/MST#constructor (param $0 i32) (result i32)
   (local $1 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
@@ -4953,10 +4953,10 @@
   end
   local.get $0
   i32.const 0
-  call $graph/minimum_spanning_tree/prims/MST#set:parent
+  call $algorithms/graph/minimum_spanning_tree/prims/MST#set:parent
   local.get $0
   i32.const 0
-  call $graph/minimum_spanning_tree/prims/MST#set:vertex
+  call $algorithms/graph/minimum_spanning_tree/prims/MST#set:vertex
   local.get $0
   local.set $1
   global.get $~lib/memory/__stack_pointer
@@ -5431,7 +5431,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $9
  )
- (func $graph/minimum_spanning_tree/prims/mst~anonymous|0 (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $algorithms/graph/minimum_spanning_tree/prims/mst~anonymous|0 (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   (local $4 i32)
   global.get $~lib/memory/__stack_pointer
@@ -5444,15 +5444,15 @@
   i32.store
   global.get $~lib/memory/__stack_pointer
   i32.const 0
-  call $graph/minimum_spanning_tree/prims/MST#constructor
+  call $algorithms/graph/minimum_spanning_tree/prims/MST#constructor
   local.tee $3
   i32.store
   local.get $3
   local.get $0
-  call $graph/minimum_spanning_tree/prims/MST#set:parent
+  call $algorithms/graph/minimum_spanning_tree/prims/MST#set:parent
   local.get $3
   local.get $1
-  call $graph/minimum_spanning_tree/prims/MST#set:vertex
+  call $algorithms/graph/minimum_spanning_tree/prims/MST#set:vertex
   local.get $3
   local.set $4
   global.get $~lib/memory/__stack_pointer
@@ -5461,7 +5461,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $4
  )
- (func $~lib/array/Array<i32>#map<graph/minimum_spanning_tree/prims/MST> (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<i32>#map<algorithms/graph/minimum_spanning_tree/prims/MST> (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -5553,7 +5553,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $8
  )
- (func $export:graph/minimum_spanning_tree/prims/MST#get:parent (param $0 i32) (result i32)
+ (func $export:algorithms/graph/minimum_spanning_tree/prims/MST#get:parent (param $0 i32) (result i32)
   (local $1 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
@@ -5564,7 +5564,7 @@
   local.get $0
   i32.store
   local.get $0
-  call $graph/minimum_spanning_tree/prims/MST#get:parent
+  call $algorithms/graph/minimum_spanning_tree/prims/MST#get:parent
   local.set $1
   global.get $~lib/memory/__stack_pointer
   i32.const 4
@@ -5572,7 +5572,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $1
  )
- (func $export:graph/minimum_spanning_tree/prims/MST#set:parent (param $0 i32) (param $1 i32)
+ (func $export:algorithms/graph/minimum_spanning_tree/prims/MST#set:parent (param $0 i32) (param $1 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.sub
@@ -5583,13 +5583,13 @@
   i32.store
   local.get $0
   local.get $1
-  call $graph/minimum_spanning_tree/prims/MST#set:parent
+  call $algorithms/graph/minimum_spanning_tree/prims/MST#set:parent
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
- (func $export:graph/minimum_spanning_tree/prims/MST#get:vertex (param $0 i32) (result i32)
+ (func $export:algorithms/graph/minimum_spanning_tree/prims/MST#get:vertex (param $0 i32) (result i32)
   (local $1 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
@@ -5600,7 +5600,7 @@
   local.get $0
   i32.store
   local.get $0
-  call $graph/minimum_spanning_tree/prims/MST#get:vertex
+  call $algorithms/graph/minimum_spanning_tree/prims/MST#get:vertex
   local.set $1
   global.get $~lib/memory/__stack_pointer
   i32.const 4
@@ -5608,7 +5608,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $1
  )
- (func $export:graph/minimum_spanning_tree/prims/MST#set:vertex (param $0 i32) (param $1 i32)
+ (func $export:algorithms/graph/minimum_spanning_tree/prims/MST#set:vertex (param $0 i32) (param $1 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.sub
@@ -5619,13 +5619,13 @@
   i32.store
   local.get $0
   local.get $1
-  call $graph/minimum_spanning_tree/prims/MST#set:vertex
+  call $algorithms/graph/minimum_spanning_tree/prims/MST#set:vertex
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
- (func $export:graph/minimum_spanning_tree/prims/MST#constructor (param $0 i32) (result i32)
+ (func $export:algorithms/graph/minimum_spanning_tree/prims/MST#constructor (param $0 i32) (result i32)
   (local $1 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
@@ -5636,7 +5636,7 @@
   local.get $0
   i32.store
   local.get $0
-  call $graph/minimum_spanning_tree/prims/MST#constructor
+  call $algorithms/graph/minimum_spanning_tree/prims/MST#constructor
   local.set $1
   global.get $~lib/memory/__stack_pointer
   i32.const 4
@@ -5644,7 +5644,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $1
  )
- (func $export:graph/minimum_spanning_tree/prims/mst (param $0 i32) (result i32)
+ (func $export:algorithms/graph/minimum_spanning_tree/prims/mst (param $0 i32) (result i32)
   (local $1 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
@@ -5655,7 +5655,7 @@
   local.get $0
   i32.store
   local.get $0
-  call $graph/minimum_spanning_tree/prims/mst
+  call $algorithms/graph/minimum_spanning_tree/prims/mst
   local.set $1
   global.get $~lib/memory/__stack_pointer
   i32.const 4
