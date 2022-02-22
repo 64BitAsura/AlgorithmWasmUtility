@@ -43,8 +43,8 @@ export function mst(graph: i32[][]): i32[] {
   return parent.slice(1);
 }
 
-export function ctod(parameter1: i32[]): i32{
-  return parameter1.map((value)=>value+1);
+export function ctod(parameter1: i32[]): i32[]{
+  return parameter1.map((value: i32)=>{return value+1});
 }
 
 export const PARAMETER = idof<i32[]>();
