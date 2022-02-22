@@ -8,8 +8,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "asbuild:untouched": "asc ./graph/**/*.ts --target debug --config ./graph/**/asconfig.json",
-    "asbuild:optimized": "asc ./graph/**/*.ts --target release --config ./graph/**/asconfig.json",
+    "asbuild:untouched": "asc ./algorithms/*/*.ts --target debug --config ./algorithms/*/asconfig.json",
+    "asbuild:optimized": "asc ./alogrithms/*/*.ts --target release --config ./algorithms/*/asconfig.json",
     "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized"
   },
   "author": "",
