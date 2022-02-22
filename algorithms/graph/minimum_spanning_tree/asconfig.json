@@ -1,0 +1,21 @@
+{
+  "targets": {
+    "debug": {
+      "binaryFile": "./mst.wasm",
+      "textFile": "./mst.wat",
+      "sourceMap": true,
+      "debug": true,
+      "exportRuntime": true
+    },
+    "release": {
+      "binaryFile": "./mst.wasm",
+      "textFile": "./mst.wat",
+      "sourceMap": true,
+      "optimizeLevel": 3,
+      "shrinkLevel": 1,
+      "converge": false,
+      "noAssert": false
+    }
+  },
+  "options": {}
+}
