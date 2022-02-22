@@ -13,9 +13,6 @@
  (global $graph/minimum_spanning_tree/prims/MST_ID i32 (i32.const 4))
  (global $graph/minimum_spanning_tree/prims/EDGE_ID i32 (i32.const 5))
  (global $graph/minimum_spanning_tree/prims/VERTEX_ID i32 (i32.const 6))
- (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
- (global $~lib/shared/runtime/Runtime.Minimal i32 (i32.const 1))
- (global $~lib/shared/runtime/Runtime.Incremental i32 (i32.const 2))
  (global $~lib/rt/itcms/total (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/threshold (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/state (mut i32) (i32.const 0))
@@ -24,6 +21,9 @@
  (global $~lib/rt/itcms/iter (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/toSpace (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/white (mut i32) (i32.const 0))
+ (global $~lib/shared/runtime/Runtime.Stub i32 (i32.const 0))
+ (global $~lib/shared/runtime/Runtime.Minimal i32 (i32.const 1))
+ (global $~lib/shared/runtime/Runtime.Incremental i32 (i32.const 2))
  (global $~lib/rt/itcms/fromSpace (mut i32) (i32.const 0))
  (global $~lib/rt/tlsf/ROOT (mut i32) (i32.const 0))
  (global $~lib/ASC_LOW_MEMORY_LIMIT i32 (i32.const 0))
@@ -32,21 +32,22 @@
  (global $~lib/builtins/i32.MAX_VALUE i32 (i32.const 2147483647))
  (global $~lib/number/I32.MAX_VALUE i32 (i32.const 2147483647))
  (global $~argumentsLength (mut i32) (i32.const 0))
+ (global $graph/minimum_spanning_tree/prims/MST i32 (i32.const 3))
  (global $~lib/rt/__rtti_base i32 (i32.const 992))
  (global $~lib/memory/__data_end i32 (i32.const 1084))
  (global $~lib/memory/__stack_pointer (mut i32) (i32.const 17468))
  (global $~lib/memory/__heap_base i32 (i32.const 17468))
  (memory $0 1)
- (data (i32.const 12) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1c\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00l\00e\00n\00g\00t\00h\00")
- (data (i32.const 60) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00&\00\00\00~\00l\00i\00b\00/\00s\00t\00a\00t\00i\00c\00a\00r\00r\00a\00y\00.\00t\00s\00\00\00\00\00\00\00")
- (data (i32.const 124) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00(\00\00\00A\00l\00l\00o\00c\00a\00t\00i\00o\00n\00 \00t\00o\00o\00 \00l\00a\00r\00g\00e\00\00\00\00\00")
- (data (i32.const 188) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00 \00\00\00~\00l\00i\00b\00/\00r\00t\00/\00i\00t\00c\00m\00s\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 256) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 288) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 316) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00$\00\00\00I\00n\00d\00e\00x\00 \00o\00u\00t\00 \00o\00f\00 \00r\00a\00n\00g\00e\00\00\00\00\00\00\00\00\00")
- (data (i32.const 380) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\14\00\00\00~\00l\00i\00b\00/\00r\00t\00.\00t\00s\00\00\00\00\00\00\00\00\00")
- (data (i32.const 432) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 460) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1e\00\00\00~\00l\00i\00b\00/\00r\00t\00/\00t\00l\00s\00f\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 12) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00(\00\00\00A\00l\00l\00o\00c\00a\00t\00i\00o\00n\00 \00t\00o\00o\00 \00l\00a\00r\00g\00e\00\00\00\00\00")
+ (data (i32.const 76) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00 \00\00\00~\00l\00i\00b\00/\00r\00t\00/\00i\00t\00c\00m\00s\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 144) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 176) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 204) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00$\00\00\00I\00n\00d\00e\00x\00 \00o\00u\00t\00 \00o\00f\00 \00r\00a\00n\00g\00e\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 268) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\14\00\00\00~\00l\00i\00b\00/\00r\00t\00.\00t\00s\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 320) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 348) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1e\00\00\00~\00l\00i\00b\00/\00r\00t\00/\00t\00l\00s\00f\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 412) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1c\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00l\00e\00n\00g\00t\00h\00")
+ (data (i32.const 460) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00&\00\00\00~\00l\00i\00b\00/\00s\00t\00a\00t\00i\00c\00a\00r\00r\00a\00y\00.\00t\00s\00\00\00\00\00\00\00")
  (data (i32.const 524) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00&\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00b\00u\00f\00f\00e\00r\00.\00t\00s\00\00\00\00\00\00\00")
  (data (i32.const 588) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1a\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00.\00t\00s\00\00\00")
  (data (i32.const 636) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00$\00\00\00~\00l\00i\00b\00/\00t\00y\00p\00e\00d\00a\00r\00r\00a\00y\00.\00t\00s\00\00\00\00\00\00\00\00\00")
@@ -57,6 +58,7 @@
  (data (i32.const 992) "\0b\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\02\t\00\00\00\00\00\00\02A\00\00\00\00\00\00$\t\00\00\00\00\00\00\01\t\00\00\02\00\00\00B\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (table $0 2 funcref)
  (elem $0 (i32.const 1) $graph/minimum_spanning_tree/prims/mst~anonymous|0)
+ (export "MST" (global $graph/minimum_spanning_tree/prims/MST))
  (export "MST_ID" (global $graph/minimum_spanning_tree/prims/MST_ID))
  (export "EDGE_ID" (global $graph/minimum_spanning_tree/prims/EDGE_ID))
  (export "VERTEX_ID" (global $graph/minimum_spanning_tree/prims/VERTEX_ID))
@@ -66,6 +68,11 @@
  (export "__collect" (func $~lib/rt/itcms/__collect))
  (export "__rtti_base" (global $~lib/rt/__rtti_base))
  (export "memory" (memory $0))
+ (export "MST#get:parent" (func $export:graph/minimum_spanning_tree/prims/MST#get:parent))
+ (export "MST#set:parent" (func $export:graph/minimum_spanning_tree/prims/MST#set:parent))
+ (export "MST#get:vertex" (func $export:graph/minimum_spanning_tree/prims/MST#get:vertex))
+ (export "MST#set:vertex" (func $export:graph/minimum_spanning_tree/prims/MST#set:vertex))
+ (export "MST#constructor" (func $export:graph/minimum_spanning_tree/prims/MST#constructor))
  (export "mst" (func $export:graph/minimum_spanning_tree/prims/mst))
  (start $~start)
  (func $~lib/rt/itcms/Object#set:nextWithColor (param $0 i32) (param $1 i32)
@@ -128,7 +135,7 @@
     i32.eqz
     if
      i32.const 0
-     i32.const 208
+     i32.const 96
      i32.const 159
      i32.const 16
      call $~lib/builtins/abort
@@ -194,7 +201,7 @@
    i32.eqz
    if
     i32.const 0
-    i32.const 208
+    i32.const 96
     i32.const 127
     i32.const 18
     call $~lib/builtins/abort
@@ -211,7 +218,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 208
+   i32.const 96
    i32.const 131
    i32.const 16
    call $~lib/builtins/abort
@@ -233,8 +240,8 @@
   i32.load
   i32.gt_u
   if
-   i32.const 336
-   i32.const 400
+   i32.const 224
+   i32.const 288
    i32.const 22
    i32.const 28
    call $~lib/builtins/abort
@@ -300,7 +307,7 @@
    i32.eqz
    if (result i32)
     i32.const 0
-    i32.const 208
+    i32.const 96
     i32.const 147
     i32.const 30
     call $~lib/builtins/abort
@@ -426,7 +433,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 480
+   i32.const 368
    i32.const 268
    i32.const 14
    call $~lib/builtins/abort
@@ -446,7 +453,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 480
+   i32.const 368
    i32.const 270
    i32.const 14
    call $~lib/builtins/abort
@@ -509,7 +516,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 480
+   i32.const 368
    i32.const 284
    i32.const 14
    call $~lib/builtins/abort
@@ -641,7 +648,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 480
+   i32.const 368
    i32.const 201
    i32.const 14
    call $~lib/builtins/abort
@@ -658,7 +665,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 480
+   i32.const 368
    i32.const 203
    i32.const 14
    call $~lib/builtins/abort
@@ -738,7 +745,7 @@
    i32.eqz
    if
     i32.const 0
-    i32.const 480
+    i32.const 368
     i32.const 221
     i32.const 16
     call $~lib/builtins/abort
@@ -781,7 +788,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 480
+   i32.const 368
    i32.const 233
    i32.const 14
    call $~lib/builtins/abort
@@ -799,7 +806,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 480
+   i32.const 368
    i32.const 234
    i32.const 14
    call $~lib/builtins/abort
@@ -867,7 +874,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 480
+   i32.const 368
    i32.const 251
    i32.const 14
    call $~lib/builtins/abort
@@ -972,7 +979,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 480
+   i32.const 368
    i32.const 377
    i32.const 14
    call $~lib/builtins/abort
@@ -1015,7 +1022,7 @@
    i32.eqz
    if
     i32.const 0
-    i32.const 480
+    i32.const 368
     i32.const 384
     i32.const 16
     call $~lib/builtins/abort
@@ -1048,7 +1055,7 @@
    i32.eqz
    if
     i32.const 0
-    i32.const 480
+    i32.const 368
     i32.const 397
     i32.const 5
     call $~lib/builtins/abort
@@ -1291,7 +1298,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 480
+   i32.const 368
    i32.const 559
    i32.const 3
    call $~lib/builtins/abort
@@ -1513,7 +1520,7 @@
     i32.eqz
     if
      i32.const 0
-     i32.const 208
+     i32.const 96
      i32.const 228
      i32.const 20
      call $~lib/builtins/abort
@@ -1619,8 +1626,8 @@
   i32.const 1073741820
   i32.gt_u
   if
-   i32.const 144
-   i32.const 480
+   i32.const 32
+   i32.const 368
    i32.const 458
    i32.const 29
    call $~lib/builtins/abort
@@ -1704,7 +1711,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 480
+   i32.const 368
    i32.const 330
    i32.const 14
    call $~lib/builtins/abort
@@ -1769,7 +1776,7 @@
     i32.eqz
     if
      i32.const 0
-     i32.const 480
+     i32.const 368
      i32.const 343
      i32.const 18
      call $~lib/builtins/abort
@@ -1920,7 +1927,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 480
+   i32.const 368
    i32.const 357
    i32.const 14
    call $~lib/builtins/abort
@@ -2029,7 +2036,7 @@
    i32.eqz
    if
     i32.const 0
-    i32.const 480
+    i32.const 368
     i32.const 496
     i32.const 16
     call $~lib/builtins/abort
@@ -2049,7 +2056,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 480
+   i32.const 368
    i32.const 498
    i32.const 14
    call $~lib/builtins/abort
@@ -2326,8 +2333,8 @@
   i32.const 1073741804
   i32.ge_u
   if
-   i32.const 144
-   i32.const 208
+   i32.const 32
+   i32.const 96
    i32.const 260
    i32.const 31
    call $~lib/builtins/abort
@@ -2371,6 +2378,24 @@
   call $~lib/memory/memory.fill
   local.get $3
  )
+ (func $graph/minimum_spanning_tree/prims/MST#set:parent (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store
+ )
+ (func $graph/minimum_spanning_tree/prims/MST#set:vertex (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  i32.store offset=4
+ )
+ (func $graph/minimum_spanning_tree/prims/MST#get:parent (param $0 i32) (result i32)
+  local.get $0
+  i32.load
+ )
+ (func $graph/minimum_spanning_tree/prims/MST#get:vertex (param $0 i32) (result i32)
+  local.get $0
+  i32.load offset=4
+ )
  (func $~lib/array/Array<~lib/array/Array<i32>>#get:length (param $0 i32) (result i32)
   local.get $0
   i32.load offset=12
@@ -2390,7 +2415,7 @@
   i32.eqz
   if
    i32.const 0
-   i32.const 208
+   i32.const 96
    i32.const 294
    i32.const 14
    call $~lib/builtins/abort
@@ -2684,7 +2709,7 @@
   i32.shr_u
   i32.ge_u
   if
-   i32.const 336
+   i32.const 224
    i32.const 656
    i32.const 741
    i32.const 64
@@ -2725,8 +2750,8 @@
   call $~lib/staticarray/StaticArray<i32>#get:length
   i32.ge_u
   if
-   i32.const 336
-   i32.const 80
+   i32.const 224
+   i32.const 480
    i32.const 133
    i32.const 41
    call $~lib/builtins/abort
@@ -2748,7 +2773,7 @@
   i32.load offset=12
   i32.ge_u
   if
-   i32.const 336
+   i32.const 224
    i32.const 608
    i32.const 114
    i32.const 42
@@ -2775,7 +2800,7 @@
   i32.shr_u
   i32.ge_u
   if
-   i32.const 336
+   i32.const 224
    i32.const 656
    i32.const 730
    i32.const 64
@@ -4164,7 +4189,7 @@
    i32.shr_u
    i32.gt_u
    if
-    i32.const 32
+    i32.const 432
     i32.const 608
     i32.const 19
     i32.const 48
@@ -4256,7 +4281,7 @@
    i32.const 0
    i32.lt_s
    if
-    i32.const 336
+    i32.const 224
     i32.const 608
     i32.const 130
     i32.const 22
@@ -4288,7 +4313,7 @@
   i32.load offset=12
   i32.ge_u
   if
-   i32.const 336
+   i32.const 224
    i32.const 608
    i32.const 114
    i32.const 42
@@ -4322,16 +4347,6 @@
   end
   local.get $3
  )
- (func $graph/minimum_spanning_tree/prims/MST#set:parent (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store
- )
- (func $graph/minimum_spanning_tree/prims/MST#set:vertex (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  i32.store offset=4
- )
  (func $~lib/rt/itcms/__pin (param $0 i32) (result i32)
   (local $1 i32)
   local.get $0
@@ -4346,7 +4361,7 @@
    i32.eq
    if
     i32.const 880
-    i32.const 208
+    i32.const 96
     i32.const 337
     i32.const 7
     call $~lib/builtins/abort
@@ -4378,7 +4393,7 @@
   i32.ne
   if
    i32.const 944
-   i32.const 208
+   i32.const 96
    i32.const 351
    i32.const 5
    call $~lib/builtins/abort
@@ -4452,16 +4467,16 @@
  )
  (func $~lib/rt/__visit_globals (param $0 i32)
   (local $1 i32)
-  i32.const 336
+  i32.const 224
   local.get $0
   call $~lib/rt/itcms/__visit
-  i32.const 32
+  i32.const 432
   local.get $0
   call $~lib/rt/itcms/__visit
   i32.const 720
   local.get $0
   call $~lib/rt/itcms/__visit
-  i32.const 144
+  i32.const 32
   local.get $0
   call $~lib/rt/itcms/__visit
   i32.const 880
@@ -4697,13 +4712,13 @@
   i32.const 1
   i32.shr_u
   global.set $~lib/rt/itcms/threshold
-  i32.const 256
+  i32.const 144
   call $~lib/rt/itcms/initLazy
   global.set $~lib/rt/itcms/pinSpace
-  i32.const 288
+  i32.const 176
   call $~lib/rt/itcms/initLazy
   global.set $~lib/rt/itcms/toSpace
-  i32.const 432
+  i32.const 320
   call $~lib/rt/itcms/initLazy
   global.set $~lib/rt/itcms/fromSpace
  )
@@ -4916,6 +4931,40 @@
   global.set $~lib/memory/__stack_pointer
   local.get $9
  )
+ (func $graph/minimum_spanning_tree/prims/MST#constructor (param $0 i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $0
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.const 3
+   call $~lib/rt/itcms/__new
+   local.tee $0
+   i32.store
+  end
+  local.get $0
+  i32.const 0
+  call $graph/minimum_spanning_tree/prims/MST#set:parent
+  local.get $0
+  i32.const 0
+  call $graph/minimum_spanning_tree/prims/MST#set:vertex
+  local.get $0
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+ )
  (func $~lib/staticarray/StaticArray<i32>#constructor (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
@@ -4934,8 +4983,8 @@
   i32.shr_u
   i32.gt_u
   if
-   i32.const 32
-   i32.const 80
+   i32.const 432
+   i32.const 480
    i32.const 91
    i32.const 60
    call $~lib/builtins/abort
@@ -4999,7 +5048,7 @@
   i32.shr_u
   i32.gt_u
   if
-   i32.const 32
+   i32.const 432
    i32.const 544
    i32.const 19
    i32.const 57
@@ -5113,7 +5162,7 @@
   i32.shr_u
   i32.gt_u
   if
-   i32.const 32
+   i32.const 432
    i32.const 608
    i32.const 70
    i32.const 60
@@ -5177,7 +5226,7 @@
   i32.load offset=12
   i32.ge_u
   if
-   i32.const 336
+   i32.const 224
    i32.const 608
    i32.const 114
    i32.const 42
@@ -5382,40 +5431,6 @@
   global.set $~lib/memory/__stack_pointer
   local.get $9
  )
- (func $graph/minimum_spanning_tree/prims/MST#constructor (param $0 i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store
-  local.get $0
-  i32.eqz
-  if
-   global.get $~lib/memory/__stack_pointer
-   i32.const 8
-   i32.const 3
-   call $~lib/rt/itcms/__new
-   local.tee $0
-   i32.store
-  end
-  local.get $0
-  i32.const 0
-  call $graph/minimum_spanning_tree/prims/MST#set:parent
-  local.get $0
-  i32.const 0
-  call $graph/minimum_spanning_tree/prims/MST#set:vertex
-  local.get $0
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $1
- )
  (func $graph/minimum_spanning_tree/prims/mst~anonymous|0 (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   (local $4 i32)
@@ -5537,6 +5552,97 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
   local.get $8
+ )
+ (func $export:graph/minimum_spanning_tree/prims/MST#get:parent (param $0 i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store
+  local.get $0
+  call $graph/minimum_spanning_tree/prims/MST#get:parent
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+ )
+ (func $export:graph/minimum_spanning_tree/prims/MST#set:parent (param $0 i32) (param $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store
+  local.get $0
+  local.get $1
+  call $graph/minimum_spanning_tree/prims/MST#set:parent
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $export:graph/minimum_spanning_tree/prims/MST#get:vertex (param $0 i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store
+  local.get $0
+  call $graph/minimum_spanning_tree/prims/MST#get:vertex
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+ )
+ (func $export:graph/minimum_spanning_tree/prims/MST#set:vertex (param $0 i32) (param $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store
+  local.get $0
+  local.get $1
+  call $graph/minimum_spanning_tree/prims/MST#set:vertex
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $export:graph/minimum_spanning_tree/prims/MST#constructor (param $0 i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store
+  local.get $0
+  call $graph/minimum_spanning_tree/prims/MST#constructor
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
  )
  (func $export:graph/minimum_spanning_tree/prims/mst (param $0 i32) (result i32)
   (local $1 i32)
