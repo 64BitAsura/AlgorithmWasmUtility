@@ -40,7 +40,7 @@ export function mst(graph: i32[][]): i32[] {
     }
   }
 
-  return parent.slice(1);
+  return parent.slice(0);
 }
 
 export function ctod(parameter1: i32[]): i32[]{
