@@ -1,0 +1,7 @@
+[package]
+
+[lib]
+name = "AlgoirthmsUtility"
+path = "algorithms/"
+
+[dependencies]
