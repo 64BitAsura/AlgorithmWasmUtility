@@ -1,11 +1,11 @@
 function findMinEdgeVertex(
   minimumWeightedEdgeByVertex: Int32Array,
-  mst: Array<boolean>
+  visited: Array<boolean>
 ): i32 {
   let minWeight = I32.MAX_VALUE;
   let minVertexIndex: i32=0;
-  for(let vertexIndex=0; vertexIndex < mst.length; vertexIndex++){  
-  const visited = mst[vertexIndex];
+  for(let vertexIndex=0; vertexIndex < visited.length; vertexIndex++){  
+  const visited = visited[vertexIndex];
     const isLess = (minimumWeightedEdgeByVertex[vertexIndex] < minWeight);
     if (!visited && isLess) {
       minVertexIndex = vertexIndex;
@@ -24,13 +24,13 @@ export function mst(graph: i32[][]): MST[] {
   const minimumWeightedEdgeByVertex = new Int32Array(graph.length).fill(
     I32.MAX_VALUE
   );
-  const mst = new Array<boolean>(graph.length).fill(false);
+  const visited = new Array<boolean>(graph.length).fill(false);
 
   minimumWeightedEdgeByVertex[0] = 0;
   parent[0] = -1; // starting vertex can't have parent per say
 
   for (let i = 0; i < graph.length - 1; i++) {
-    const minVertexIndex = findMinEdgeVertex(minimumWeightedEdgeByVertex, mst);
+    const minVertexIndex = findMinEdgeVertex(minimumWeightedEdgeByVertex, visited);
     mst[minVertexIndex] = true;
     for (let v = 0; v < graph.length; v++) {
       if (
