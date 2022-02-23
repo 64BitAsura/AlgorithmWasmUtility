@@ -14,7 +14,8 @@
       "optimizeLevel": 3,
       "shrinkLevel": 1,
       "converge": false,
-      "noAssert": false
+      "noAssert": false,
+      "exportRuntime": true
     }
   },
   "options": {}
