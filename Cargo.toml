@@ -1,9 +1,0 @@
-[package]
-name = "AlgoirthmsUtility"
-version = "0.10.0"
-
-[lib]
-name = "AlgoirthmsUtility"
-path = "algorithms/main.rs"
-
-[dependencies]
