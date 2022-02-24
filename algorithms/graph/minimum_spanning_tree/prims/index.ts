@@ -31,11 +31,11 @@ export function mst(graph: i32[][]): MST[] {
 
   for (let i = 0; i < graph.length - 1; i++) {
     const minVertexIndex = findMinEdgeVertex(minimumWeightedEdgeByVertex, visited);
-    mst[minVertexIndex] = true;
+    visited[minVertexIndex] = true;
     for (let v = 0; v < graph.length; v++) {
       if (
         graph[minVertexIndex][v] &&
-        mst[v] === false &&
+        visited[v] === false &&
         graph[minVertexIndex][v] < minimumWeightedEdgeByVertex[v]
       ) {
         parent[v] = minVertexIndex;
