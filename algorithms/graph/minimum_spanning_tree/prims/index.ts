@@ -20,32 +20,32 @@ export class MST{
   vertex: i32;
 }
 export function mst(graph: i32[][]): MST[] {
-  const parent = new StaticArray<i32>(graph.length);
+  const mstSet = new StaticArray<i32>(graph.length);
   const minimumWeightedEdgeByVertex = new Int32Array(graph.length).fill(
     I32.MAX_VALUE
   );
   const visited = new Array<boolean>(graph.length).fill(false);
 
   minimumWeightedEdgeByVertex[0] = 0;
-  parent[0] = -1; // starting vertex can't have parent per say
+  mstSet[0] = -1; // starting vertex can't have parent per say
 
   for (let i = 0; i < graph.length - 1; i++) {
-    const minVertexIndex = findMinEdgeVertex(minimumWeightedEdgeByVertex, visited);
-    visited[minVertexIndex] = true;
+    const u = findMinEdgeVertex(minimumWeightedEdgeByVertex, visited);
+    visited[u] = true;
     for (let v = 0; v < graph.length; v++) {
       if (
-        graph[minVertexIndex][v] &&
+        graph[u][v] &&
         visited[v] === false &&
-        graph[minVertexIndex][v] < minimumWeightedEdgeByVertex[v]
+        graph[u][v] < minimumWeightedEdgeByVertex[v]
       ) {
-        parent[v] = minVertexIndex;
-        minimumWeightedEdgeByVertex[v] = graph[minVertexIndex][v];
+        mstSet[v] = minVertexIndex;
+        minimumWeightedEdgeByVertex[v] = graph[u][v];
       }
     }
   }
 
-  return parent.slice(0)
-         .map<MST>((parentToVertex: i32, vertex: i32, parent: i32[]): MST=>({parent: parentToVertex, vertex}));
+  return mstSet.slice(0)
+         .map<MST>((parent: i32, vertex: i32, _: i32[]): MST=>({parent, vertex}));
 }
 
 
