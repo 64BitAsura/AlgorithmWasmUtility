@@ -5,7 +5,7 @@ class EDGE {
 }
 
 class GRAPH {
-  adjacentList:{i32 : Set<i32>} = {};
+  adjacentList = new Map<i32,i32>();
   
   AddEdge(edge: EDGE): void{  
     let adjacentVertexes = this.GetAdjacentVertexes(edge.src);
@@ -21,7 +21,14 @@ class GRAPH {
     return adjacentVertexes;
   }
   
-  Is
+  IsCyclic(): bool {
+    const visited = new Array<bool>(adjacentList.size).fill(false);
+    
+  }
+
+  CyclicUtil(parent):bool{
+    
+  }
 }
 
 
