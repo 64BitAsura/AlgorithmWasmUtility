@@ -26,7 +26,7 @@ class GRAPH {
     
   }
 
-  CyclicUtil(parent):bool{
+  CyclicUtil(parent: i32, visited: Array<bool>): bool{
     
   }
 }
