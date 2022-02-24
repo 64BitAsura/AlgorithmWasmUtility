@@ -4,6 +4,13 @@ class EDGE {
   weight: i32;
 }
 
+class GRAPH {
+  adjacentList:{i32 : Int32Array} = {};
+  AddEdge(edge: EDGE): void{
+    
+  }
+}
+
 
 export function mst(graph: StaticArray<StaticArray<i32>>): i32[]{
   
