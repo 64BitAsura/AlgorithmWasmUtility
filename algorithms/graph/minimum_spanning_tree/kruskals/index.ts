@@ -17,8 +17,19 @@ export function mst(graph: StaticArray<StaticArray<i32>>): i32[]{
   }
   
   // step 1 sort edges in non-decreasing order
-  edges.sort((x:EDGE,y:EDGE)=> x.weight - y.weight);
+  edges.sort((x:EDGE,y:EDGE)=> y.weight - x.weight);
   
   const mstSet = new Set<EDGE>();
+  
+  const vertexSize = graph.length;
+  
+  let mstEdgeCount = 0;
+  const visited = new Array<bool>(vertexSize).fill(false);
+  while (mstEdgeCount < vertexSize - 1){
+    if(edges.size === 0){
+      break;
+    }
+    
+  }
   
 }
