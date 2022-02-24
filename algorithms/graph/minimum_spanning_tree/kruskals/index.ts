@@ -4,6 +4,7 @@ class EDGE {
   weight: i32;
 }
 
+
 export function mst(graph: StaticArray<StaticArray<i32>>): i32[]{
   
   const edges = new Array<EDGE>();
