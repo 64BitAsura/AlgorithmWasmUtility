@@ -5,10 +5,23 @@ class EDGE {
 }
 
 class GRAPH {
-  adjacentList:{i32 : Int32Array} = {};
-  AddEdge(edge: EDGE): void{
-    
+  adjacentList:{i32 : Set<i32>} = {};
+  
+  AddEdge(edge: EDGE): void{  
+    let adjacentVertexes = this.GetAdjacentVertexes(edge.src);
+    adjacentVertexes.add(edge.dest);
+    this.adjacentList[edge.src] = adjacentVertexes;
   }
+ 
+  GetAdjacentVertexes(vertex: i32): Set<i32>{
+    let adjacentVertexes = this.adjacentList[vertex];
+    if(adjacentVertexes == null){
+      adjacentVertexes = new Set<i32>();
+    }
+    return adjacentVertexes;
+  }
+  
+  Is
 }
 
 
@@ -27,7 +40,7 @@ export function mst(graph: StaticArray<StaticArray<i32>>): i32[]{
   // step 1 sort edges in non-decreasing order
   edges.sort((x:EDGE,y:EDGE)=> y.weight - x.weight);
   
-  const mstSet = new Set<EDGE>();
+  const mstSet = new GRAPH();
   
   const vertexSize = graph.length;
   
