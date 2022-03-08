@@ -10,7 +10,8 @@
     "test": "npm run asbuild:untouched && jest",
     "asbuild:untouched": "asc ./algorithms/**/**/**/*.ts --target debug --config ./algorithms/**/**/**/asconfig.json",
     "asbuild:optimized": "asc ./algorithms/**/**/**/*.ts --target release --config ./algorithms/**/**/**/asconfig.json",
-    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized"
+    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
+    "list-files": "node ./build/core.js"
   },
   "author": "",
   "license": "ISC",
