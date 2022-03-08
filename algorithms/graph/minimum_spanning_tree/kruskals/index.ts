@@ -44,7 +44,12 @@ class GRAPH {
       visited[parent] = true;
       const peers = this.adjacentList.get(parent);
       if(peers != null){
-        for(let current=0; current < )
+        for(let current =0; current < peers.length; current++){
+          const currentVertex = peers[current];
+          if( restack[currentVertex] || !visited[currentVertex] && this.CyclicUtil(currentVertex, visited, restack)){
+            r
+          }
+        }
       }
     }
     restack[parent]=false;
