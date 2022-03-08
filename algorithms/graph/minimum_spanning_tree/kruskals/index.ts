@@ -42,7 +42,10 @@ class GRAPH {
   CyclicUtil(parent: i32, visited: Array<bool>, restack: Array<bool>): bool{
     if(!visited[parent]){
       visited[parent] = true;
-      const peers = this.adjacentList
+      const peers = this.adjacentList.get(parent);
+      if(peers != null){
+        for(let current=0; current < )
+      }
     }
     restack[parent]=false;
     return false;
