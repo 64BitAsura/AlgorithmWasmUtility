@@ -21,8 +21,15 @@ class GRAPH {
     return adjacentVertexes;
   }
   
+  RemoveEdge(edge: EDGE): void{
+    let adjacentVertexes = this.GetAdjacentVertexes(edge.src);
+    adjacentVertexes.remove(edge.dest);
+    this.adjacentList[edge.src] = adjacentVertexes;
+  }
+  
   IsCyclic(): bool {
     const visited = new Array<bool>(adjacentList.size).fill(false);
+    for(let index=0; index<adjacentList.size;)
     
   }
 
