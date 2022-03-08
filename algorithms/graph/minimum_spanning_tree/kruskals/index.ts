@@ -29,8 +29,9 @@ class GRAPH {
   
   IsCyclic(): bool {
     const visited = new Array<bool>(adjacentList.size).fill(false);
+    const restack = new Array<bool>(adjacentList.size).fill(false);
     for(let vertex=0; vertex<adjacentList.size; vertex++){
-        const cyclic = this.CyclicUtil(vertex, visited);
+        const cyclic = this.CyclicUtil(vertex, visited, restack);
         if(cyclic){
           return true;
         }
@@ -38,8 +39,13 @@ class GRAPH {
     return false;
   }
 
-  CyclicUtil(parent: i32, visited: Array<bool>): bool{
-    
+  CyclicUtil(parent: i32, visited: Array<bool>, restack: Array<bool>): bool{
+    if(!visited[parent]){
+      visited[parent] = true;
+      const peers = this.adjacentList
+    }
+    restack[parent]=false;
+    return false;
   }
 }
 
