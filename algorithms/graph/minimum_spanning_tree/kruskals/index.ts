@@ -5,7 +5,14 @@ class EDGE {
 }
 
 class GRAPH {
-  adjacentList = new Map<i32,i32>();
+  adjacentList:Map<i32,i32>;
+  constructor(){
+    this.adjacentList = new Map<i32,i32>();
+  }
+  
+  GetVertex(){
+    return this.adjacentList.keys();
+  }
   
   AddEdge(edge: EDGE): void{  
     let adjacentVertexes = this.GetAdjacentVertexes(edge.src);
@@ -62,9 +69,9 @@ export function mst(graph: StaticArray<StaticArray<i32>>): i32[]{
   const edges = new Array<EDGE>();
   for(let u=0; u < graph.length; u++){
     for(let v=0; v< graph.length; v++){
-      if(grap[u][v]< Int32.MAX_VALUE){
+      if(graph[u][v]< I32.MAX_VALUE){
        edges.push({src:u, dest:v, weight: graph[u][v]});
-       graph[v][u] = Int32.MAX_VALUE;
+       graph[v][u] = I32.MAX_VALUE;
       }
     }
   }
@@ -79,7 +86,7 @@ export function mst(graph: StaticArray<StaticArray<i32>>): i32[]{
   let mstEdgeCount = 0;
   const visited = new Array<bool>(vertexSize).fill(false);
   while (mstEdgeCount < vertexSize - 1){
-    if(edges.size === 0){
+    if(edges.length === 0){
       break;
     }
     const edge: EDGE = edges.shift();
@@ -88,6 +95,6 @@ export function mst(graph: StaticArray<StaticArray<i32>>): i32[]{
       mstSet.RemoveEdge(edge);
     }
   }
-  return mstSet.keys();
+  return mstSet.GetVertex();
   
 }
