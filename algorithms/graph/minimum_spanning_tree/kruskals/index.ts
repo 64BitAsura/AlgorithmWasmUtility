@@ -29,7 +29,9 @@ class GRAPH {
   
   IsCyclic(): bool {
     const visited = new Array<bool>(adjacentList.size).fill(false);
-    for(let index=0; index<adjacentList.size;)
+    for(let index=0; index<adjacentList.size; index++){
+      
+    }
     
   }
 
