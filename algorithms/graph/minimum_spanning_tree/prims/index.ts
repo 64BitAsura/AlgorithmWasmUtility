@@ -5,7 +5,7 @@ function findMinEdgeVertex(
   let minWeight = I32.MAX_VALUE;
   let minVertexIndex: i32=0;
   for(let vertexIndex=0; vertexIndex < visited.length; vertexIndex++){  
-  const visited = visited[vertexIndex];
+  const visited: boolean = visited[vertexIndex];
     const isLess = (minimumWeightedEdgeByVertex[vertexIndex] < minWeight);
     if (!visited && isLess) {
       minVertexIndex = vertexIndex;
