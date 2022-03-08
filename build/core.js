@@ -10,15 +10,26 @@ function fromDir(startPath,filter){
         return;
     }
 
-    var files=fs.readdirSync(startPath);
-    for(var i=0;i<files.length;i++){
-        var filename=path.join(startPath,files[i]);
-        var stat = fs.lstatSync(filename);
+    const files=fs.readdirSync(startPath);
+    for(let i=0;i<files.length;i++){
+        const filename=path.join(startPath,files[i]);
+        const stat = fs.lstatSync(filename);
         if (stat.isDirectory()){
             fromDir(filename,filter); //recurse
         }
-        else if (filename.indexOf(filter)>=0) {
-            console.log('-- found: ',filename);
+        else if (filename.indexOf(filter)===(filename.length-filter.length)) {
+            console.log('-- asc: ',filename);
+            exec(`asc ${filename} --target debug --config ${startPath}/asconfig.json`,(error, stdout, stderr) => {
+    if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+    }
+    if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+    }
+    console.log(`stdout: ${stdout}`);
+});
         };
     };
 };
