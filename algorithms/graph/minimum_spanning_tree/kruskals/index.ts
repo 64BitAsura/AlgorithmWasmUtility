@@ -5,23 +5,23 @@ class EDGE {
 }
 
 class GRAPH {
-  adjacentList:Map<i32,i32>;
+  adjacentList:Map<i32,Set<i32>>;
   constructor(){
-    this.adjacentList = new Map<i32,i32>();
+    this.adjacentList = new Map<i32,Set<i32>>();
   }
   
-  GetVertex(){
+  GetVertex(): i32[]{
     return this.adjacentList.keys();
   }
   
   AddEdge(edge: EDGE): void{  
     let adjacentVertexes = this.GetAdjacentVertexes(edge.src);
     adjacentVertexes.add(edge.dest);
-    this.adjacentList[edge.src] = adjacentVertexes;
+    this.adjacentList.set(edge.src, adjacentVertexes);
   }
  
   GetAdjacentVertexes(vertex: i32): Set<i32>{
-    let adjacentVertexes = this.adjacentList[vertex];
+    let adjacentVertexes = this.adjacentList.get(vertex);
     if(adjacentVertexes == null){
       adjacentVertexes = new Set<i32>();
     }
@@ -30,14 +30,14 @@ class GRAPH {
   
   RemoveEdge(edge: EDGE): void{
     let adjacentVertexes = this.GetAdjacentVertexes(edge.src);
-    adjacentVertexes.remove(edge.dest);
-    this.adjacentList[edge.src] = adjacentVertexes;
+    adjacentVertexes.delete(edge.dest);
+    this.adjacentList.set(edge.src, adjacentVertexes);
   }
   
   IsCyclic(): bool {
-    const visited = new Array<bool>(adjacentList.size).fill(false);
-    const restack = new Array<bool>(adjacentList.size).fill(false);
-    for(let vertex=0; vertex<adjacentList.size; vertex++){
+    const visited = new Array<bool>(this.adjacentList.size).fill(false);
+    const restack = new Array<bool>(this.adjacentList.size).fill(false);
+    for(let vertex=0; vertex<this.adjacentList.size; vertex++){
         const cyclic = this.CyclicUtil(vertex, visited, restack);
         if(cyclic){
           return true;
@@ -51,7 +51,7 @@ class GRAPH {
       visited[parent] = true;
       const peers = this.GetAdjacentVertexes(parent);
       if(peers != null){
-        for(let current =0; current < peers.length; current++){
+        for(let current =0; current < peers.size; current++){
           const currentVertex = peers[current];
           if( restack[currentVertex] || (!visited[currentVertex] && this.CyclicUtil(currentVertex, visited, restack))){
             return true
@@ -62,6 +62,11 @@ class GRAPH {
     restack[parent]=false;
     return false;
   }
+}
+
+export class MST{
+  parent: i32;
+  vertex: i32;
 }
 
 export function mst(graph: StaticArray<StaticArray<i32>>): i32[]{
@@ -85,12 +90,14 @@ export function mst(graph: StaticArray<StaticArray<i32>>): i32[]{
   
   let mstEdgeCount = 0;
   const visited = new Array<bool>(vertexSize).fill(false);
+  //step 3 do step 2 until all edges exhausted
   while (mstEdgeCount < vertexSize - 1){
     if(edges.length === 0){
       break;
     }
     const edge: EDGE = edges.shift();
     mstSet.AddEdge(edge);
+    // step 2 check cyclic after adding edge, if so pop
     if(mstSet.IsCyclic()){
       mstSet.RemoveEdge(edge);
     }
@@ -98,3 +105,7 @@ export function mst(graph: StaticArray<StaticArray<i32>>): i32[]{
   return mstSet.GetVertex();
   
 }
+
+export const MST_ID = idof<MST[]>();
+export const EDGE_ID = idof<i32[]>();
+export const VERTEX_ID = idof<i32[][]>();
