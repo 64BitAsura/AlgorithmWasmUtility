@@ -7,11 +7,11 @@
   "description": "test assemblyscript",
   "main": "index.js",
   "scripts": {
-    "test": "npm run asbuild:untouched && jest",
+    "test": "npm run asbuild-files && jest",
     "asbuild:untouched": "asc ./algorithms/**/**/**/*.ts --target debug --config ./algorithms/**/**/**/asconfig.json",
     "asbuild:optimized": "asc ./algorithms/**/**/**/*.ts --target release --config ./algorithms/**/**/**/asconfig.json",
     "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
-    "list-files": "node ./build/core.js"
+    "asbuild-files": "node ./build/core.js"
   },
   "author": "",
   "license": "ISC",
