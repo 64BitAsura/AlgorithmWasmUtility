@@ -42,12 +42,12 @@ class GRAPH {
   CyclicUtil(parent: i32, visited: Array<bool>, restack: Array<bool>): bool{
     if(!visited[parent]){
       visited[parent] = true;
-      const peers = this.adjacentList.get(parent);
+      const peers = this.GetAdjacentVertexes(parent);
       if(peers != null){
         for(let current =0; current < peers.length; current++){
           const currentVertex = peers[current];
-          if( restack[currentVertex] || !visited[currentVertex] && this.CyclicUtil(currentVertex, visited, restack)){
-            r
+          if( restack[currentVertex] || (!visited[currentVertex] && this.CyclicUtil(currentVertex, visited, restack))){
+            return true
           }
         }
       }
@@ -56,7 +56,6 @@ class GRAPH {
     return false;
   }
 }
-
 
 export function mst(graph: StaticArray<StaticArray<i32>>): i32[]{
   
@@ -83,7 +82,12 @@ export function mst(graph: StaticArray<StaticArray<i32>>): i32[]{
     if(edges.size === 0){
       break;
     }
-    
+    const edge: EDGE = edges.shift();
+    mstSet.AddEdge(edge);
+    if(mstSet.IsCyclic()){
+      mstSet.RemoveEdge(edge);
+    }
   }
+  return mstSet.keys();
   
 }
