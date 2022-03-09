@@ -17,8 +17,10 @@ class GRAPH {
   }
  
   GetAdjacentVertexes(vertex: i32): Set<i32>{
-    let adjacentVertexes = this.adjacentList.get(vertex);
-    if(adjacentVertexes == null){
+    let adjacentVertexes: Set<i32>;
+    if(this.adjacentList.has(vertex)){
+     adjacentVertexes = this.adjacentList.get(vertex);
+    } else {
       adjacentVertexes = new Set<i32>();
     }
     return adjacentVertexes;
@@ -49,7 +51,7 @@ class GRAPH {
       if(peers != null){
         for(let current =0; current < peers.size; current++){
           const currentVertex = peers[current];
-          if( restack[currentVertex] || (!visited[currentVertex] && this.CyclicUtil(currentVertex, visited, restack))){
+          if(restack[currentVertex] || (!visited[currentVertex] && this.CyclicUtil(currentVertex, visited, restack))){
             return true
           }
         }

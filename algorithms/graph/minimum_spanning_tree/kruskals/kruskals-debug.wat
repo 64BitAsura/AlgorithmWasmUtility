@@ -5170,6 +5170,15 @@
   end
   i32.const 0
  )
+ (func $~lib/map/Map<i32,~lib/set/Set<i32>>#has (param $0 i32) (param $1 i32) (result i32)
+  local.get $0
+  local.get $1
+  local.get $1
+  call $~lib/util/hash/HASH<i32>
+  call $~lib/map/Map<i32,~lib/set/Set<i32>>#find
+  i32.const 0
+  i32.ne
+ )
  (func $~lib/map/Map<i32,~lib/set/Set<i32>>#get (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $0
@@ -6679,7 +6688,6 @@
   global.get $~lib/memory/__stack_pointer
   i64.const 0
   i64.store
-  global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load
   local.set $3
@@ -6688,13 +6696,21 @@
   i32.store
   local.get $3
   local.get $1
-  call $~lib/map/Map<i32,~lib/set/Set<i32>>#get
-  local.tee $2
-  i32.store offset=4
-  local.get $2
-  i32.const 0
-  i32.eq
+  call $~lib/map/Map<i32,~lib/set/Set<i32>>#has
   if
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.load
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.store
+   local.get $3
+   local.get $1
+   call $~lib/map/Map<i32,~lib/set/Set<i32>>#get
+   local.tee $2
+   i32.store offset=4
+  else
    global.get $~lib/memory/__stack_pointer
    i32.const 0
    call $~lib/set/Set<i32>#constructor
