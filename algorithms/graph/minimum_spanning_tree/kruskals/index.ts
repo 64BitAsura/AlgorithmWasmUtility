@@ -10,10 +10,6 @@ class GRAPH {
     this.adjacentList = new Map<i32,Set<i32>>();
   }
   
-  GetVertex(): i32[]{
-    return this.adjacentList.keys();
-  }
-  
   AddEdge(edge: EDGE): void{  
     let adjacentVertexes = this.GetAdjacentVertexes(edge.src);
     adjacentVertexes.add(edge.dest);
@@ -69,7 +65,7 @@ export class MST{
   vertex: i32;
 }
 
-export function mst(graph: StaticArray<StaticArray<i32>>): i32[]{
+export function mst(graph: StaticArray<StaticArray<i32>>): MST[]{
   
   const edges = new Array<EDGE>();
   for(let u=0; u < graph.length; u++){
@@ -84,7 +80,8 @@ export function mst(graph: StaticArray<StaticArray<i32>>): i32[]{
   // step 1 sort edges in non-decreasing order
   edges.sort((x:EDGE,y:EDGE)=> y.weight - x.weight);
   
-  const mstSet = new GRAPH();
+  const mstSet = new StaticArray<i32>(graph.length);
+  const subGraph = new GRAPH();
   
   const vertexSize = graph.length;
   
@@ -96,14 +93,17 @@ export function mst(graph: StaticArray<StaticArray<i32>>): i32[]{
       break;
     }
     const edge: EDGE = edges.shift();
-    mstSet.AddEdge(edge);
+    subGraph.AddEdge(edge);
     // step 2 check cyclic after adding edge, if so pop
-    if(mstSet.IsCyclic()){
-      mstSet.RemoveEdge(edge);
+    if(subGraph.IsCyclic()){
+      subGraph.RemoveEdge(edge);
+    } else {
+      mstSet[edge.src] = edge.dest;
     }
   }
-  return mstSet.GetVertex();
   
+  return mstSet.slice(0)
+         .map<MST>((parent: i32, vertex: i32, _: i32[]): MST=>({parent, vertex}));
 }
 
 export const MST_ID = idof<MST[]>();
