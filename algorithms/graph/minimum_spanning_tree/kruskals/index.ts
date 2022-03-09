@@ -65,7 +65,7 @@ export class MST{
   vertex: i32;
 }
 
-export function mst(graph: StaticArray<StaticArray<i32>>): MST[]{
+export function mst(graph: i32[][]): MST[]{
   
   const edges = new Array<EDGE>();
   for(let u=0; u < graph.length; u++){

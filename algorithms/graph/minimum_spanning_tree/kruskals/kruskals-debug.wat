@@ -38,9 +38,9 @@
  (global $~lib/builtins/u32.MAX_VALUE i32 (i32.const -1))
  (global $algorithms/graph/minimum_spanning_tree/kruskals/index/MST i32 (i32.const 3))
  (global $~lib/rt/__rtti_base i32 (i32.const 1120))
- (global $~lib/memory/__data_end i32 (i32.const 1260))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 17644))
- (global $~lib/memory/__heap_base i32 (i32.const 17644))
+ (global $~lib/memory/__data_end i32 (i32.const 1252))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 17636))
+ (global $~lib/memory/__heap_base i32 (i32.const 17636))
  (memory $0 1)
  (data (i32.const 12) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00(\00\00\00A\00l\00l\00o\00c\00a\00t\00i\00o\00n\00 \00t\00o\00o\00 \00l\00a\00r\00g\00e\00\00\00\00\00")
  (data (i32.const 76) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00 \00\00\00~\00l\00i\00b\00/\00r\00t\00/\00i\00t\00c\00m\00s\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00")
@@ -52,17 +52,17 @@
  (data (i32.const 348) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1e\00\00\00~\00l\00i\00b\00/\00r\00t\00/\00t\00l\00s\00f\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 412) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1c\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00l\00e\00n\00g\00t\00h\00")
  (data (i32.const 460) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1a\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00.\00t\00s\00\00\00")
- (data (i32.const 508) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00&\00\00\00~\00l\00i\00b\00/\00s\00t\00a\00t\00i\00c\00a\00r\00r\00a\00y\00.\00t\00s\00\00\00\00\00\00\00")
- (data (i32.const 572) "|\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00^\00\00\00E\00l\00e\00m\00e\00n\00t\00 \00t\00y\00p\00e\00 \00m\00u\00s\00t\00 \00b\00e\00 \00n\00u\00l\00l\00a\00b\00l\00e\00 \00i\00f\00 \00a\00r\00r\00a\00y\00 \00i\00s\00 \00h\00o\00l\00e\00y\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 700) "\1c\00\00\00\00\00\00\00\00\00\00\00\0b\00\00\00\08\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 508) "|\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00^\00\00\00E\00l\00e\00m\00e\00n\00t\00 \00t\00y\00p\00e\00 \00m\00u\00s\00t\00 \00b\00e\00 \00n\00u\00l\00l\00a\00b\00l\00e\00 \00i\00f\00 \00a\00r\00r\00a\00y\00 \00i\00s\00 \00h\00o\00l\00e\00y\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 636) "\1c\00\00\00\00\00\00\00\00\00\00\00\t\00\00\00\08\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 668) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00&\00\00\00~\00l\00i\00b\00/\00s\00t\00a\00t\00i\00c\00a\00r\00r\00a\00y\00.\00t\00s\00\00\00\00\00\00\00")
  (data (i32.const 732) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00&\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00b\00u\00f\00f\00e\00r\00.\00t\00s\00\00\00\00\00\00\00")
  (data (i32.const 796) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1c\00\00\00A\00r\00r\00a\00y\00 \00i\00s\00 \00e\00m\00p\00t\00y\00")
  (data (i32.const 844) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00$\00\00\00K\00e\00y\00 \00d\00o\00e\00s\00 \00n\00o\00t\00 \00e\00x\00i\00s\00t\00\00\00\00\00\00\00\00\00")
  (data (i32.const 908) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\16\00\00\00~\00l\00i\00b\00/\00m\00a\00p\00.\00t\00s\00\00\00\00\00\00\00")
- (data (i32.const 956) "\1c\00\00\00\00\00\00\00\00\00\00\00\10\00\00\00\08\00\00\00\02\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 956) "\1c\00\00\00\00\00\00\00\00\00\00\00\0f\00\00\00\08\00\00\00\02\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 988) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00*\00\00\00O\00b\00j\00e\00c\00t\00 \00a\00l\00r\00e\00a\00d\00y\00 \00p\00i\00n\00n\00e\00d\00\00\00")
  (data (i32.const 1052) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00(\00\00\00O\00b\00j\00e\00c\00t\00 \00i\00s\00 \00n\00o\00t\00 \00p\00i\00n\00n\00e\00d\00\00\00\00\00")
- (data (i32.const 1120) "\11\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\02\t\00\00\00\00\00\00\02A\00\00\00\00\00\00$\t\00\00\00\00\00\00\04A\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\08\t\00\00\00\00\00\00\10A\12\00\00\00\00\00B\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1120) "\10\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\02\t\00\00\00\00\00\00\02A\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00$\t\00\00\00\00\00\00\00\00\00\00\00\00\00\00\08\t\00\00\00\00\00\00\10A\12\00\00\00\00\00B\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (table $0 3 funcref)
  (elem $0 (i32.const 1) $algorithms/graph/minimum_spanning_tree/kruskals/index/mst~anonymous|0 $algorithms/graph/minimum_spanning_tree/kruskals/index/mst~anonymous|1)
  (export "MST" (global $algorithms/graph/minimum_spanning_tree/kruskals/index/MST))
@@ -2495,37 +2495,26 @@
   local.get $1
   i32.store offset=12
  )
- (func $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>>#get:length (param $0 i32) (result i32)
+ (func $~lib/array/Array<~lib/array/Array<i32>>#get:length (param $0 i32) (result i32)
   local.get $0
-  i32.const 20
-  i32.sub
-  i32.load offset=16
-  i32.const 2
-  i32.shr_u
+  i32.load offset=12
  )
- (func $~lib/staticarray/StaticArray<i32>#get:length (param $0 i32) (result i32)
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load offset=16
-  i32.const 2
-  i32.shr_u
- )
- (func $~lib/staticarray/StaticArray<i32>#__get (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<i32>#__get (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $1
   local.get $0
-  call $~lib/staticarray/StaticArray<i32>#get:length
+  i32.load offset=12
   i32.ge_u
   if
    i32.const 224
-   i32.const 528
-   i32.const 118
-   i32.const 41
+   i32.const 480
+   i32.const 114
+   i32.const 42
    call $~lib/builtins/abort
    unreachable
   end
   local.get $0
+  i32.load offset=4
   local.get $1
   i32.const 2
   i32.shl
@@ -3974,8 +3963,14 @@
   call $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE>#set:length_
   local.get $3
  )
- (func $~lib/staticarray/StaticArray<i32>#__uset (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/array/Array<i32>#set:length_ (param $0 i32) (param $1 i32)
   local.get $0
+  local.get $1
+  i32.store offset=12
+ )
+ (func $~lib/array/Array<i32>#__uset (param $0 i32) (param $1 i32) (param $2 i32)
+  local.get $0
+  i32.load offset=4
   local.get $1
   i32.const 2
   i32.shl
@@ -3985,23 +3980,40 @@
   i32.const 0
   drop
  )
- (func $~lib/staticarray/StaticArray<i32>#__set (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/array/Array<i32>#__set (param $0 i32) (param $1 i32) (param $2 i32)
   local.get $1
   local.get $0
-  call $~lib/staticarray/StaticArray<i32>#get:length
+  i32.load offset=12
   i32.ge_u
   if
-   i32.const 224
-   i32.const 528
-   i32.const 133
-   i32.const 41
-   call $~lib/builtins/abort
-   unreachable
+   local.get $1
+   i32.const 0
+   i32.lt_s
+   if
+    i32.const 224
+    i32.const 480
+    i32.const 130
+    i32.const 22
+    call $~lib/builtins/abort
+    unreachable
+   end
+   local.get $0
+   local.get $1
+   i32.const 1
+   i32.add
+   i32.const 2
+   i32.const 1
+   call $~lib/array/ensureCapacity
+   local.get $0
+   local.get $1
+   i32.const 1
+   i32.add
+   call $~lib/array/Array<i32>#set:length_
   end
   local.get $0
   local.get $1
   local.get $2
-  call $~lib/staticarray/StaticArray<i32>#__uset
+  call $~lib/array/Array<i32>#__uset
  )
  (func $algorithms/graph/minimum_spanning_tree/kruskals/index/mst~anonymous|0 (param $0 i32) (param $1 i32) (result i32)
   local.get $1
@@ -5810,6 +5822,43 @@
   end
   i32.const 1
  )
+ (func $~lib/staticarray/StaticArray<i32>#get:length (param $0 i32) (result i32)
+  local.get $0
+  i32.const 20
+  i32.sub
+  i32.load offset=16
+  i32.const 2
+  i32.shr_u
+ )
+ (func $~lib/staticarray/StaticArray<i32>#__uset (param $0 i32) (param $1 i32) (param $2 i32)
+  local.get $0
+  local.get $1
+  i32.const 2
+  i32.shl
+  i32.add
+  local.get $2
+  i32.store
+  i32.const 0
+  drop
+ )
+ (func $~lib/staticarray/StaticArray<i32>#__set (param $0 i32) (param $1 i32) (param $2 i32)
+  local.get $1
+  local.get $0
+  call $~lib/staticarray/StaticArray<i32>#get:length
+  i32.ge_u
+  if
+   i32.const 224
+   i32.const 688
+   i32.const 133
+   i32.const 41
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $0
+  local.get $1
+  local.get $2
+  call $~lib/staticarray/StaticArray<i32>#__uset
+ )
  (func $~lib/rt/__newBuffer (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
   local.get $0
@@ -5954,7 +6003,7 @@
   i32.const 816
   local.get $0
   call $~lib/rt/itcms/__visit
-  i32.const 592
+  i32.const 528
   local.get $0
   call $~lib/rt/itcms/__visit
   i32.const 864
@@ -6093,51 +6142,6 @@
   local.get $0
   local.get $1
   call $~lib/array/Array<~lib/array/Array<i32>>#__visit
- )
- (func $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>>#__visit (param $0 i32) (param $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  i32.const 1
-  drop
-  local.get $0
-  local.set $2
-  local.get $2
-  local.get $0
-  i32.const 20
-  i32.sub
-  i32.load offset=16
-  i32.add
-  local.set $3
-  loop $while-continue|0
-   local.get $2
-   local.get $3
-   i32.lt_u
-   local.set $4
-   local.get $4
-   if
-    local.get $2
-    i32.load
-    local.set $5
-    local.get $5
-    if
-     local.get $5
-     local.get $1
-     call $~lib/rt/itcms/__visit
-    end
-    local.get $2
-    i32.const 4
-    i32.add
-    local.set $2
-    br $while-continue|0
-   end
-  end
- )
- (func $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>>~visit (param $0 i32) (param $1 i32)
-  local.get $0
-  local.get $1
-  call $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>>#__visit
  )
  (func $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE>#__visit (param $0 i32) (param $1 i32)
   (local $2 i32)
@@ -6331,67 +6335,61 @@
      block $~lib/map/Map<i32,~lib/set/Set<i32>>
       block $~lib/set/Set<i32>
        block $algorithms/graph/minimum_spanning_tree/kruskals/index/GRAPH
-        block $~lib/function/Function<%28algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%2Calgorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%29=>i32>
-         block $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE>
-          block $algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE
-           block $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>>
-            block $~lib/staticarray/StaticArray<i32>
-             block $~lib/array/Array<~lib/array/Array<i32>>
-              block $~lib/array/Array<i32>
-               block $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/MST>
-                block $algorithms/graph/minimum_spanning_tree/kruskals/index/MST
-                 block $~lib/arraybuffer/ArrayBufferView
-                  block $~lib/string/String
-                   block $~lib/arraybuffer/ArrayBuffer
-                    local.get $0
-                    i32.const 8
-                    i32.sub
-                    i32.load
-                    br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $algorithms/graph/minimum_spanning_tree/kruskals/index/MST $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/MST> $~lib/array/Array<i32> $~lib/array/Array<~lib/array/Array<i32>> $~lib/staticarray/StaticArray<i32> $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>> $algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE> $~lib/function/Function<%28algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%2Calgorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%29=>i32> $algorithms/graph/minimum_spanning_tree/kruskals/index/GRAPH $~lib/set/Set<i32> $~lib/map/Map<i32,~lib/set/Set<i32>> $~lib/array/Array<bool> $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>algorithms/graph/minimum_spanning_tree/kruskals/index/MST> $invalid
-                   end
-                   return
+        block $~lib/staticarray/StaticArray<i32>
+         block $~lib/function/Function<%28algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%2Calgorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%29=>i32>
+          block $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE>
+           block $algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE
+            block $~lib/array/Array<~lib/array/Array<i32>>
+             block $~lib/array/Array<i32>
+              block $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/MST>
+               block $algorithms/graph/minimum_spanning_tree/kruskals/index/MST
+                block $~lib/arraybuffer/ArrayBufferView
+                 block $~lib/string/String
+                  block $~lib/arraybuffer/ArrayBuffer
+                   local.get $0
+                   i32.const 8
+                   i32.sub
+                   i32.load
+                   br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $algorithms/graph/minimum_spanning_tree/kruskals/index/MST $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/MST> $~lib/array/Array<i32> $~lib/array/Array<~lib/array/Array<i32>> $algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE> $~lib/function/Function<%28algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%2Calgorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%29=>i32> $~lib/staticarray/StaticArray<i32> $algorithms/graph/minimum_spanning_tree/kruskals/index/GRAPH $~lib/set/Set<i32> $~lib/map/Map<i32,~lib/set/Set<i32>> $~lib/array/Array<bool> $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>algorithms/graph/minimum_spanning_tree/kruskals/index/MST> $invalid
                   end
                   return
                  end
-                 local.get $0
-                 local.get $1
-                 call $~lib/arraybuffer/ArrayBufferView~visit
                  return
                 end
+                local.get $0
+                local.get $1
+                call $~lib/arraybuffer/ArrayBufferView~visit
                 return
                end
-               local.get $0
-               local.get $1
-               call $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/MST>~visit
                return
               end
               local.get $0
               local.get $1
-              call $~lib/array/Array<i32>~visit
+              call $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/MST>~visit
               return
              end
              local.get $0
              local.get $1
-             call $~lib/array/Array<~lib/array/Array<i32>>~visit
+             call $~lib/array/Array<i32>~visit
              return
             end
+            local.get $0
+            local.get $1
+            call $~lib/array/Array<~lib/array/Array<i32>>~visit
             return
            end
-           local.get $0
-           local.get $1
-           call $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>>~visit
            return
           end
+          local.get $0
+          local.get $1
+          call $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE>~visit
           return
          end
          local.get $0
          local.get $1
-         call $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE>~visit
+         call $~lib/function/Function<%28algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%2Calgorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%29=>i32>~visit
          return
         end
-        local.get $0
-        local.get $1
-        call $~lib/function/Function<%28algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%2Calgorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%29=>i32>~visit
         return
        end
        local.get $0
@@ -6940,7 +6938,7 @@
   loop $for-loop|0
    local.get $2
    local.get $0
-   call $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>>#get:length
+   call $~lib/array/Array<~lib/array/Array<i32>>#get:length
    i32.lt_s
    local.set $3
    local.get $3
@@ -6950,21 +6948,21 @@
     loop $for-loop|1
      local.get $4
      local.get $0
-     call $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>>#get:length
+     call $~lib/array/Array<~lib/array/Array<i32>>#get:length
      i32.lt_s
      local.set $5
      local.get $5
      if
       local.get $0
       local.get $2
-      call $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>>#__get
+      call $~lib/array/Array<~lib/array/Array<i32>>#__get
       local.set $10
       global.get $~lib/memory/__stack_pointer
       local.get $10
       i32.store offset=4
       local.get $10
       local.get $4
-      call $~lib/staticarray/StaticArray<i32>#__get
+      call $~lib/array/Array<i32>#__get
       global.get $~lib/number/I32.MAX_VALUE
       i32.lt_s
       if
@@ -6983,14 +6981,14 @@
        local.get $6
        local.get $0
        local.get $2
-       call $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>>#__get
+       call $~lib/array/Array<~lib/array/Array<i32>>#__get
        local.set $10
        global.get $~lib/memory/__stack_pointer
        local.get $10
        i32.store offset=8
        local.get $10
        local.get $4
-       call $~lib/staticarray/StaticArray<i32>#__get
+       call $~lib/array/Array<i32>#__get
        call $algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE#set:weight
        local.get $6
        local.set $10
@@ -7002,7 +7000,7 @@
        drop
        local.get $0
        local.get $4
-       call $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>>#__get
+       call $~lib/array/Array<~lib/array/Array<i32>>#__get
        local.set $10
        global.get $~lib/memory/__stack_pointer
        local.get $10
@@ -7010,7 +7008,7 @@
        local.get $10
        local.get $2
        global.get $~lib/number/I32.MAX_VALUE
-       call $~lib/staticarray/StaticArray<i32>#__set
+       call $~lib/array/Array<i32>#__set
       end
       local.get $4
       i32.const 1
@@ -7027,7 +7025,7 @@
    end
   end
   local.get $1
-  i32.const 720
+  i32.const 656
   local.set $10
   global.get $~lib/memory/__stack_pointer
   local.get $10
@@ -7038,7 +7036,7 @@
   global.get $~lib/memory/__stack_pointer
   i32.const 0
   local.get $0
-  call $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>>#get:length
+  call $~lib/array/Array<~lib/array/Array<i32>>#get:length
   call $~lib/staticarray/StaticArray<i32>#constructor
   local.tee $2
   i32.store offset=16
@@ -7048,7 +7046,7 @@
   local.tee $3
   i32.store offset=20
   local.get $0
-  call $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>>#get:length
+  call $~lib/array/Array<~lib/array/Array<i32>>#get:length
   local.set $4
   i32.const 0
   local.set $5
@@ -7186,7 +7184,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 16
-   i32.const 10
+   i32.const 8
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -7257,7 +7255,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $6
  )
- (func $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>>#__get (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/array/Array<~lib/array/Array<i32>>#__get (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   global.get $~lib/memory/__stack_pointer
@@ -7270,18 +7268,19 @@
   i32.store
   local.get $1
   local.get $0
-  call $~lib/staticarray/StaticArray<~lib/staticarray/StaticArray<i32>>#get:length
+  i32.load offset=12
   i32.ge_u
   if
    i32.const 224
-   i32.const 528
-   i32.const 118
-   i32.const 41
+   i32.const 480
+   i32.const 114
+   i32.const 42
    call $~lib/builtins/abort
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
   local.get $0
+  i32.load offset=4
   local.get $1
   i32.const 2
   i32.shl
@@ -7297,9 +7296,9 @@
   local.get $2
   i32.eqz
   if
-   i32.const 592
    i32.const 528
-   i32.const 122
+   i32.const 480
+   i32.const 118
    i32.const 40
    call $~lib/builtins/abort
    unreachable
@@ -7327,7 +7326,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 12
-   i32.const 9
+   i32.const 7
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -7368,7 +7367,7 @@
   i32.gt_u
   if
    i32.const 432
-   i32.const 528
+   i32.const 688
    i32.const 91
    i32.const 60
    call $~lib/builtins/abort
@@ -7380,7 +7379,7 @@
   local.set $2
   global.get $~lib/memory/__stack_pointer
   local.get $2
-  i32.const 7
+  i32.const 10
   call $~lib/rt/itcms/__new
   local.tee $3
   i32.store
@@ -7451,7 +7450,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
-   i32.const 14
+   i32.const 13
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -7507,7 +7506,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 4
-   i32.const 12
+   i32.const 11
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -7546,7 +7545,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 16
-   i32.const 15
+   i32.const 14
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
@@ -7700,7 +7699,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
-   i32.const 13
+   i32.const 12
    call $~lib/rt/itcms/__new
    local.tee $0
    i32.store
