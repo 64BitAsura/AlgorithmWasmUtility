@@ -7147,6 +7147,10 @@
        local.get $10
        call $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE>#push
        drop
+       local.get $2
+       call $algorithms/graph/minimum_spanning_tree/kruskals/index/consoleLog
+       local.get $4
+       call $algorithms/graph/minimum_spanning_tree/kruskals/index/consoleLog
        local.get $0
        local.get $4
        call $~lib/array/Array<~lib/array/Array<i32>>#__get
