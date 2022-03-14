@@ -51,7 +51,7 @@ class GRAPH {
   }
 
   CyclicUtil(parent: i32, visited: Array<bool>, restack: Array<bool>): bool{
-    consoleLog(visited[parent]);
+    consoleLog(this.adjacentList.size);
     consoleLog(parent);
     if(!visited[parent]){
       visited[parent] = true;

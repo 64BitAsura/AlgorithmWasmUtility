@@ -6789,6 +6789,115 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
+ (func $algorithms/graph/minimum_spanning_tree/kruskals/index/GRAPH#CyclicUtil (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (result i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
+  (local $7 i32)
+  (local $8 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $0
+  i32.load
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store
+  local.get $8
+  call $~lib/map/Map<i32,~lib/set/Set<i32>>#get:size
+  call $algorithms/graph/minimum_spanning_tree/kruskals/index/consoleLog
+  local.get $1
+  call $algorithms/graph/minimum_spanning_tree/kruskals/index/consoleLog
+  local.get $2
+  local.get $1
+  call $~lib/array/Array<bool>#__get
+  i32.eqz
+  if
+   local.get $2
+   local.get $1
+   i32.const 1
+   call $~lib/array/Array<bool>#__set
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   local.get $1
+   call $algorithms/graph/minimum_spanning_tree/kruskals/index/GRAPH#GetAdjacentVertexes
+   local.tee $4
+   i32.store offset=4
+   local.get $4
+   i32.const 0
+   i32.ne
+   if
+    i32.const 0
+    local.set $5
+    loop $for-loop|0
+     local.get $5
+     local.get $4
+     call $~lib/set/Set<i32>#get:size
+     i32.lt_s
+     local.set $6
+     local.get $6
+     if
+      local.get $4
+      local.get $5
+      call $~lib/set/Set<i32>#has
+      local.set $7
+      local.get $3
+      local.get $7
+      call $~lib/array/Array<bool>#__get
+      if (result i32)
+       i32.const 1
+      else
+       local.get $2
+       local.get $7
+       call $~lib/array/Array<bool>#__get
+       i32.eqz
+       if (result i32)
+        local.get $0
+        local.get $7
+        local.get $2
+        local.get $3
+        call $algorithms/graph/minimum_spanning_tree/kruskals/index/GRAPH#CyclicUtil
+       else
+        i32.const 0
+       end
+      end
+      if
+       i32.const 1
+       local.set $8
+       global.get $~lib/memory/__stack_pointer
+       i32.const 8
+       i32.add
+       global.set $~lib/memory/__stack_pointer
+       local.get $8
+       return
+      end
+      local.get $5
+      i32.const 1
+      i32.add
+      local.set $5
+      br $for-loop|0
+     end
+    end
+   end
+  end
+  local.get $3
+  local.get $1
+  i32.const 0
+  call $~lib/array/Array<bool>#__set
+  i32.const 0
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $8
+ )
  (func $algorithms/graph/minimum_spanning_tree/kruskals/index/GRAPH#IsCyclic (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
@@ -7906,112 +8015,6 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
   local.get $7
- )
- (func $algorithms/graph/minimum_spanning_tree/kruskals/index/GRAPH#CyclicUtil (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (result i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store
-  local.get $2
-  local.get $1
-  call $~lib/array/Array<bool>#__get
-  i32.const 0
-  i32.ne
-  call $algorithms/graph/minimum_spanning_tree/kruskals/index/consoleLog
-  local.get $1
-  call $algorithms/graph/minimum_spanning_tree/kruskals/index/consoleLog
-  local.get $2
-  local.get $1
-  call $~lib/array/Array<bool>#__get
-  i32.eqz
-  if
-   local.get $2
-   local.get $1
-   i32.const 1
-   call $~lib/array/Array<bool>#__set
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   local.get $1
-   call $algorithms/graph/minimum_spanning_tree/kruskals/index/GRAPH#GetAdjacentVertexes
-   local.tee $4
-   i32.store
-   local.get $4
-   i32.const 0
-   i32.ne
-   if
-    i32.const 0
-    local.set $5
-    loop $for-loop|0
-     local.get $5
-     local.get $4
-     call $~lib/set/Set<i32>#get:size
-     i32.lt_s
-     local.set $6
-     local.get $6
-     if
-      local.get $4
-      local.get $5
-      call $~lib/set/Set<i32>#has
-      local.set $7
-      local.get $3
-      local.get $7
-      call $~lib/array/Array<bool>#__get
-      if (result i32)
-       i32.const 1
-      else
-       local.get $2
-       local.get $7
-       call $~lib/array/Array<bool>#__get
-       i32.eqz
-       if (result i32)
-        local.get $0
-        local.get $7
-        local.get $2
-        local.get $3
-        call $algorithms/graph/minimum_spanning_tree/kruskals/index/GRAPH#CyclicUtil
-       else
-        i32.const 0
-       end
-      end
-      if
-       i32.const 1
-       local.set $8
-       global.get $~lib/memory/__stack_pointer
-       i32.const 4
-       i32.add
-       global.set $~lib/memory/__stack_pointer
-       local.get $8
-       return
-      end
-      local.get $5
-      i32.const 1
-      i32.add
-      local.set $5
-      br $for-loop|0
-     end
-    end
-   end
-  end
-  local.get $3
-  local.get $1
-  i32.const 0
-  call $~lib/array/Array<bool>#__set
-  i32.const 0
-  local.set $8
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $8
  )
  (func $~lib/rt/__newArray (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (result i32)
   (local $4 i32)
