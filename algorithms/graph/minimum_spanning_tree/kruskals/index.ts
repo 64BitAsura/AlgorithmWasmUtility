@@ -1,4 +1,8 @@
-import "wasi";
+// Declared `importObject` function
+declare function consoleLog(arg0: i32): void;
+
+
+
 class EDGE {
   src: i32;
   dest: i32;
@@ -46,7 +50,7 @@ class GRAPH {
   }
 
   CyclicUtil(parent: i32, visited: Array<bool>, restack: Array<bool>): bool{
-    console.log(`${parent}`);
+    consoleLog(parent);
     if(!visited[parent]){
       visited[parent] = true;
       const peers = this.GetAdjacentVertexes(parent);
