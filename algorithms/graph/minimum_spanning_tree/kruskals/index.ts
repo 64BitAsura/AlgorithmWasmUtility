@@ -19,6 +19,7 @@ class GRAPH {
     let adjacentVertexes = this.GetAdjacentVertexes(edge.src);
     adjacentVertexes.add(edge.dest);
     this.adjacentList.set(edge.src, adjacentVertexes);
+    this.adjacentList.set(edge.dest, this.GetAdjacentVertexes(edge.dest));
   }
  
   GetAdjacentVertexes(vertex: i32): Set<i32>{
