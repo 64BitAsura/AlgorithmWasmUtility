@@ -24,5 +24,5 @@ test('MST sanity',(done)=>{
       { parent: 0, vertex: 2 }
     ]));
     done();
-  }).catch((error)=> {console.log(error); done(); throw error; });
+  }).catch((error)=> {console.log(error); done(); });
 });

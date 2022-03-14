@@ -7898,6 +7898,12 @@
   global.get $~lib/memory/__stack_pointer
   i32.const 0
   i32.store
+  local.get $2
+  local.get $1
+  call $~lib/array/Array<bool>#__get
+  i32.const 0
+  i32.ne
+  call $algorithms/graph/minimum_spanning_tree/kruskals/index/consoleLog
   local.get $1
   call $algorithms/graph/minimum_spanning_tree/kruskals/index/consoleLog
   local.get $2
