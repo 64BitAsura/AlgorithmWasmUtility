@@ -1,3 +1,4 @@
+import "wasi";
 class EDGE {
   src: i32;
   dest: i32;
@@ -45,6 +46,7 @@ class GRAPH {
   }
 
   CyclicUtil(parent: i32, visited: Array<bool>, restack: Array<bool>): bool{
+    console.log(`${parent}`);
     if(!visited[parent]){
       visited[parent] = true;
       const peers = this.GetAdjacentVertexes(parent);
