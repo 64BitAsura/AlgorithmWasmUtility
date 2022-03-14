@@ -17,9 +17,11 @@ class GRAPH {
   
   AddEdge(edge: EDGE): void{  
     let adjacentVertexes = this.GetAdjacentVertexes(edge.src);
+    consoleLog(edge.src);
     adjacentVertexes.add(edge.dest);
     this.adjacentList.set(edge.src, adjacentVertexes);
     this.adjacentList.set(edge.dest, this.GetAdjacentVertexes(edge.dest));
+    consoleLog(edge.dest);
   }
  
   GetAdjacentVertexes(vertex: i32): Set<i32>{
