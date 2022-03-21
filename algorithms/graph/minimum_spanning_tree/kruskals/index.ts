@@ -51,7 +51,7 @@ class GRAPH {
   }
 
   CyclicUtil(parent: i32, visited: Array<bool>, restack: Array<bool>): bool{
-    console.log("logged- " + this.adjacentList.toString());
+    consoleLog("logged- " + this.adjacentList.values);
     if(!visited[parent]){
       visited[parent] = true;
       const peers = this.GetAdjacentVertexes(parent);
