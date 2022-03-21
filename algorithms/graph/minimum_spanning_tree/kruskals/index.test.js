@@ -3,14 +3,15 @@ const fs = require("fs");
 const path = require("path");
 const wasmPath = path.resolve(__dirname, './kruskals-debug.wasm');
 const buffer = fs.readFileSync(wasmPath);
-
+let wasm = {};
 test('MST sanity',(done)=>{
   loader.instantiate(buffer,{
     index: {
-      consoleLog: value => console.log(value)
+      consoleLog: value => console.log(wasm.__getString(value))
     }
   }).then(({exports})=>{
-    const {__pin,__unpin,__newArray,__getArray, VERTEX_ID, EDGE_ID, MST_ID, MST, mst} = exports;
+    wasm = {...exports};
+    const {__pin,__unpin,__newArray,__getArray, __getString, VERTEX_ID, EDGE_ID, MST_ID, MST, mst} = exports;
     const graph = __newArray(VERTEX_ID,[__newArray(EDGE_ID,[1000,1,1])
       ,__newArray(EDGE_ID,[1,1000,4]),__newArray(EDGE_ID,[1,4,1000])]);
     const mstArrayBuff = (__getArray(mst(graph)));
