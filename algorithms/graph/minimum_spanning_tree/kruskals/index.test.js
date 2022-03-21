@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const wasmPath = path.resolve(__dirname, './kruskals-debug.wasm');
 const buffer = fs.readFileSync(wasmPath);
-console.log("log");
+
 test('MST sanity',(done)=>{
   loader.instantiate(buffer,{
     index: {

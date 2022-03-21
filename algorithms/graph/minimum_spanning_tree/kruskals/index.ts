@@ -1,5 +1,5 @@
 // Declared `importObject` function
-declare function consoleLog(arg0: i32): void;
+declare function consoleLog(arg0: string): void;
 
 
 
@@ -51,8 +51,7 @@ class GRAPH {
   }
 
   CyclicUtil(parent: i32, visited: Array<bool>, restack: Array<bool>): bool{
-    consoleLog(this.adjacentList.size);
-    consoleLog(parent);
+    consoleLog(this.adjacentList.toString());
     if(!visited[parent]){
       visited[parent] = true;
       const peers = this.GetAdjacentVertexes(parent);

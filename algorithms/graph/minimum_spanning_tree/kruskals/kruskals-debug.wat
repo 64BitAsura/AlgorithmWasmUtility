@@ -38,10 +38,10 @@
  (global $~argumentsLength (mut i32) (i32.const 0))
  (global $~lib/builtins/u32.MAX_VALUE i32 (i32.const -1))
  (global $algorithms/graph/minimum_spanning_tree/kruskals/index/MST i32 (i32.const 3))
- (global $~lib/rt/__rtti_base i32 (i32.const 1120))
- (global $~lib/memory/__data_end i32 (i32.const 1252))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 17636))
- (global $~lib/memory/__heap_base i32 (i32.const 17636))
+ (global $~lib/rt/__rtti_base i32 (i32.const 1168))
+ (global $~lib/memory/__data_end i32 (i32.const 1300))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 17684))
+ (global $~lib/memory/__heap_base i32 (i32.const 17684))
  (memory $0 1)
  (data (i32.const 12) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00(\00\00\00A\00l\00l\00o\00c\00a\00t\00i\00o\00n\00 \00t\00o\00o\00 \00l\00a\00r\00g\00e\00\00\00\00\00")
  (data (i32.const 76) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00 \00\00\00~\00l\00i\00b\00/\00r\00t\00/\00i\00t\00c\00m\00s\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00")
@@ -60,10 +60,11 @@
  (data (i32.const 796) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\1c\00\00\00A\00r\00r\00a\00y\00 \00i\00s\00 \00e\00m\00p\00t\00y\00")
  (data (i32.const 844) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00$\00\00\00K\00e\00y\00 \00d\00o\00e\00s\00 \00n\00o\00t\00 \00e\00x\00i\00s\00t\00\00\00\00\00\00\00\00\00")
  (data (i32.const 908) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\16\00\00\00~\00l\00i\00b\00/\00m\00a\00p\00.\00t\00s\00\00\00\00\00\00\00")
- (data (i32.const 956) "\1c\00\00\00\00\00\00\00\00\00\00\00\0f\00\00\00\08\00\00\00\02\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 988) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00*\00\00\00O\00b\00j\00e\00c\00t\00 \00a\00l\00r\00e\00a\00d\00y\00 \00p\00i\00n\00n\00e\00d\00\00\00")
- (data (i32.const 1052) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00(\00\00\00O\00b\00j\00e\00c\00t\00 \00i\00s\00 \00n\00o\00t\00 \00p\00i\00n\00n\00e\00d\00\00\00\00\00")
- (data (i32.const 1120) "\10\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\02\t\00\00\00\00\00\00\02A\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00$\t\00\00\00\00\00\00\00\00\00\00\00\00\00\00\08\t\00\00\00\00\00\00\10A\12\00\00\00\00\00B\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 956) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\18\00\00\00[\00o\00b\00j\00e\00c\00t\00 \00M\00a\00p\00]\00\00\00\00\00")
+ (data (i32.const 1004) "\1c\00\00\00\00\00\00\00\00\00\00\00\0f\00\00\00\08\00\00\00\02\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 1036) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00*\00\00\00O\00b\00j\00e\00c\00t\00 \00a\00l\00r\00e\00a\00d\00y\00 \00p\00i\00n\00n\00e\00d\00\00\00")
+ (data (i32.const 1100) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00(\00\00\00O\00b\00j\00e\00c\00t\00 \00i\00s\00 \00n\00o\00t\00 \00p\00i\00n\00n\00e\00d\00\00\00\00\00")
+ (data (i32.const 1168) "\10\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\02\t\00\00\00\00\00\00\02A\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00$\t\00\00\00\00\00\00\00\00\00\00\00\00\00\00\08\t\00\00\00\00\00\00\10A\12\00\00\00\00\00B\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (table $0 3 funcref)
  (elem $0 (i32.const 1) $algorithms/graph/minimum_spanning_tree/kruskals/index/mst~anonymous|0 $algorithms/graph/minimum_spanning_tree/kruskals/index/mst~anonymous|1)
  (export "MST" (global $algorithms/graph/minimum_spanning_tree/kruskals/index/MST))
@@ -5679,6 +5680,9 @@
   local.get $0
   i32.load offset=20
  )
+ (func $~lib/map/Map<i32,~lib/set/Set<i32>>#toString (param $0 i32) (result i32)
+  i32.const 976
+ )
  (func $~lib/array/Array<bool>#__get (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   local.get $1
@@ -5897,7 +5901,7 @@
    i32.const 3
    i32.eq
    if
-    i32.const 1008
+    i32.const 1056
     i32.const 96
     i32.const 337
     i32.const 7
@@ -5929,7 +5933,7 @@
   i32.const 3
   i32.ne
   if
-   i32.const 1072
+   i32.const 1120
    i32.const 96
    i32.const 351
    i32.const 5
@@ -6022,10 +6026,10 @@
   i32.const 32
   local.get $0
   call $~lib/rt/itcms/__visit
-  i32.const 1008
+  i32.const 1056
   local.get $0
   call $~lib/rt/itcms/__visit
-  i32.const 1072
+  i32.const 1120
   local.get $0
   call $~lib/rt/itcms/__visit
  )
@@ -6453,8 +6457,8 @@
   global.get $~lib/memory/__data_end
   i32.lt_s
   if
-   i32.const 17664
    i32.const 17712
+   i32.const 17760
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -6796,23 +6800,29 @@
   (local $7 i32)
   (local $8 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 8
+  i32.const 12
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
   global.get $~lib/memory/__stack_pointer
   i64.const 0
   i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
   local.get $0
   i32.load
   local.set $8
   global.get $~lib/memory/__stack_pointer
   local.get $8
+  i32.store offset=4
+  local.get $8
+  call $~lib/map/Map<i32,~lib/set/Set<i32>>#toString
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
   i32.store
   local.get $8
-  call $~lib/map/Map<i32,~lib/set/Set<i32>>#get:size
-  call $algorithms/graph/minimum_spanning_tree/kruskals/index/consoleLog
-  local.get $1
   call $algorithms/graph/minimum_spanning_tree/kruskals/index/consoleLog
   local.get $2
   local.get $1
@@ -6828,7 +6838,7 @@
    local.get $1
    call $algorithms/graph/minimum_spanning_tree/kruskals/index/GRAPH#GetAdjacentVertexes
    local.tee $4
-   i32.store offset=4
+   i32.store offset=8
    local.get $4
    i32.const 0
    i32.ne
@@ -6871,7 +6881,7 @@
        i32.const 1
        local.set $8
        global.get $~lib/memory/__stack_pointer
-       i32.const 8
+       i32.const 12
        i32.add
        global.set $~lib/memory/__stack_pointer
        local.get $8
@@ -6893,7 +6903,7 @@
   i32.const 0
   local.set $8
   global.get $~lib/memory/__stack_pointer
-  i32.const 8
+  i32.const 12
   i32.add
   global.set $~lib/memory/__stack_pointer
   local.get $8
@@ -7147,10 +7157,6 @@
        local.get $10
        call $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE>#push
        drop
-       local.get $2
-       call $algorithms/graph/minimum_spanning_tree/kruskals/index/consoleLog
-       local.get $4
-       call $algorithms/graph/minimum_spanning_tree/kruskals/index/consoleLog
        local.get $0
        local.get $4
        call $~lib/array/Array<~lib/array/Array<i32>>#__get
@@ -7270,7 +7276,7 @@
   local.get $10
   i32.store offset=4
   local.get $10
-  i32.const 976
+  i32.const 1024
   local.set $10
   global.get $~lib/memory/__stack_pointer
   local.get $10
