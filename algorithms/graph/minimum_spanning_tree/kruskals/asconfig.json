@@ -5,7 +5,8 @@
       "textFile": "./kruskals-debug.wat",
       "sourceMap": true,
       "debug": true,
-      "exportRuntime": true
+      "exportRuntime": true,
+      "bindings": true
     },
     "release": {
       "binaryFile": "./kruskals.wasm",
