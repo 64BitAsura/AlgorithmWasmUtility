@@ -40,7 +40,6 @@ class GRAPH {
     const visited = new Array<bool>(this.adjacentList.size).fill(false);
     const restack = new Array<bool>(this.adjacentList.size).fill(false);
     for(let vertex=0; vertex<this.adjacentList.size; vertex++){
-      consoleLog("logged- " + this.adjacentList.keys().toString());
         const cyclic = this.CyclicUtil(vertex, visited, restack);
         if(cyclic){
           return true;
