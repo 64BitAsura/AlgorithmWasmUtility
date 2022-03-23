@@ -1,8 +1,6 @@
 // Declared `importObject` function
 declare function consoleLog(arg0: string): void;
 
-
-
 class EDGE {
   src: i32;
   dest: i32;
@@ -42,6 +40,7 @@ class GRAPH {
     const visited = new Array<bool>(this.adjacentList.size).fill(false);
     const restack = new Array<bool>(this.adjacentList.size).fill(false);
     for(let vertex=0; vertex<this.adjacentList.size; vertex++){
+      consoleLog("logged- " + this.adjacentList.keys().toString());
         const cyclic = this.CyclicUtil(vertex, visited, restack);
         if(cyclic){
           return true;
@@ -51,7 +50,7 @@ class GRAPH {
   }
 
   CyclicUtil(parent: i32, visited: Array<bool>, restack: Array<bool>): bool{
-    consoleLog("logged- " + this.adjacentList.keys.joins(","));
+    
     if(!visited[parent]){
       visited[parent] = true;
       const peers = this.GetAdjacentVertexes(parent);
