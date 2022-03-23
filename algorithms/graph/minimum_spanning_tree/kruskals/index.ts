@@ -6,7 +6,7 @@ class EDGE {
   dest: i32;
   weight: i32;
   ToString(): string{
-    return this.
+    return this.src.toString() + " " + this.dest.toString() + " " + this.weight.toString();
   }
 }
 
@@ -103,7 +103,7 @@ export function mst(graph: i32[][]): MST[]{
       break;
     }
     const edge: EDGE = edges.shift();
-    consoleLog()
+    consoleLog(edge.ToString());
     subGraph.AddEdge(edge);
     // step 2 check cyclic after adding edge, if so pop
     if(subGraph.IsCyclic()){
