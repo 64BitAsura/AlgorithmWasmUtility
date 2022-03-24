@@ -15,7 +15,7 @@ test('MST sanity',(done)=>{
     const graph = __newArray(VERTEX_ID,[__newArray(EDGE_ID,[1000,30,10,20,40])
                                         ,__newArray(EDGE_ID,[30,1000,4,1,1])
                                         ,__newArray(EDGE_ID,[10,4,1000,2,9])
-                                        ,__newArray(EDGE_ID,[2,1,20,1000,20])
+                                        ,__newArray(EDGE_ID,[20,1,2,1000,20])
                                         ,__newArray(EDGE_ID,[40,1,9,20,1000])]);
     const mstArrayBuff = (__getArray(mst(graph)));
     
