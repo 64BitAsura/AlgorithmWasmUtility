@@ -90,6 +90,7 @@ export function mst(graph: i32[][]): MST[]{
   
   // step 1 sort edges in non-decreasing order
   edges.sort((x:EDGE,y:EDGE)=> y.weight - x.weight);
+  edges.forEach((e: E))
   
   const mstSet = new StaticArray<i32>(graph.length);
   const subGraph = new GRAPH();
@@ -104,7 +105,7 @@ export function mst(graph: i32[][]): MST[]{
       break;
     }
     const edge: EDGE = edges.shift();
-    consoleLog(edge.ToString());
+    
     subGraph.AddEdge(edge);
     // step 2 check cyclic after adding edge, if so pop
     if(subGraph.IsCyclic()){
