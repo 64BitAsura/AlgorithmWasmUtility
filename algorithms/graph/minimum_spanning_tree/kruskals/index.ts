@@ -81,7 +81,9 @@ export function mst(graph: i32[][]): MST[]{
   for(let u=0; u < graph.length; u++){
     for(let v=0; v< graph.length; v++){
       if(graph[u][v]< I32.MAX_VALUE){
-       edges.push({src:u, dest:v, weight: graph[u][v]});
+       if(u !== v){ 
+         edges.push({src:u, dest:v, weight: graph[u][v]});
+       }
        graph[v][u] = I32.MAX_VALUE;
       }
     }

@@ -7537,38 +7537,43 @@
       global.get $~lib/number/I32.MAX_VALUE
       i32.lt_s
       if
-       local.get $1
-       global.get $~lib/memory/__stack_pointer
-       i32.const 0
-       call $algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE#constructor
-       local.tee $6
-       i32.store offset=12
-       local.get $6
        local.get $2
-       call $algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE#set:src
-       local.get $6
        local.get $4
-       call $algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE#set:dest
-       local.get $6
-       local.get $0
-       local.get $2
-       call $~lib/array/Array<~lib/array/Array<i32>>#__get
-       local.set $10
-       global.get $~lib/memory/__stack_pointer
-       local.get $10
-       i32.store offset=8
-       local.get $10
-       local.get $4
-       call $~lib/array/Array<i32>#__get
-       call $algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE#set:weight
-       local.get $6
-       local.set $10
-       global.get $~lib/memory/__stack_pointer
-       local.get $10
-       i32.store offset=8
-       local.get $10
-       call $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE>#push
-       drop
+       i32.ne
+       if
+        local.get $1
+        global.get $~lib/memory/__stack_pointer
+        i32.const 0
+        call $algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE#constructor
+        local.tee $6
+        i32.store offset=12
+        local.get $6
+        local.get $2
+        call $algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE#set:src
+        local.get $6
+        local.get $4
+        call $algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE#set:dest
+        local.get $6
+        local.get $0
+        local.get $2
+        call $~lib/array/Array<~lib/array/Array<i32>>#__get
+        local.set $10
+        global.get $~lib/memory/__stack_pointer
+        local.get $10
+        i32.store offset=8
+        local.get $10
+        local.get $4
+        call $~lib/array/Array<i32>#__get
+        call $algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE#set:weight
+        local.get $6
+        local.set $10
+        global.get $~lib/memory/__stack_pointer
+        local.get $10
+        i32.store offset=8
+        local.get $10
+        call $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE>#push
+        drop
+       end
        local.get $0
        local.get $4
        call $~lib/array/Array<~lib/array/Array<i32>>#__get
