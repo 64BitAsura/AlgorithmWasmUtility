@@ -52,7 +52,6 @@ class GRAPH {
   }
 
   CyclicUtil(parent: i32, visited: Array<bool>, restack: Array<bool>): bool{
-    
     if(!visited[parent]){
       visited[parent] = true;
       const peers = this.GetAdjacentVertexes(parent);
