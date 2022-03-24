@@ -12,8 +12,8 @@ test('MST sanity',(done)=>{
   }).then(({exports})=>{
     wasm = {...exports};
     const {__pin,__unpin,__newArray,__getArray, __getString, VERTEX_ID, EDGE_ID, MST_ID, MST, mst} = exports;
-    const graph = __newArray(VERTEX_ID,[__newArray(EDGE_ID,[1000,1,1])
-      ,__newArray(EDGE_ID,[1,1000,4]),__newArray(EDGE_ID,[1,4,1000])]);
+    const graph = __newArray(VERTEX_ID,[__newArray(EDGE_ID,[1000,1,1,2])
+      ,__newArray(EDGE_ID,[1,1000,4,1]),__newArray(EDGE_ID,[1,4,1000,2]),__newArray(EDGE_ID,[2,1,2,1000])]);
     const mstArrayBuff = (__getArray(mst(graph)));
     
     

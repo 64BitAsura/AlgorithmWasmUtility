@@ -90,7 +90,7 @@ export function mst(graph: i32[][]): MST[]{
   
   // step 1 sort edges in non-decreasing order
   edges.sort((x:EDGE,y:EDGE)=> y.weight - x.weight);
-  edges.forEach((e: E))
+  edges.forEach((e: EDGE)=> consoleLog(e.ToString()))
   
   const mstSet = new StaticArray<i32>(graph.length);
   const subGraph = new GRAPH();
