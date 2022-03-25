@@ -51,8 +51,8 @@ class GRAPH {
   }
   
   IsCyclic(): bool {
-    const visited = new Array<bool>(this.adjacentList.size).fill(false);
-    const restack = new Array<bool>(this.adjacentList.size).fill(false);
+    const visited = new Map<i32, bool>();
+    const restack = new Map<i32, bool>();
     for(let vertex=0; vertex<this.adjacentList.size; vertex++){
         const cyclic = this.CyclicUtil(vertex, visited, restack);
         if(cyclic){
@@ -62,22 +62,21 @@ class GRAPH {
     return false;
   }
 
-  CyclicUtil(parent: i32, visited: Array<bool>, restack: Array<bool>): bool{
-    if(!visited[parent]){
-      visited[parent] = true;
-      restack[parent] = true;
+  CyclicUtil(parent: i32, visited: Map<i32, bool>, restack: Map<i32, bool>): bool{
+    if(visited.has(parent) && !visited.get(parent)){
+      visited.set(parent, true);
+      restack.set(parent, true);
       const peers = this.GetAdjacentVertexes(parent);
       if(peers != null){
         for(let current =0; current < peers.size; current++){
           const currentVertex = peers.values()[current];
-          consoleLog(" "+ currentVertex.toString() + " "+ visited.length.toString());
-          if(restack[currentVertex] || (!visited[currentVertex] && this.CyclicUtil(currentVertex, visited, restack))){
+          if((restack.has(currentVertex) && restack.get(currentVertex)) || (visited.has(currentVertex) && !visited.get(currentVertex) && this.CyclicUtil(currentVertex, visited, restack))){
             return true
           }
         }
       }
     }
-    restack[parent]=false;
+    restack.set(parent, false);
     return false;
   }
 }
