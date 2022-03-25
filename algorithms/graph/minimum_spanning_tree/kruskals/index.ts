@@ -104,7 +104,7 @@ export function mst(graph: i32[][]): MST[]{
   // step 1 sort edges in non-decreasing order
   edges.sort((x:EDGE,y:EDGE)=> x.weight - y.weight);
   
-  const mstSet = new StaticArray<i32>(graph.length);
+  const mstSet = new Set<EDGE>();
   const subGraph = new GRAPH();
   
   const vertexSize = graph.length;
@@ -124,13 +124,13 @@ export function mst(graph: i32[][]): MST[]{
     if(subGraph.IsCyclic()){
       subGraph.RemoveEdge(edge);
     } else {
-      mstSet[edge.src] = edge.dest;
+      mstSet.add(edge);
     }
     mstEdgeCount++;
   }
   
-  return mstSet.slice(0)
-         .map<MST>((parent: i32, vertex: i32, _: i32[]): MST=>({parent, vertex}));
+  return mstSet.values()
+         .map<MST>((edge: EDGE, _: i32, __: i32[]): MST=>({parent: edge.src, vertex: edge.dest}));
 }
 
 export const MST_ID = idof<MST[]>();

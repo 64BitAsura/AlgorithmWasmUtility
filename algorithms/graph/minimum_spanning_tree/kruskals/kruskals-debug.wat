@@ -7208,6 +7208,8 @@
   i32.const 0
   local.get $0
   call $~lib/array/Array<~lib/array/Array<i32>>#get:length
+  i32.const 1
+  i32.sub
   call $~lib/staticarray/StaticArray<i32>#constructor
   local.tee $2
   i32.store offset=16
