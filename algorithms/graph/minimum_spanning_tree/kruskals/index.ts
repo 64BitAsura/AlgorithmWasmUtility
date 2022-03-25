@@ -54,6 +54,7 @@ class GRAPH {
   CyclicUtil(parent: i32, visited: Array<bool>, restack: Array<bool>): bool{
     if(!visited[parent]){
       visited[parent] = true;
+      restack[parent] = true;
       const peers = this.GetAdjacentVertexes(parent);
       if(peers != null){
         for(let current =0; current < peers.size; current++){
@@ -116,8 +117,8 @@ export function mst(graph: i32[][]): MST[]{
     }
   }
   
-  return mstSet
-         .map<MST>((parent: i32, vertex: i32, _: StaticArray<i32>): MST=>({parent, vertex}));
+  return mstSet.slice(0)
+         .map<MST>((parent: i32, vertex: i32, _: i32[]): MST=>({parent, vertex}));
 }
 
 export const MST_ID = idof<MST[]>();
