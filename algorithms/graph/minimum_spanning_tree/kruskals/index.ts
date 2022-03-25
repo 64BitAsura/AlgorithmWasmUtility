@@ -10,90 +10,36 @@ class EDGE {
   }
 }
 
-class GRAPH {
-  adjacentList:Map<i32,Set<i32>>;
-  constructor(){
-    this.adjacentList = new Map<i32,Set<i32>>();
-  }
-  
-  AddEdge(edge: EDGE): void{  
-    let adjacentVertexes = this.GetAdjacentVertexes(edge.src);
-    adjacentVertexes.add(edge.dest);
-    this.adjacentList.set(edge.src, adjacentVertexes);
-  }
- 
-  GetAdjacentVertexes(vertex: i32): Set<i32>{
-    let adjacentVertexes: Set<i32>;
-    if(this.adjacentList.has(vertex)){
-     adjacentVertexes = this.adjacentList.get(vertex);
-    } else {
-      adjacentVertexes = new Set<i32>();
-    }
-    return adjacentVertexes;
-  }
-  
-  RemoveEdge(edge: EDGE): void{
-    let adjacentVertexes = this.GetAdjacentVertexes(edge.src);
-    adjacentVertexes.delete(edge.dest);
-    this.adjacentList.set(edge.src, adjacentVertexes);
-  }
-  
-  ToString(): string{
-    const keys =  this.adjacentList.keys();
-    let result = "";
-    for(let I=0; I< keys.length; I++){
-      const key = keys[I];
-      const peers = this.GetAdjacentVertexes(key);
-      result = result + "parent "+ key.toString() + " children "+ peers.values().toString() + "\n";
-    }
-    return result;
-  }
-  
-  IsCyclic(): bool {
-    consoleLog(this.ToString());
-    const visited = new Map<i32, bool>();
-    const restack = new Map<i32, bool>();
-    const vertexes = this.adjacentList.keys();
-    for(let vertex=0; vertex<vertexes.length; vertex++){
-       if(!visited.has(vertexes[vertex]) && this.CyclicUtil(vertexes[vertex], visited, restack)){
-          return true;
-        }
-    }
-    return false;
-  }
-
-  CyclicUtil(parent: i32, visited: Map<i32, bool>, restack: Map<i32, bool>): bool{
-        // Mark the current node as visited and part of recursion stack
-        visited.set(parent, true);
-        restack.set(parent, true);
- 
-        // Recur for all the vertices adjacent to this vertex
-        const peers = this.GetAdjacentVertexes(parent).values();
-        for(let i=0; i< peers.length; i ++)
-        {
-          const peer = peers[i];
-            if ( !visited.has(peer) && this.CyclicUtil(peer, visited, restack) ){
-                return true;
-            }
-            else if (restack.has(peer) && restack.get(peer)){
-                return true;
-            }
-        }
- 
-    
-    restack.set(parent, false);  // remove the vertex from recursion stack
-    return false;
-  }
-}
-
 export class MST{
   parent: i32;
   vertex: i32;
 }
 
+function Find(parent: StaticArray<i32>, vertex: i32): i32 {
+  if(parent[vertex]==-1){
+    return vertex;
+  }
+  return Find(parent, parent[vertex]);
+}
+
+function Union(parent: StaticArray<i32>, src: i32, dest: i32): void{
+  parent[src] = dest;
+}
+
+function IsCyclic(parent: StaticArray<i32>, src: i32, dest: i32):bool {
+  const x = Find(parent, src);
+  const y = Find(parent, dest);
+  if(x == y){
+    return true;
+  }
+  Union(parent, x, y);
+  return false;
+}
+
 export function mst(graph: i32[][]): MST[]{
   
   const edges = new Array<EDGE>();
+  const parents = new StaticArray<i32>(graph.length).fill(-1);
   for(let u=0; u < graph.length; u++){
     for(let v=0; v< graph.length; v++){
       if(graph[u][v]< I32.MAX_VALUE){
@@ -118,18 +64,14 @@ export function mst(graph: i32[][]): MST[]{
   let mstEdgeCount = 0;
   
   //step 3 do step 2 until all edges exhausted
-  while (mstEdgeCount < vertexSize){
+  while (mstEdgeCount < vertexSize-1){
     if(edges.length === 0){
       break;
     }
     const edge: EDGE = edges.shift();
-    
-    subGraph.AddEdge(edge);
   
     // step 2 check cyclic after adding edge, if so pop
-    if(subGraph.IsCyclic()){
-      subGraph.RemoveEdge(edge);
-    } else {
+    if(!IsCyclic(parent, edge.src, edge.dest)){
       mstSet.add(edge);
       mstEdgeCount++;
     }
