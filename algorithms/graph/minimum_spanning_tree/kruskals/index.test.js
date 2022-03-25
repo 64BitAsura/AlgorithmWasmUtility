@@ -23,10 +23,11 @@ test('MST sanity',(done)=>{
     expect(mstArrayBuff.map((mstBuff)=> MST.wrap(__pin(mstBuff)))
            .map(({parent, vertex})=>({parent, vertex})))
       .toEqual(expect.arrayContaining([
-      { parent: -1, vertex: 0 },
-      { parent: 0, vertex: 1 },
-      { parent: 0, vertex: 2 }
+      {parent: 1, vertex: 3}, 
+      {parent: 1, vertex: 4}, 
+      {parent: 2, vertex: 3}, 
+      {parent: 0, vertex: 2}
     ]));
     done();
-  }).catch((error)=> { console.error(error); done();});
+  }).catch((error)=> { console.error(error); done(); throw error;});
 });

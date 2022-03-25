@@ -57,7 +57,6 @@ export function mst(graph: i32[][]): MST[]{
   edges.sort((x:EDGE,y:EDGE)=> x.weight - y.weight);
   
   const mstSet = new Set<EDGE>();
-  const subGraph = new GRAPH();
   
   const vertexSize = graph.length;
   
@@ -71,7 +70,7 @@ export function mst(graph: i32[][]): MST[]{
     const edge: EDGE = edges.shift();
   
     // step 2 check cyclic after adding edge, if so pop
-    if(!IsCyclic(parent, edge.src, edge.dest)){
+    if(!IsCyclic(parents, edge.src, edge.dest)){
       mstSet.add(edge);
       mstEdgeCount++;
     }
