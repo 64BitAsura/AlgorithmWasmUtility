@@ -63,6 +63,12 @@ class GRAPH {
   }
 
   CyclicUtil(parent: i32, visited: Map<i32, bool>, restack: Map<i32, bool>): bool{
+    if(restack.has(parent) && restack.get(parent)){
+      return true;
+    }
+    if(visited.has(parent)){
+      return false;
+    }
     if(!visited.has(parent)){
       visited.set(parent, true);
       restack.set(parent, true);
@@ -70,9 +76,7 @@ class GRAPH {
       if(peers != null){
         for(let current =0; current < peers.size; current++){
           const currentVertex = peers.values()[current];
-          if((!visited.has(currentVertex) && this.CyclicUtil(currentVertex, visited, restack))){
-            return true
-          } else if((restack.has(currentVertex) && restack.get(currentVertex) == true)){
+          if(this.CyclicUtil(currentVertex, visited, restack)){
             return true
           }
         }
@@ -81,7 +85,6 @@ class GRAPH {
     restack.set(parent, false);
     return false;
   }
-}
 
 export class MST{
   parent: i32;
