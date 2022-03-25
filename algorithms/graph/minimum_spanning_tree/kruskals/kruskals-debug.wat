@@ -8005,21 +8005,6 @@
        call $~lib/map/Map<i32,bool>#has
        i32.eqz
        if (result i32)
-        i32.const 1
-       else
-        local.get $2
-        local.get $7
-        call $~lib/map/Map<i32,bool>#has
-        if (result i32)
-         local.get $2
-         local.get $7
-         call $~lib/map/Map<i32,bool>#get
-         i32.eqz
-        else
-         i32.const 0
-        end
-       end
-       if (result i32)
         local.get $0
         local.get $7
         local.get $2
