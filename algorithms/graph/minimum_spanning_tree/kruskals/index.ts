@@ -40,10 +40,14 @@ class GRAPH {
   }
   
   ToString(): string{
-    return this.adjacentList.keys().map((key: i32, _: i32, __: i32[]): string=>{
+    const keys =  this.adjacentList.keys();
+    let result = "";
+    for(let I=0; I< keys.length; I++){
+      const key = keys[I];
       const peers = this.GetAdjacentVertexes(key);
-      return "parent "+ key.toString() + " children "+ peers.values().toString();
-    }).toString();
+      result = result + "parent "+ key.toString() + " children "+ peers.values().toString() + "\n";
+    }
+    return result;
   }
   
   IsCyclic(): bool {
