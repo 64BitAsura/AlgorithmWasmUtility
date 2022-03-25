@@ -53,8 +53,9 @@ class GRAPH {
   IsCyclic(): bool {
     const visited = new Map<i32, bool>();
     const restack = new Map<i32, bool>();
-    for(let vertex=0; vertex<this.adjacentList.size; vertex++){
-        const cyclic = this.CyclicUtil(vertex, visited, restack);
+    const vertexes = this.adjacentList.keys();
+    for(let vertex=0; vertex<vertexes.length; vertex++){
+        const cyclic = this.CyclicUtil(vertexes[vertex], visited, restack);
         if(cyclic){
           return true;
         }
@@ -63,7 +64,7 @@ class GRAPH {
   }
 
   CyclicUtil(parent: i32, visited: Map<i32, bool>, restack: Map<i32, bool>): bool{
-    if(restack.has(parent) && restack.get(parent)){
+    if(restack.has(parent) && restack.get(parent) == true){
       return true;
     }
     if(visited.has(parent)){
@@ -85,6 +86,7 @@ class GRAPH {
     restack.set(parent, false);
     return false;
   }
+}
 
 export class MST{
   parent: i32;
