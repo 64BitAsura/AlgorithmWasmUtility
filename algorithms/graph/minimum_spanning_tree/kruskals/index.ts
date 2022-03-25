@@ -64,7 +64,7 @@ class GRAPH {
   }
 
   CyclicUtil(parent: i32, visited: Map<i32, bool>, restack: Map<i32, bool>): bool{
-    if(restack.has(parent) && restack.get(parent) == true){
+    if(restack.has(parent) && restack.get(parent)){
       return true;
     }
     if(visited.has(parent)){
@@ -73,15 +73,13 @@ class GRAPH {
     if(!visited.has(parent)){
       visited.set(parent, true);
       restack.set(parent, true);
-      const peers = this.GetAdjacentVertexes(parent);
-      if(peers != null){
-        for(let current =0; current < peers.size; current++){
-          const currentVertex = peers.values()[current];
-          if(this.CyclicUtil(currentVertex, visited, restack)){
+      const peers = this.GetAdjacentVertexes(parent).values();
+        for(let current =0; current < peers.length; current++){
+          const peer = peers[current];
+          if(this.CyclicUtil(peer, visited, restack)){
             return true
           }
         }
-      }
     }
     restack.set(parent, false);
     return false;
@@ -126,7 +124,6 @@ export function mst(graph: i32[][]): MST[]{
     const edge: EDGE = edges.shift();
     
     subGraph.AddEdge(edge);
-    consoleLog(subGraph.ToString());
   
     // step 2 check cyclic after adding edge, if so pop
     if(subGraph.IsCyclic()){
