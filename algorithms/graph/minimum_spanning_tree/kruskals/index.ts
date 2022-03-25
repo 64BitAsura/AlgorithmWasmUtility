@@ -50,11 +50,12 @@ class GRAPH {
   }
   
   IsCyclic(): bool {
+    consoleLog(this.ToString());
     const visited = new Map<i32, bool>();
     const restack = new Map<i32, bool>();
     const vertexes = this.adjacentList.keys();
     for(let vertex=0; vertex<vertexes.length; vertex++){
-       if( !visited.has(vertexes[vertex]) && this.CyclicUtil(vertexes[vertex], visited, restack)){
+       if(!visited.has(vertexes[vertex]) && this.CyclicUtil(vertexes[vertex], visited, restack)){
           return true;
         }
     }
@@ -65,7 +66,7 @@ class GRAPH {
     
         // Mark the current node as visited and part of recursion stack
         visited.set(parent, true);
-        restack.set(parent,true);
+        restack.set(parent, true);
  
         // Recur for all the vertices adjacent to this vertex
         const peers = this.GetAdjacentVertexes(parent).values();
@@ -75,12 +76,13 @@ class GRAPH {
             if ( !visited.has(peer) && this.CyclicUtil(peer, visited, restack) ){
                 return true;
             }
-            else if (restack[*i])
+            else if (restack.has(peer) && restack.get(peer)){
                 return true;
+            }
         }
  
     
-    recStack[v] = false;  // remove the vertex from recursion stack
+    restack.set(parent, false);  // remove the vertex from recursion stack
     return false;
   }
 }
