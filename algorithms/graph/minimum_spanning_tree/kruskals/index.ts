@@ -39,6 +39,10 @@ class GRAPH {
     this.adjacentList.set(edge.src, adjacentVertexes);
   }
   
+  ToString(): string{
+    this.adjacentList.keys().forEach();
+  }
+  
   IsCyclic(): bool {
     const visited = new Array<bool>(this.adjacentList.size).fill(false);
     const restack = new Array<bool>(this.adjacentList.size).fill(false);
@@ -59,9 +63,7 @@ class GRAPH {
       if(peers != null){
         for(let current =0; current < peers.size; current++){
           const currentVertex = peers[current];
-          if(!visited[currentVertex] && this.CyclicUtil(currentVertex, visited, restack)){
-            return true
-          }else if(restack[currentVertex]){
+          if(restack[currentVertex] || (!visited[currentVertex] && this.CyclicUtil(currentVertex, visited, restack))){
             return true
           }
         }
@@ -93,8 +95,7 @@ export function mst(graph: i32[][]): MST[]{
   
   
   // step 1 sort edges in non-decreasing order
-  edges.sort((x:EDGE,y:EDGE)=> y.weight - .weight);
-  edges.forEach((e: EDGE)=> consoleLog(e.ToString()))
+  edges.sort((x:EDGE,y:EDGE)=> x.weight - y.weight);
   
   const mstSet = new StaticArray<i32>(graph.length);
   mstSet[0]=-1;
