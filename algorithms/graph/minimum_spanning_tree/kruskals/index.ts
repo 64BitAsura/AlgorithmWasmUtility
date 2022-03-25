@@ -70,7 +70,7 @@ class GRAPH {
       if(peers != null){
         for(let current =0; current < peers.size; current++){
           const currentVertex = peers.values()[current];
-          if((restack.has(currentVertex) && restack.get(currentVertex)) || (visited.has(currentVertex) && !visited.get(currentVertex) && this.CyclicUtil(currentVertex, visited, restack))){
+          if((restack.has(currentVertex) && restack.get(currentVertex)) || ( (!visited.has(currentVertex) || (visited.has(currentVertex) && !visited.get(currentVertex))) && this.CyclicUtil(currentVertex, visited, restack))){
             return true
           }
         }
@@ -126,8 +126,9 @@ export function mst(graph: i32[][]): MST[]{
       subGraph.RemoveEdge(edge);
     } else {
       mstSet.add(edge);
+      mstEdgeCount++;
     }
-    mstEdgeCount++;
+    
   }
   
   return mstSet.values()

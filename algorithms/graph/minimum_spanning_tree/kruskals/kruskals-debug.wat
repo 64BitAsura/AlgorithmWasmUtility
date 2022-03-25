@@ -8003,13 +8003,21 @@
        local.get $2
        local.get $7
        call $~lib/map/Map<i32,bool>#has
+       i32.eqz
        if (result i32)
+        i32.const 1
+       else
         local.get $2
         local.get $7
-        call $~lib/map/Map<i32,bool>#get
-        i32.eqz
-       else
-        i32.const 0
+        call $~lib/map/Map<i32,bool>#has
+        if (result i32)
+         local.get $2
+         local.get $7
+         call $~lib/map/Map<i32,bool>#get
+         i32.eqz
+        else
+         i32.const 0
+        end
        end
        if (result i32)
         local.get $0
@@ -8553,11 +8561,11 @@
       local.get $8
       call $~lib/set/Set<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE>#add
       drop
+      local.get $5
+      i32.const 1
+      i32.add
+      local.set $5
      end
-     local.get $5
-     i32.const 1
-     i32.add
-     local.set $5
      br $while-continue|2
     end
    end
