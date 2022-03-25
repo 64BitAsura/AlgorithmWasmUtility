@@ -6146,27 +6146,6 @@
   i32.const 0
   i32.ne
  )
- (func $~lib/map/Map<i32,bool>#get (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
-  local.get $0
-  local.get $1
-  local.get $1
-  call $~lib/util/hash/HASH<i32>
-  call $~lib/map/Map<i32,bool>#find
-  local.set $2
-  local.get $2
-  i32.eqz
-  if
-   i32.const 800
-   i32.const 864
-   i32.const 105
-   i32.const 17
-   call $~lib/builtins/abort
-   unreachable
-  end
-  local.get $2
-  i32.load8_u offset=4
- )
  (func $~lib/map/MapEntry<i32,bool>#set:value (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
@@ -6352,6 +6331,27 @@
   local.get $0
   local.get $1
   call $~lib/array/Array<i32>#set:length_
+ )
+ (func $~lib/map/Map<i32,bool>#get (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  local.get $0
+  local.get $1
+  local.get $1
+  call $~lib/util/hash/HASH<i32>
+  call $~lib/map/Map<i32,bool>#find
+  local.set $2
+  local.get $2
+  i32.eqz
+  if
+   i32.const 800
+   i32.const 864
+   i32.const 105
+   i32.const 17
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $2
+  i32.load8_u offset=4
  )
  (func $~lib/set/Set<i32>#delete (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
@@ -7938,14 +7938,7 @@
   local.get $2
   local.get $1
   call $~lib/map/Map<i32,bool>#has
-  if (result i32)
-   local.get $2
-   local.get $1
-   call $~lib/map/Map<i32,bool>#get
-   i32.eqz
-  else
-   i32.const 0
-  end
+  i32.eqz
   if
    local.get $2
    local.get $1

@@ -63,7 +63,7 @@ class GRAPH {
   }
 
   CyclicUtil(parent: i32, visited: Map<i32, bool>, restack: Map<i32, bool>): bool{
-    if(visited.has(parent) && !visited.get(parent)){
+    if(!visited.has(parent)){
       visited.set(parent, true);
       restack.set(parent, true);
       const peers = this.GetAdjacentVertexes(parent);
@@ -71,7 +71,7 @@ class GRAPH {
         for(let current =0; current < peers.size; current++){
           const currentVertex = peers.values()[current];
           if((restack.has(currentVertex) && restack.get(currentVertex))
-             || ( !visited.has(currentVertex) && this.CyclicUtil(currentVertex, visited, restack))){
+             || (!visited.has(currentVertex) && this.CyclicUtil(currentVertex, visited, restack))){
             return true
           }
         }
