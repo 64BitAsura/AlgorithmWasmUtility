@@ -20,8 +20,6 @@ class GRAPH {
     let adjacentVertexes = this.GetAdjacentVertexes(edge.src);
     adjacentVertexes.add(edge.dest);
     this.adjacentList.set(edge.src, adjacentVertexes);
-    adjacentVertexes = this.GetAdjacentVertexes(edge.src);
-    consoleLog(adjacentVertexes.values().toString());
     this.adjacentList.set(edge.dest, this.GetAdjacentVertexes(edge.dest));
   }
  
@@ -71,7 +69,7 @@ class GRAPH {
       const peers = this.GetAdjacentVertexes(parent);
       if(peers != null){
         for(let current =0; current < peers.size; current++){
-          const currentVertex = peers[current];
+          const currentVertex = peers.values()[current];
           if(restack[currentVertex] || (!visited[currentVertex] && this.CyclicUtil(currentVertex, visited, restack))){
             return true
           }
@@ -107,7 +105,6 @@ export function mst(graph: i32[][]): MST[]{
   edges.sort((x:EDGE,y:EDGE)=> x.weight - y.weight);
   
   const mstSet = new StaticArray<i32>(graph.length);
-  mstSet[0]=-1;
   const subGraph = new GRAPH();
   
   const vertexSize = graph.length;
@@ -122,18 +119,14 @@ export function mst(graph: i32[][]): MST[]{
     const edge: EDGE = edges.shift();
     
     subGraph.AddEdge(edge);
-    consoleLog(edge.ToString());
-    consoleLog(subGraph.ToString());
+  
     // step 2 check cyclic after adding edge, if so pop
     if(subGraph.IsCyclic()){
       subGraph.RemoveEdge(edge);
     } else {
       mstSet[edge.src] = edge.dest;
-      mstEdgeCount++;
     }
-    
-    
-    
+    mstEdgeCount++;
   }
   
   return mstSet.slice(0)
