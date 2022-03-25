@@ -19,8 +19,9 @@ class GRAPH {
   AddEdge(edge: EDGE): void{  
     let adjacentVertexes = this.GetAdjacentVertexes(edge.src);
     adjacentVertexes.add(edge.dest);
-    consoleLog(adjacenyVertexes.values().toString());
     this.adjacentList.set(edge.src, adjacentVertexes);
+    adjacentVertexes = this.GetAdjacentVertexes(edge.src);
+    consoleLog(adjacentVertexes.values().toString());
     this.adjacentList.set(edge.dest, this.GetAdjacentVertexes(edge.dest));
   }
  
@@ -121,6 +122,8 @@ export function mst(graph: i32[][]): MST[]{
     const edge: EDGE = edges.shift();
     
     subGraph.AddEdge(edge);
+    consoleLog(edge.ToString());
+    consoleLog(subGraph.ToString());
     // step 2 check cyclic after adding edge, if so pop
     if(subGraph.IsCyclic()){
       subGraph.RemoveEdge(edge);
@@ -129,8 +132,7 @@ export function mst(graph: i32[][]): MST[]{
       mstEdgeCount++;
     }
     
-    consoleLog(edge.ToString());
-    consoleLog(subGraph.ToString());
+    
     
   }
   
