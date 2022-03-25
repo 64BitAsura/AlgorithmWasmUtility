@@ -70,6 +70,7 @@ class GRAPH {
       if(peers != null){
         for(let current =0; current < peers.size; current++){
           const currentVertex = peers.values()[current];
+          consoleLog(" "+ currentVertex.toString() + " "+ visited.length);
           if(restack[currentVertex] || (!visited[currentVertex] && this.CyclicUtil(currentVertex, visited, restack))){
             return true
           }
@@ -130,7 +131,7 @@ export function mst(graph: i32[][]): MST[]{
   }
   
   return mstSet.values()
-         .map<MST>((edge: EDGE, _: i32, __: i32[]): MST=>({parent: edge.src, vertex: edge.dest}));
+         .map<MST>((edge: EDGE, _: i32, __: EDGE[]): MST=>({parent: edge.src, vertex: edge.dest}));
 }
 
 export const MST_ID = idof<MST[]>();
