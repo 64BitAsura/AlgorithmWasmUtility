@@ -41,10 +41,10 @@
  (global $~argumentsLength (mut i32) (i32.const 0))
  (global $~lib/builtins/u32.MAX_VALUE i32 (i32.const -1))
  (global $algorithms/graph/minimum_spanning_tree/kruskals/index/MST i32 (i32.const 3))
- (global $~lib/rt/__rtti_base i32 (i32.const 3088))
- (global $~lib/memory/__data_end i32 (i32.const 3220))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 19604))
- (global $~lib/memory/__heap_base i32 (i32.const 19604))
+ (global $~lib/rt/__rtti_base i32 (i32.const 3120))
+ (global $~lib/memory/__data_end i32 (i32.const 3252))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 19636))
+ (global $~lib/memory/__heap_base i32 (i32.const 19636))
  (memory $0 1)
  (data (i32.const 12) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00(\00\00\00A\00l\00l\00o\00c\00a\00t\00i\00o\00n\00 \00t\00o\00o\00 \00l\00a\00r\00g\00e\00\00\00\00\00")
  (data (i32.const 76) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00 \00\00\00~\00l\00i\00b\00/\00r\00t\00/\00i\00t\00c\00m\00s\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00")
@@ -74,10 +74,11 @@
  (data (i32.const 2796) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\0e\00\00\00p\00a\00r\00e\00n\00t\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data (i32.const 2844) ",\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\14\00\00\00 \00c\00h\00i\00l\00d\00r\00e\00n\00 \00\00\00\00\00\00\00\00\00")
  (data (i32.const 2892) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\02\00\00\00,\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 2924) "\1c\00\00\00\00\00\00\00\00\00\00\00\0f\00\00\00\08\00\00\00\02\00\00\00\00\00\00\00\00\00\00\00")
- (data (i32.const 2956) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00*\00\00\00O\00b\00j\00e\00c\00t\00 \00a\00l\00r\00e\00a\00d\00y\00 \00p\00i\00n\00n\00e\00d\00\00\00")
- (data (i32.const 3020) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00(\00\00\00O\00b\00j\00e\00c\00t\00 \00i\00s\00 \00n\00o\00t\00 \00p\00i\00n\00n\00e\00d\00\00\00\00\00")
- (data (i32.const 3088) "\10\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\02\t\00\00\00\00\00\00\02A\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00$\t\00\00\00\00\00\00\00\00\00\00\00\00\00\00\08\t\00\00\00\00\00\00\10A\12\00\00\00\00\00B\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 2924) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\02\00\00\00\n\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 2956) "\1c\00\00\00\00\00\00\00\00\00\00\00\0f\00\00\00\08\00\00\00\02\00\00\00\00\00\00\00\00\00\00\00")
+ (data (i32.const 2988) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00*\00\00\00O\00b\00j\00e\00c\00t\00 \00a\00l\00r\00e\00a\00d\00y\00 \00p\00i\00n\00n\00e\00d\00\00\00")
+ (data (i32.const 3052) "<\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00(\00\00\00O\00b\00j\00e\00c\00t\00 \00i\00s\00 \00n\00o\00t\00 \00p\00i\00n\00n\00e\00d\00\00\00\00\00")
+ (data (i32.const 3120) "\10\00\00\00 \00\00\00\00\00\00\00 \00\00\00\00\00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\02\t\00\00\00\00\00\00\02A\00\00\00\00\00\00 \00\00\00\00\00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00$\t\00\00\00\00\00\00\00\00\00\00\00\00\00\00\08\t\00\00\00\00\00\00\10A\12\00\00\00\00\00B\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (table $0 3 funcref)
  (elem $0 (i32.const 1) $algorithms/graph/minimum_spanning_tree/kruskals/index/mst~anonymous|0 $algorithms/graph/minimum_spanning_tree/kruskals/index/mst~anonymous|1)
  (export "MST" (global $algorithms/graph/minimum_spanning_tree/kruskals/index/MST))
@@ -6472,7 +6473,7 @@
    i32.const 3
    i32.eq
    if
-    i32.const 2976
+    i32.const 3008
     i32.const 96
     i32.const 337
     i32.const 7
@@ -6504,7 +6505,7 @@
   i32.const 3
   i32.ne
   if
-   i32.const 3040
+   i32.const 3072
    i32.const 96
    i32.const 351
    i32.const 5
@@ -6597,10 +6598,10 @@
   i32.const 32
   local.get $0
   call $~lib/rt/itcms/__visit
-  i32.const 2976
+  i32.const 3008
   local.get $0
   call $~lib/rt/itcms/__visit
-  i32.const 3040
+  i32.const 3072
   local.get $0
   call $~lib/rt/itcms/__visit
   i32.const 1600
@@ -7034,8 +7035,8 @@
   global.get $~lib/memory/__data_end
   i32.lt_s
   if
-   i32.const 19632
-   i32.const 19680
+   i32.const 19664
+   i32.const 19712
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -7638,7 +7639,7 @@
   (local $6 i32)
   (local $7 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 40
+  i32.const 48
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
@@ -7657,6 +7658,9 @@
   global.get $~lib/memory/__stack_pointer
   i64.const 0
   i64.store offset=32
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=40
   global.get $~lib/memory/__stack_pointer
   local.get $0
   i32.load
@@ -7698,7 +7702,21 @@
     local.set $7
     global.get $~lib/memory/__stack_pointer
     local.get $7
+    i32.store offset=44
+    local.get $7
+    call $~lib/string/String.__concat
+    local.set $7
+    global.get $~lib/memory/__stack_pointer
+    local.get $7
     i32.store offset=36
+    local.get $7
+    local.get $5
+    i32.const 10
+    call $~lib/number/I32#toString
+    local.set $7
+    global.get $~lib/memory/__stack_pointer
+    local.get $7
+    i32.store offset=40
     local.get $7
     call $~lib/string/String.__concat
     local.set $7
@@ -7706,9 +7724,7 @@
     local.get $7
     i32.store offset=28
     local.get $7
-    local.get $5
-    i32.const 10
-    call $~lib/number/I32#toString
+    i32.const 2864
     local.set $7
     global.get $~lib/memory/__stack_pointer
     local.get $7
@@ -7720,7 +7736,14 @@
     local.get $7
     i32.store offset=20
     local.get $7
-    i32.const 2864
+    local.get $6
+    call $~lib/set/Set<i32>#values
+    local.set $7
+    global.get $~lib/memory/__stack_pointer
+    local.get $7
+    i32.store offset=28
+    local.get $7
+    call $~lib/array/Array<i32>#toString
     local.set $7
     global.get $~lib/memory/__stack_pointer
     local.get $7
@@ -7732,14 +7755,7 @@
     local.get $7
     i32.store
     local.get $7
-    local.get $6
-    call $~lib/set/Set<i32>#values
-    local.set $7
-    global.get $~lib/memory/__stack_pointer
-    local.get $7
-    i32.store offset=20
-    local.get $7
-    call $~lib/array/Array<i32>#toString
+    i32.const 2944
     local.set $7
     global.get $~lib/memory/__stack_pointer
     local.get $7
@@ -7758,7 +7774,7 @@
   local.get $2
   local.set $7
   global.get $~lib/memory/__stack_pointer
-  i32.const 40
+  i32.const 48
   i32.add
   global.set $~lib/memory/__stack_pointer
   local.get $7
@@ -7994,7 +8010,7 @@
   local.get $9
   i32.store offset=4
   local.get $9
-  i32.const 2944
+  i32.const 2976
   local.set $9
   global.get $~lib/memory/__stack_pointer
   local.get $9
