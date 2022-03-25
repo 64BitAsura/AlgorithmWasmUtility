@@ -64,23 +64,24 @@ class GRAPH {
   }
 
   CyclicUtil(parent: i32, visited: Map<i32, bool>, restack: Map<i32, bool>): bool{
+    consoleLog(restack.keys().toString());
     if(restack.has(parent) && restack.get(parent)){
       return true;
     }
     if(visited.has(parent)){
       return false;
     }
-    if(!visited.has(parent)){
+    
       visited.set(parent, true);
       restack.set(parent, true);
       const peers = this.GetAdjacentVertexes(parent).values();
         for(let current =0; current < peers.length; current++){
           const peer = peers[current];
           if(this.CyclicUtil(peer, visited, restack)){
-            return true
+            return true;
           }
         }
-    }
+    
     restack.set(parent, false);
     return false;
   }
