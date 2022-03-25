@@ -125,6 +125,7 @@ export function mst(graph: i32[][]): MST[]{
     // step 2 check cyclic after adding edge, if so pop
     if(subGraph.IsCyclic()){
       subGraph.RemoveEdge(edge);
+      consoleLog(" edge removed "+ edge.ToString());
     } else {
       mstSet.add(edge);
       mstEdgeCount++;
