@@ -6263,6 +6263,10 @@
   local.get $1
   call $~lib/string/String#concat
  )
+ (func $~lib/array/Array<bool>#get:length (param $0 i32) (result i32)
+  local.get $0
+  i32.load offset=12
+ )
  (func $~lib/set/Set<i32>#delete (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
@@ -7747,7 +7751,7 @@
   (local $7 i32)
   (local $8 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 16
+  i32.const 32
   i32.sub
   global.set $~lib/memory/__stack_pointer
   call $~stack_check
@@ -7757,6 +7761,12 @@
   global.get $~lib/memory/__stack_pointer
   i64.const 0
   i64.store offset=8
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=16
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=24
   local.get $2
   local.get $1
   call $~lib/array/Array<bool>#__get
@@ -7804,9 +7814,36 @@
       local.set $8
       global.get $~lib/memory/__stack_pointer
       local.get $8
-      i32.store offset=8
+      i32.store offset=24
       local.get $8
       local.get $7
+      i32.const 10
+      call $~lib/number/I32#toString
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store offset=28
+      local.get $8
+      call $~lib/string/String.__concat
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store offset=16
+      local.get $8
+      i32.const 912
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store offset=20
+      local.get $8
+      call $~lib/string/String.__concat
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store offset=8
+      local.get $8
+      local.get $2
+      call $~lib/array/Array<bool>#get:length
       i32.const 10
       call $~lib/number/I32#toString
       local.set $8
@@ -7845,7 +7882,7 @@
        i32.const 1
        local.set $8
        global.get $~lib/memory/__stack_pointer
-       i32.const 16
+       i32.const 32
        i32.add
        global.set $~lib/memory/__stack_pointer
        local.get $8
@@ -7867,7 +7904,7 @@
   i32.const 0
   local.set $8
   global.get $~lib/memory/__stack_pointer
-  i32.const 16
+  i32.const 32
   i32.add
   global.set $~lib/memory/__stack_pointer
   local.get $8

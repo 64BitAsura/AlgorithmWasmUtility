@@ -70,7 +70,7 @@ class GRAPH {
       if(peers != null){
         for(let current =0; current < peers.size; current++){
           const currentVertex = peers.values()[current];
-          consoleLog(" "+ currentVertex.toString() + " "+ visited.length);
+          consoleLog(" "+ currentVertex.toString() + " "+ visited.length.toString());
           if(restack[currentVertex] || (!visited[currentVertex] && this.CyclicUtil(currentVertex, visited, restack))){
             return true
           }
