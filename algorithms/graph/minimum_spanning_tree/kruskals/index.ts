@@ -64,7 +64,7 @@ class GRAPH {
   }
 
   CyclicUtil(parent: i32, visited: Map<i32, bool>, restack: Map<i32, bool>): bool{
-    consoleLog(restack.keys().toString());
+    consoleLog(restack.keys().toString() + " "+ restack.values().toString() + " parent "+ parent.toString() + " peers "+ this.GetAdjacentVertexes(parent).values().toString());
     if(restack.has(parent) && restack.get(parent)){
       return true;
     }
