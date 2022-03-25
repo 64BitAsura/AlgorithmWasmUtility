@@ -59,7 +59,9 @@ class GRAPH {
       if(peers != null){
         for(let current =0; current < peers.size; current++){
           const currentVertex = peers[current];
-          if(restack[currentVertex] || (!visited[currentVertex] && this.CyclicUtil(currentVertex, visited, restack))){
+          if(!visited[currentVertex] && this.CyclicUtil(currentVertex, visited, restack)){
+            return true
+          }else if(restack[currentVertex]){
             return true
           }
         }
@@ -91,7 +93,7 @@ export function mst(graph: i32[][]): MST[]{
   
   
   // step 1 sort edges in non-decreasing order
-  edges.sort((x:EDGE,y:EDGE)=> x.weight - y.weight);
+  edges.sort((x:EDGE,y:EDGE)=> y.weight - .weight);
   edges.forEach((e: EDGE)=> consoleLog(e.ToString()))
   
   const mstSet = new StaticArray<i32>(graph.length);
@@ -101,7 +103,7 @@ export function mst(graph: i32[][]): MST[]{
   const vertexSize = graph.length;
   
   let mstEdgeCount = 0;
-  const visited = new Array<bool>(vertexSize).fill(false);
+  
   //step 3 do step 2 until all edges exhausted
   while (mstEdgeCount < vertexSize - 1){
     if(edges.length === 0){
@@ -115,6 +117,7 @@ export function mst(graph: i32[][]): MST[]{
       subGraph.RemoveEdge(edge);
     } else {
       mstSet[edge.src] = edge.dest;
+      mstEdgeCount++;
     }
   }
   
