@@ -20,7 +20,6 @@ class GRAPH {
     let adjacentVertexes = this.GetAdjacentVertexes(edge.src);
     adjacentVertexes.add(edge.dest);
     this.adjacentList.set(edge.src, adjacentVertexes);
-    this.adjacentList.set(edge.dest, this.GetAdjacentVertexes(edge.dest));
   }
  
   GetAdjacentVertexes(vertex: i32): Set<i32>{
@@ -65,19 +64,18 @@ class GRAPH {
 
   CyclicUtil(parent: i32, visited: Map<i32, bool>, restack: Map<i32, bool>): bool{
     consoleLog(restack.keys().toString() + " "+ restack.values().toString() + " parent "+ parent.toString() + " peers "+ this.GetAdjacentVertexes(parent).values().toString());
-    if(restack.has(parent) && restack.get(parent)){
-      return true;
-    }
-    if(visited.has(parent)){
-      return false;
-    }
+       if (restack.has(parent) && restack.get(parent)){
+         return true;
+       }
     
       visited.set(parent, true);
       restack.set(parent, true);
       const peers = this.GetAdjacentVertexes(parent).values();
         for(let current =0; current < peers.length; current++){
           const peer = peers[current];
-          if(this.CyclicUtil(peer, visited, restack)){
+          if((!visited.has(peer)) &&  this.CyclicUtil(peer, visited, restack)){
+            return true;
+          }else if (restack.has(peer) && restack.get(peer)){
             return true;
           }
         }
