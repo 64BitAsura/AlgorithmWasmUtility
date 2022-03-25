@@ -40,7 +40,10 @@ class GRAPH {
   }
   
   ToString(): string{
-    this.adjacentList.keys().forEach();
+    return this.adjacentList.keys().map((key: i32, _: i32, __: i32[]): string=>{
+      const peers = this.GetAdjacentVertexes(key);
+      return "parent "+ key.toString() + " children "+ peers.values().toString();
+    }).toString();
   }
   
   IsCyclic(): bool {
@@ -120,6 +123,10 @@ export function mst(graph: i32[][]): MST[]{
       mstSet[edge.src] = edge.dest;
       mstEdgeCount++;
     }
+    
+    consoleLog(edge.ToString());
+    consoleLog(subGraph.ToString());
+    
   }
   
   return mstSet.slice(0)
