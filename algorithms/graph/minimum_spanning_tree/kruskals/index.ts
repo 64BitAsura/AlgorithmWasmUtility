@@ -120,7 +120,7 @@ export function mst(graph: i32[][]): MST[]{
     const edge: EDGE = edges.shift();
     
     subGraph.AddEdge(edge);
-    consoleLog(edge.ToString());
+    consoleLog(subGraph.ToString());
   
     // step 2 check cyclic after adding edge, if so pop
     if(subGraph.IsCyclic()){
