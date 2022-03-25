@@ -89,12 +89,13 @@ export function mst(graph: i32[][]): MST[]{
     }
   }
   
-  edges.forEach((e: EDGE)=> consoleLog(e.ToString()))
-  // step 1 sort edges in non-decreasing order
-  edges.sort((x:EDGE,y:EDGE)=> y.weight - x.weight);
   
+  // step 1 sort edges in non-decreasing order
+  edges.sort((x:EDGE,y:EDGE)=> x.weight - y.weight);
+  edges.forEach((e: EDGE)=> consoleLog(e.ToString()))
   
   const mstSet = new StaticArray<i32>(graph.length);
+  mstSet[0]=-1;
   const subGraph = new GRAPH();
   
   const vertexSize = graph.length;
