@@ -63,7 +63,6 @@ class GRAPH {
   }
 
   CyclicUtil(parent: i32, visited: Map<i32, bool>, restack: Map<i32, bool>): bool{
-    
         // Mark the current node as visited and part of recursion stack
         visited.set(parent, true);
         restack.set(parent, true);
@@ -100,8 +99,9 @@ export function mst(graph: i32[][]): MST[]{
       if(graph[u][v]< I32.MAX_VALUE){
        if(u !== v){ 
          edges.push({src:u, dest:v, weight: graph[u][v]});
+       }else {
+         edges.push({src:u, dest:v, weight: I32.MAX_VALUE});
        }
-       graph[v][u] = I32.MAX_VALUE;
       }
     }
   }
@@ -118,7 +118,7 @@ export function mst(graph: i32[][]): MST[]{
   let mstEdgeCount = 0;
   
   //step 3 do step 2 until all edges exhausted
-  while (mstEdgeCount < vertexSize - 1){
+  while (mstEdgeCount < vertexSize){
     if(edges.length === 0){
       break;
     }
@@ -129,7 +129,6 @@ export function mst(graph: i32[][]): MST[]{
     // step 2 check cyclic after adding edge, if so pop
     if(subGraph.IsCyclic()){
       subGraph.RemoveEdge(edge);
-      consoleLog(" edge removed "+ edge.ToString());
     } else {
       mstSet.add(edge);
       mstEdgeCount++;
