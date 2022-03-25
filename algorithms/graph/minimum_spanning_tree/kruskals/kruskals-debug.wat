@@ -6786,20 +6786,20 @@
   local.get $1
   call $~lib/array/Array<bool>#__visit
  )
- (func $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>algorithms/graph/minimum_spanning_tree/kruskals/index/MST>#__visit (param $0 i32) (param $1 i32)
+ (func $~lib/function/Function<%28i32%2Ci32%2C~lib/staticarray/StaticArray<i32>%29=>algorithms/graph/minimum_spanning_tree/kruskals/index/MST>#__visit (param $0 i32) (param $1 i32)
   local.get $0
   i32.load offset=4
   local.get $1
   call $~lib/rt/itcms/__visit
  )
- (func $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>algorithms/graph/minimum_spanning_tree/kruskals/index/MST>~visit (param $0 i32) (param $1 i32)
+ (func $~lib/function/Function<%28i32%2Ci32%2C~lib/staticarray/StaticArray<i32>%29=>algorithms/graph/minimum_spanning_tree/kruskals/index/MST>~visit (param $0 i32) (param $1 i32)
   local.get $0
   local.get $1
-  call $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>algorithms/graph/minimum_spanning_tree/kruskals/index/MST>#__visit
+  call $~lib/function/Function<%28i32%2Ci32%2C~lib/staticarray/StaticArray<i32>%29=>algorithms/graph/minimum_spanning_tree/kruskals/index/MST>#__visit
  )
  (func $~lib/rt/__visit_members (param $0 i32) (param $1 i32)
   block $invalid
-   block $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>algorithms/graph/minimum_spanning_tree/kruskals/index/MST>
+   block $~lib/function/Function<%28i32%2Ci32%2C~lib/staticarray/StaticArray<i32>%29=>algorithms/graph/minimum_spanning_tree/kruskals/index/MST>
     block $~lib/array/Array<bool>
      block $~lib/map/Map<i32,~lib/set/Set<i32>>
       block $~lib/set/Set<i32>
@@ -6820,7 +6820,7 @@
                     i32.const 8
                     i32.sub
                     i32.load
-                    br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $algorithms/graph/minimum_spanning_tree/kruskals/index/MST $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/MST> $~lib/array/Array<i32> $~lib/array/Array<~lib/array/Array<i32>> $algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE> $~lib/function/Function<%28algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%2Ci32%2C~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE>%29=>void> $~lib/function/Function<%28algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%2Calgorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%29=>i32> $~lib/staticarray/StaticArray<i32> $algorithms/graph/minimum_spanning_tree/kruskals/index/GRAPH $~lib/set/Set<i32> $~lib/map/Map<i32,~lib/set/Set<i32>> $~lib/array/Array<bool> $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>algorithms/graph/minimum_spanning_tree/kruskals/index/MST> $invalid
+                    br_table $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $algorithms/graph/minimum_spanning_tree/kruskals/index/MST $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/MST> $~lib/array/Array<i32> $~lib/array/Array<~lib/array/Array<i32>> $algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE $~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE> $~lib/function/Function<%28algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%2Ci32%2C~lib/array/Array<algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE>%29=>void> $~lib/function/Function<%28algorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%2Calgorithms/graph/minimum_spanning_tree/kruskals/index/EDGE%29=>i32> $~lib/staticarray/StaticArray<i32> $algorithms/graph/minimum_spanning_tree/kruskals/index/GRAPH $~lib/set/Set<i32> $~lib/map/Map<i32,~lib/set/Set<i32>> $~lib/array/Array<bool> $~lib/function/Function<%28i32%2Ci32%2C~lib/staticarray/StaticArray<i32>%29=>algorithms/graph/minimum_spanning_tree/kruskals/index/MST> $invalid
                    end
                    return
                   end
@@ -6889,7 +6889,7 @@
    end
    local.get $0
    local.get $1
-   call $~lib/function/Function<%28i32%2Ci32%2C~lib/array/Array<i32>%29=>algorithms/graph/minimum_spanning_tree/kruskals/index/MST>~visit
+   call $~lib/function/Function<%28i32%2Ci32%2C~lib/staticarray/StaticArray<i32>%29=>algorithms/graph/minimum_spanning_tree/kruskals/index/MST>~visit
    return
   end
   unreachable
@@ -7799,21 +7799,13 @@
    end
   end
   local.get $2
-  i32.const 0
-  global.get $~lib/builtins/i32.MAX_VALUE
-  call $~lib/staticarray/StaticArray<i32>#slice
-  local.set $10
-  global.get $~lib/memory/__stack_pointer
-  local.get $10
-  i32.store offset=4
-  local.get $10
   i32.const 2848
   local.set $10
   global.get $~lib/memory/__stack_pointer
   local.get $10
   i32.store offset=8
   local.get $10
-  call $~lib/array/Array<i32>#map<algorithms/graph/minimum_spanning_tree/kruskals/index/MST>
+  call $~lib/staticarray/StaticArray<i32>#map<algorithms/graph/minimum_spanning_tree/kruskals/index/MST>
   local.set $10
   global.get $~lib/memory/__stack_pointer
   i32.const 32
@@ -8887,6 +8879,36 @@
   global.set $~lib/memory/__stack_pointer
   local.get $8
  )
+ (func $algorithms/graph/minimum_spanning_tree/kruskals/index/mst~anonymous|2 (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+  (local $3 i32)
+  (local $4 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  call $algorithms/graph/minimum_spanning_tree/kruskals/index/MST#constructor
+  local.tee $3
+  i32.store
+  local.get $3
+  local.get $0
+  call $algorithms/graph/minimum_spanning_tree/kruskals/index/MST#set:parent
+  local.get $3
+  local.get $1
+  call $algorithms/graph/minimum_spanning_tree/kruskals/index/MST#set:vertex
+  local.get $3
+  local.set $4
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $4
+ )
  (func $~lib/rt/__newArray (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (result i32)
   (local $4 i32)
   (local $5 i32)
@@ -8939,150 +8961,7 @@
   global.set $~lib/memory/__stack_pointer
   local.get $7
  )
- (func $~lib/staticarray/StaticArray<i32>#slice (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  (local $8 i32)
-  (local $9 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store
-  local.get $0
-  call $~lib/staticarray/StaticArray<i32>#get:length
-  local.set $3
-  local.get $1
-  i32.const 0
-  i32.lt_s
-  if (result i32)
-   local.get $1
-   local.get $3
-   i32.add
-   local.tee $4
-   i32.const 0
-   local.tee $5
-   local.get $4
-   local.get $5
-   i32.gt_s
-   select
-  else
-   local.get $1
-   local.tee $5
-   local.get $3
-   local.tee $4
-   local.get $5
-   local.get $4
-   i32.lt_s
-   select
-  end
-  local.set $1
-  local.get $2
-  i32.const 0
-  i32.lt_s
-  if (result i32)
-   local.get $2
-   local.get $3
-   i32.add
-   local.tee $4
-   i32.const 0
-   local.tee $5
-   local.get $4
-   local.get $5
-   i32.gt_s
-   select
-  else
-   local.get $2
-   local.tee $5
-   local.get $3
-   local.tee $4
-   local.get $5
-   local.get $4
-   i32.lt_s
-   select
-  end
-  local.set $2
-  local.get $2
-  local.get $1
-  i32.sub
-  local.tee $4
-  i32.const 0
-  local.tee $5
-  local.get $4
-  local.get $5
-  i32.gt_s
-  select
-  local.set $3
-  global.get $~lib/memory/__stack_pointer
-  local.get $3
-  i32.const 2
-  i32.const 5
-  i32.const 0
-  call $~lib/rt/__newArray
-  local.tee $6
-  i32.store
-  local.get $6
-  i32.load offset=4
-  local.set $7
-  local.get $0
-  local.get $1
-  i32.const 2
-  i32.shl
-  i32.add
-  local.set $8
-  i32.const 0
-  drop
-  local.get $7
-  local.get $8
-  local.get $3
-  i32.const 2
-  i32.shl
-  call $~lib/memory/memory.copy
-  local.get $6
-  local.set $9
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $9
- )
- (func $algorithms/graph/minimum_spanning_tree/kruskals/index/mst~anonymous|2 (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
-  (local $3 i32)
-  (local $4 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  call $~stack_check
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.store
-  global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  call $algorithms/graph/minimum_spanning_tree/kruskals/index/MST#constructor
-  local.tee $3
-  i32.store
-  local.get $3
-  local.get $0
-  call $algorithms/graph/minimum_spanning_tree/kruskals/index/MST#set:parent
-  local.get $3
-  local.get $1
-  call $algorithms/graph/minimum_spanning_tree/kruskals/index/MST#set:vertex
-  local.get $3
-  local.set $4
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $4
- )
- (func $~lib/array/Array<i32>#map<algorithms/graph/minimum_spanning_tree/kruskals/index/MST> (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/staticarray/StaticArray<i32>#map<algorithms/graph/minimum_spanning_tree/kruskals/index/MST> (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   (local $3 i32)
   (local $4 i32)
@@ -9099,7 +8978,7 @@
   i64.const 0
   i64.store
   local.get $0
-  i32.load offset=12
+  call $~lib/staticarray/StaticArray<i32>#get:length
   local.set $2
   global.get $~lib/memory/__stack_pointer
   local.get $2
@@ -9117,21 +8996,12 @@
   loop $for-loop|0
    local.get $5
    local.get $2
-   local.tee $6
-   local.get $0
-   i32.load offset=12
-   local.tee $7
-   local.get $6
-   local.get $7
-   i32.lt_s
-   select
    i32.lt_s
    local.set $6
    local.get $6
    if
     global.get $~lib/memory/__stack_pointer
     local.get $0
-    i32.load offset=4
     local.get $5
     i32.const 2
     i32.shl

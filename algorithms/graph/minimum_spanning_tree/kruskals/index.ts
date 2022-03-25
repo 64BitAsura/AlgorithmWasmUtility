@@ -116,8 +116,8 @@ export function mst(graph: i32[][]): MST[]{
     }
   }
   
-  return mstSet.slice(0)
-         .map<MST>((parent: i32, vertex: i32, _: i32[]): MST=>({parent, vertex}));
+  return mstSet
+         .map<MST>((parent: i32, vertex: i32, _: StaticArray<i32>): MST=>({parent, vertex}));
 }
 
 export const MST_ID = idof<MST[]>();
