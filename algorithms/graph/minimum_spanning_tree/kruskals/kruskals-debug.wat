@@ -8207,6 +8207,10 @@
         local.get $3
         local.get $7
         call $~lib/map/Map<i32,bool>#get
+        i32.const 0
+        i32.ne
+        i32.const 1
+        i32.eq
        else
         i32.const 0
        end

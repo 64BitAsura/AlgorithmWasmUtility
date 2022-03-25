@@ -72,7 +72,7 @@ class GRAPH {
           const currentVertex = peers.values()[current];
           if((!visited.has(currentVertex) && this.CyclicUtil(currentVertex, visited, restack))){
             return true
-          } else if ((restack.has(currentVertex) && restack.get(currentVertex))){
+          } else if((restack.has(currentVertex) && restack.get(currentVertex) == true)){
             return true
           }
         }
