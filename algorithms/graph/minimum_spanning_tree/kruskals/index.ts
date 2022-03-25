@@ -70,10 +70,9 @@ class GRAPH {
       if(peers != null){
         for(let current =0; current < peers.size; current++){
           const currentVertex = peers.values()[current];
-          consoleLog(" parent "+ parent.toString() + " restack "+ restack.get(parent).toString());
-          consoleLog(" peer "+ currentVertex.toString() + " restack "+ (restack.has(currentVertex) && restack.get(currentVertex)).toString());
-          if((restack.has(currentVertex) && restack.get(currentVertex))
-             || (!visited.has(currentVertex) && this.CyclicUtil(currentVertex, visited, restack))){
+          if((!visited.has(currentVertex) && this.CyclicUtil(currentVertex, visited, restack))){
+            return true
+          } else if ((restack.has(currentVertex) && restack.get(currentVertex))){
             return true
           }
         }
