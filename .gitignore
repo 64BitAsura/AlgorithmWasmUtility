@@ -1,2 +1,11 @@
 /target
 **/*.rs.bk
+/node_modules
+/pkg
+
+
+# Added by cargo
+#
+# already existing elements were commented out
+
+#/target

@@ -1,63 +1,22 @@
-use std::marker::{Sized};
-use std::hash::{Hash};
-use std::cell::{Cell, RefCell};
-use std::collections::HashSet;
-use std::collections::HashMap;
-use std::collections::hash_map::Entry;
+use wasm_bindgen::prelude::*;
+use crate::data_structures::graph::{Graph, Edge, VertexTrait};
 
-#[derive(PartialEq, Eq, Hash, Clone)]
-pub struct Vertex<K: Sized + Eq + Hash + Clone>(K);
+#[wasm_bindgen]
+pub fn mst<'s,K: VertexTrait>(edges: &'s Vec<&'s Edge<'s,K>>, vertices_count: i32) -> Vec<Edge<'s,K>> {
+    //step1 sort edges by weight in non decreasing order
+    let mut local_edges = edges.clone();
+    local_edges.sort_by(|a, b| b.2.cmp(&a.2));
 
-pub struct Edge<'s,K: Sized + Eq + Hash + Clone>(&'s Vertex<K>, &'s Vertex<K>);
-
-pub struct Graph<'s,K :  Sized + Eq + Hash + Clone>{
-    edges: RefCell<HashMap<&'s Vertex<K>, HashSet<&'s Vertex<K>>>>,
-    parents: RefCell<HashMap<&'s Vertex<K>, &'s Vertex<K>>>,
-    is_cyclic: Cell<bool>
-}
-
-impl<'s,K :  Sized + Eq + Hash + Clone> Graph<'s,K>{
-    fn new() -> Graph<'s,K>{
-        Graph{
-            edges: RefCell::new(HashMap::new()),
-            parents: RefCell::new(HashMap::new()),
-            is_cyclic: Cell::new(false)
-        }
-    }
-    fn add(&mut self, _src: &'s mut Vertex<K>, _dest: &'s mut Vertex<K>){
-        let mut adjacents = self.edges.borrow_mut().get(_src).cloned().unwrap_or(HashSet::new());
-        {
-         adjacents.insert(_dest);
-         self.edges.borrow_mut().insert(_src, adjacents);
-        }
-        if self.is_cyclic.get() == false {
-          self.is_cyclic.set(self.compute_cylic(_src, _dest));
-        }
-    }
-    fn compute_cylic(&self, _src: &'s Vertex<K>, _dest: &'s Vertex<K>)-> bool{
-        let x = self.find(_src);
-        let y = self.find(_dest);
-        let mut cyclic = false;
-        if x == y {
-            cyclic = true
-        }
-        self.union(_src,_dest);
-        return cyclic;
-    }
-    fn find(&self, x: &'s Vertex<K>)-> &Vertex<K>{
-        let parents =  &mut self.parents.borrow_mut();
-        let entry = parents.entry(x);
-        if let Entry::Vacant(_o) = entry{
-           return x;
-        } else {
-           return &self.find(entry.key());
-        }
-    }
-    fn union(&self, _src: &'s Vertex<K>, _dest: &'s Vertex<K>){
-        let _ = &self.parents.borrow_mut().insert(_src,_dest);
-    }
-}
-
-fn main(){
-
+    let mut edge_counts: i32 = 0;
+    let mut mst_graph = Graph::new();
+    //step3 repeat previous step until n-1 edges are added to mst graph, where n is vertices count
+     while edge_counts < (vertices_count-1){
+        let edge = local_edges.remove(0);
+        edge_counts = edge_counts+1;
+        // step2 check mst graph make cycles with current edge
+        if mst_graph.is_cyclic(edge.0, edge.1) == false {
+          mst_graph.add(edge);
+        } 
+     }
+     return mst_graph.to_edges();
 }
