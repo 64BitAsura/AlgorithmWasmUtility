@@ -17,13 +17,13 @@ pub struct Wasm_Edge(u8, u8, usize);
 
 
 #[wasm_bindgen]
-pub fn mst_for_JS(edges_serialized: &JsValue, vertices_count: usize) -> JsValue {
-    let edges: Vec<Wasm_Edge> = edges_serialized.into_serde().unwrap();
+pub fn mst_for_JS(edges_serialized: JsValue, vertices_count: usize) -> Result<JsValue, serde_wasm_bindgen::Error>  {
+    let edges: Vec<Wasm_Edge> = serde_wasm_bindgen::from_value(edges_serialized)?;;
     let mut local_edges: Vec<Edge<u8>> = edges.iter().map(|edge|{ 
       return Edge::new(edge.0, edge.1, edge.2);
     }).collect();
     let mst: Vec<Wasm_Edge> = mst(&mut local_edges, vertices_count).iter().map(|edge| Wasm_Edge(edge.0.0, edge.1.0,edge.2)).collect();
-    return JsValue::from_serde(&mst).unwrap();
+    return serde_wasm_bindgen::to_value(&mst);
 }
 
 pub fn mst<K: VertexTrait>(edges: &mut Vec<Edge<K>>, vertices_count: usize) -> Vec<Edge<K>> {
