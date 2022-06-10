@@ -8,10 +8,6 @@ use std::rc::Rc;
 use std::cmp::Ordering;
 use crate::data_structures::graph::{Graph, Edge, Vertex, VertexTrait};
 
-impl VertexTrait for u8{
- 
-}
-
 #[derive(Serialize, Deserialize)]
 pub struct Wasm_Edge(u8, u8, usize);
 
