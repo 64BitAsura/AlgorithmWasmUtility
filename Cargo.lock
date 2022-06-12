@@ -6,6 +6,7 @@ version = 3
 name = "AlgorithmWasmUtility"
 version = "0.1.0"
 dependencies = [
+ "js-sys",
  "serde",
  "serde-wasm-bindgen",
  "wasm-bindgen",
