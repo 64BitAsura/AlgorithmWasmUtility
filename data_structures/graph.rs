@@ -8,6 +8,10 @@ use std::collections::HashMap;
 use std::collections::hash_map::Entry;
 use wasm_bindgen::prelude::*;
 
+pub trait EMPTY<K> {
+    fn empty_definition (&self) -> K;
+}
+
 pub trait VertexTrait: Sized + Clone + Eq + Ord +PartialOrd +Hash + Copy  {
 }
 
