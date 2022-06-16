@@ -50,6 +50,9 @@ impl<'l, K :  VertexTrait> Graph<'l, K>{
           return acc;
         });
    }
+   pub fn find_neighbours(&mut self, _src: Vertex<K>) -> HashSet<&Vertex<K>>{
+        return self.tree.borrow_mut().get(&_src).cloned().unwrap_or(HashSet::new());
+   }
    pub fn is_cyclic(&self, _src: &'l Vertex<K>, _dest: &'l Vertex<K>)-> bool{
         let x = self.find(_src);
         let y = self.find(_dest);
