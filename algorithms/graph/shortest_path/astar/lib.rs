@@ -11,10 +11,10 @@ use std::cell::{Cell, RefCell};
 use std::cmp::Ordering;
 use crate::data_structures::graph::{Graph, Edge, EMPTY, Vertex, VertexTrait};
 
-#[derive(PartialEq, Clone, Eq, Ord, PartialOrd, Hash, Copy, Serialize, Deserialize)]
+#[derive(PartialEq, Clone, Eq, Hash, Copy, Serialize, Deserialize)]
 struct Node<K: VertexTrait>{
     vertex: K,
-    cost: usize,
+    cost: u8,
     g: u8,
     f: u8,
     h: u8,
@@ -27,10 +27,24 @@ impl <K:VertexTrait + EMPTY<K>> VertexTrait for Node<K>{
 
 }
 
-#[derive(Serialize, Deserialize)]
-pub struct Wasm_Edge(u8, u8, usize);
+impl <K:VertexTrait+ EMPTY<K>>Ord for Node<K> {
+       fn cmp(&self, other: &Node<K>) -> Ordering {
+           // Notice that the we flip the ordering here
+           other.f.cmp(&self.f)
+       }
+   }
+  
+   // `PartialOrd` needs to be implemented as well.
+   impl <K:VertexTrait+ EMPTY<K>> PartialOrd for Node<K> {
+       fn partial_cmp(&self, other: &Node<K>) -> Option<Ordering> {
+           Some(self.cmp(other))
+       }
+   }
 
-fn init_node<K: VertexTrait+EMPTY<K>>(vertex: K, cost: usize)-> Node<K>{
+#[derive(Serialize, Deserialize)]
+pub struct Wasm_Edge(u8, u8, u8);
+
+fn init_node<K: VertexTrait+EMPTY<K>>(vertex: K, cost: u8)-> Node<K>{
     return Node{vertex: vertex, cost: cost, g: 0, f:0, h:0, closed: false, visited: false, parent: vertex.empty_definition()}
 }
 
@@ -50,15 +64,15 @@ pub fn astar_shortest_path(edges_serialized: JsValue, start: JsValue, destinatio
       if node_dict.get(&edge.1).is_none(){
         node_dict.insert(edge.1, init_node(edge.1, edge.2));
       }
-      return Edge::new(edge.0, edge.1, edge.2);
+      return Edge::new(edge.0, edge.1, edge.2.into());
     }).collect();
 
-    //let mst: Vec<Wasm_Edge> = mst(&mut local_edges, vertices_count).iter().map(|edge| Wasm_Edge(edge.0.0, edge.1.0,edge.2)).collect();
-    //return serde_wasm_bindgen::to_value(&mst);
-    return serde_wasm_bindgen::to_value(&edges);
+    let sp: Vec<K> = shortest_path(&mut local_edges, node_dict, start_node, destination_node, heuristic);
+    return serde_wasm_bindgen::to_value(&sp);
 }
 
-fn shortest_path<K: VertexTrait + EMPTY<K>>(edges: &mut Vec<Edge<K>>, node_dict: &HashMap<K, Node<K>>, start: &Node<K>, destination: &Node<K>, heuristic: &js_sys::Function)->Vec<K>{
+fn shortest_path<'js, K: VertexTrait + EMPTY<K>>(edges: &mut Vec<Edge<K>>, node_dict: &mut HashMap<K, Node<K>>,
+   start: &Node<K>, destination: &Node<K>, heuristic: &js_sys::Function)->Vec<K> where &'js wasm_bindgen::JsValue: From<K>{
   let mut graph = Graph::new();
   for edge in edges.iter(){
     graph.add(edge);
@@ -80,7 +94,28 @@ fn shortest_path<K: VertexTrait + EMPTY<K>>(edges: &mut Vec<Edge<K>>, node_dict:
       let current_vertex = Vertex(current_node.vertex);
       let neighbours = graph.find_neighbours(current_vertex);
       for peer in neighbours.iter(){
+         let mut peer_node = node_dict.get_mut(&peer.0).unwrap();
+         if peer_node.closed == true {
+           continue;
+         }
 
+         let gScore = current_node.g + peer_node.cost;
+         let beenVisited = peer_node.visited;
+         if  !beenVisited || gScore < current_node.g {
+              peer_node.visited = true;
+              peer_node.parent = current_node.vertex;
+              if peer_node.h == 0 {
+                peer_node.h = serde_wasm_bindgen::from_value(heuristic.call1(&JsValue::undefined(), peer_node.vertex.into()).unwrap()).unwrap();
+              }
+              peer_node.g = gScore;
+              peer_node.f = gScore + peer_node.h;
+              if !beenVisited{
+                open_heap.push(Reverse(*peer_node));
+              }else {
+                let tmp = open_heap.pop().unwrap();
+                open_heap.push(tmp);
+              }
+         }
       }
   }
   return Vec::new();
