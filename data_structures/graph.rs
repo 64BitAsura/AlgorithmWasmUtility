@@ -15,9 +15,10 @@ pub trait EMPTY<K> {
 pub trait VertexTrait: Sized + Clone + Eq + Ord +PartialOrd +Hash + Copy  {
 }
 
-#[derive(PartialEq, Clone, Eq, Ord, PartialOrd, Hash, Copy)]
+#[derive(PartialEq, Clone, Eq, Ord, PartialOrd, Hash, Copy, Debug)]
 pub struct Vertex<K: VertexTrait>(pub K);
 
+#[derive(Debug)]
 pub struct Edge<K: VertexTrait>(pub Vertex<K>, pub Vertex<K>, pub usize);
 
 impl <K: VertexTrait> Edge<K>{
@@ -26,8 +27,9 @@ impl <K: VertexTrait> Edge<K>{
   }
 }
 
+#[derive(Debug)]
 pub struct Graph<'l, K :  VertexTrait>{
-    tree: RefCell<HashMap<&'l Vertex<K>, HashSet<&'l Vertex<K>>>>,
+    tree: RefCell<HashMap<&'l Vertex<K>, HashSet<(&'l Vertex<K>, usize)>>>,
     parents: RefCell<HashMap<&'l Vertex<K>, &'l Vertex<K>>>
 }
 
@@ -39,18 +41,18 @@ impl<'l, K :  VertexTrait> Graph<'l, K>{
         }
    }
    pub fn add(&mut self, edge: &'l Edge<K>){
-         let Edge(_src,_dest,_) = edge;
+         let Edge(_src,_dest,_cost) = edge;
          let mut adjacents = self.tree.borrow_mut().get(_src).cloned().unwrap_or(HashSet::new());
-         adjacents.insert(_dest);
+         adjacents.insert((_dest, *_cost));
          self.tree.borrow_mut().insert(_src, adjacents);
    }
    pub fn to_edges(&self)-> Vec<Edge<K>>{
         return self.tree.borrow().iter().fold(vec![],|mut acc, (key,value)| {
-          value.iter().for_each(|vertex| acc.push(Edge(**key, **vertex, 0)));
+          value.iter().for_each(|(vertex, cost)| acc.push(Edge(**key, **vertex, *cost)));
           return acc;
         });
    }
-   pub fn find_neighbours(&mut self, _src: Vertex<K>) -> HashSet<&Vertex<K>>{
+   pub fn find_neighbours(&mut self, _src: Vertex<K>) -> HashSet<(&Vertex<K>, usize)>{
         return self.tree.borrow_mut().get(&_src).cloned().unwrap_or(HashSet::new());
    }
    pub fn is_cyclic(&self, _src: &'l Vertex<K>, _dest: &'l Vertex<K>)-> bool{

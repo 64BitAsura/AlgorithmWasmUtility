@@ -2,7 +2,7 @@
 **/*.rs.bk
 /node_modules
 /pkg
-
+.idea
 
 # Added by cargo
 #

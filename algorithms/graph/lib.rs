@@ -8,3 +8,7 @@ impl EMPTY<u8> for u8 {
         return u8::MAX; 
     }
 }
+
+impl VertexTrait for usize {
+    
+}
