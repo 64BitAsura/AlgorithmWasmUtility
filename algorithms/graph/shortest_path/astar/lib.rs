@@ -11,7 +11,6 @@ use std::collections::hash_map::Entry;
 use std::cmp::Reverse;
 use std::cell::{Cell, RefCell};
 use std::cmp::Ordering;
-use wasm_bindgen_test::*;
 use crate::data_structures::graph::{Graph, Edge, EMPTY, Vertex, VertexTrait};
 
 #[derive(PartialEq, Clone, Eq, Hash, Copy, Serialize, Deserialize, Debug)]
