@@ -8,7 +8,6 @@ use std::hash::{Hash, Hasher};
 use std::rc::Rc;
 use std::collections::{BinaryHeap, HashMap};
 use std::collections::hash_map::Entry;
-use std::cmp::Reverse;
 use std::cell::{Cell, RefCell};
 use std::cmp::Ordering;
 use crate::data_structures::graph::{Graph, Edge, EMPTY, Vertex, VertexTrait};
@@ -28,7 +27,7 @@ impl <K:VertexTrait + EMPTY<K> + ToString + Serialize> VertexTrait for Node<K>{
 impl <K:VertexTrait+ EMPTY<K> + ToString>Ord for Node<K> {
        fn cmp(&self, other: &Node<K>) -> Ordering {
            // Notice that the we flip the ordering here
-           self.f.cmp(&other.f)
+           other.f.cmp(&self.f)
        }
    }
   
@@ -79,11 +78,11 @@ fn shortest_path<'a, K: VertexTrait + EMPTY<K> + ToString + Debug>
   }
 
   // create open min-heap  
-  let mut open_heap: BinaryHeap<Reverse<Node<K>>> = BinaryHeap::new();
+  let mut open_heap: BinaryHeap<Node<K>> = BinaryHeap::new();
   let mut parents: HashMap<K, (K, usize)> = HashMap::new();
-  open_heap.push(Reverse(init_node(start)));
+  open_heap.push(init_node(start));
   let mut path = Vec::new();
-  while let Some(Reverse(Node{vertex, cost, parent, ..})) = open_heap.pop() {
+  while let Some(Node{vertex, cost, parent, ..}) = open_heap.pop() {
     path.push(vertex);
     if vertex == destination {
       // return the found shortest path 
@@ -118,7 +117,7 @@ fn shortest_path<'a, K: VertexTrait + EMPTY<K> + ToString + Debug>
          }
       }
       if insert == true {
-        open_heap.push(Reverse(init_node_with_estimated_cost(neighbour.0, vertex, new_cost, h+new_cost)));
+        open_heap.push(init_node_with_estimated_cost(neighbour.0, vertex, new_cost, h+new_cost));
       }
     }
   }
