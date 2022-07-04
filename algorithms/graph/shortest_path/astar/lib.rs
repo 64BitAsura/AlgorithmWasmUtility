@@ -11,7 +11,11 @@ use std::collections::{BinaryHeap, HashMap};
 use std::collections::hash_map::Entry;
 use std::cell::{Cell, RefCell};
 use std::cmp::Ordering;
-use crate::data_structures::graph::{Graph, Edge, EMPTY, Vertex, VertexTrait};
+use data_structures::{Graph, Edge, EMPTY, Vertex, VertexTrait};
+
+#[cfg(feature = "wee_alloc")]
+#[global_allocator]
+static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 #[derive(PartialEq, Clone, Eq, Hash, Copy, Serialize, Deserialize, Debug)]
 struct Node<K: VertexTrait + EMPTY<K>>{

@@ -6,7 +6,11 @@ use std::marker::{Sized};
 use std::hash::{Hash, Hasher};
 use std::rc::Rc;
 use std::cmp::Ordering;
-use crate::data_structures::graph::{Graph, Edge, Vertex, VertexTrait};
+use data_structures::{Graph, Edge, Vertex, VertexTrait};
+
+#[cfg(feature = "wee_alloc")]
+#[global_allocator]
+static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 #[derive(Serialize, Deserialize)]
 pub struct Wasm_Edge(u8, u8, usize);

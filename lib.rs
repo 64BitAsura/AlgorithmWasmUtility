@@ -1,4 +1,3 @@
-pub mod data_structures;
 pub mod algorithms;
 
 use wasm_bindgen::prelude::*;
