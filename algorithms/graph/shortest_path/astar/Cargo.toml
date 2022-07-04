@@ -1,5 +1,5 @@
 [package]
-name = "AlgorithmWasmUtility"
+name = "Astar-wasm"
 version = "0.1.0"
 edition = "2021"
 
@@ -13,19 +13,8 @@ serde = { version = "1.0", features = ["derive"] }
 serde-wasm-bindgen = "0.1.0"
 wasm-bindgen = { version = "0.2.80", features = ["serde-serialize"] }
 js-sys = "0.3.57"
-data_structures = {path= "./data_structures"}
+data_structures = { path= "../../../../data_structures"}
 
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.0"
-
-[profile.release]
-lto = true
-opt-level='z'
-
-[workspace]
-members=[
-    "algorithms/graph/shortest_path/astar",
-    "algorithms/graph/minimum_spanning_tree/kruskals",
-    "data_structures"
-]

@@ -6,7 +6,6 @@ use std::cmp::Ordering;
 use std::collections::HashSet;
 use std::collections::HashMap;
 use std::collections::hash_map::Entry;
-use wasm_bindgen::prelude::*;
 
 pub trait EMPTY<K> {
     fn empty_definition (&self) -> K;
@@ -20,6 +19,19 @@ pub struct Vertex<K: VertexTrait>(pub K);
 
 #[derive(Debug)]
 pub struct Edge<K: VertexTrait>(pub Vertex<K>, pub Vertex<K>, pub usize);
+
+impl VertexTrait for u8{
+}
+
+impl EMPTY<u8> for u8 {
+    fn empty_definition (&self) -> u8{
+        return u8::MAX; 
+    }
+}
+
+impl VertexTrait for usize {
+    
+}
 
 impl <K: VertexTrait> Edge<K>{
   pub fn new(source: K, dest: K, weight: usize) -> Edge<K>{

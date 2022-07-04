@@ -4,5 +4,5 @@
 
 tasks:
   - name: "wasm pack install"
-    before: sh -c "curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh"
+    init: sh -c "curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh"
 
