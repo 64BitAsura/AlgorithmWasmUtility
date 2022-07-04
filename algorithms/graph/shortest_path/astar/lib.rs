@@ -6,6 +6,7 @@ use std::string::ToString;
 use std::marker::{Sized};
 use std::hash::{Hash, Hasher};
 use std::rc::Rc;
+use std::fmt;
 use std::collections::{BinaryHeap, HashMap};
 use std::collections::hash_map::Entry;
 use std::cell::{Cell, RefCell};
@@ -13,18 +14,23 @@ use std::cmp::Ordering;
 use crate::data_structures::graph::{Graph, Edge, EMPTY, Vertex, VertexTrait};
 
 #[derive(PartialEq, Clone, Eq, Hash, Copy, Serialize, Deserialize, Debug)]
-struct Node<K: VertexTrait + ToString + EMPTY<K>>{
+struct Node<K: VertexTrait + EMPTY<K>>{
     vertex: K,
     cost: usize,
     parent: K,
     f: usize
 }
 
-impl <K:VertexTrait + EMPTY<K> + ToString + Serialize> VertexTrait for Node<K>{
-
+impl <K:VertexTrait + EMPTY<K>  + Serialize + fmt::Display> VertexTrait for Node<K>{
 }
 
-impl <K:VertexTrait+ EMPTY<K> + ToString>Ord for Node<K> {
+impl <K:VertexTrait+ EMPTY<K> + Serialize + fmt::Display> fmt::Display for Node<K>{
+  fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+    return write!(f, "Node ( vertex: {}, cost: {}, parent: {}, f: {} )",self.vertex, self.cost, self.parent, self.f);
+  }
+}
+
+impl <K:VertexTrait+ EMPTY<K>>Ord for Node<K> {
        fn cmp(&self, other: &Node<K>) -> Ordering {
            // Notice that the we flip the ordering here
            other.f.cmp(&self.f)
@@ -32,7 +38,7 @@ impl <K:VertexTrait+ EMPTY<K> + ToString>Ord for Node<K> {
    }
   
    // `PartialOrd` needs to be implemented as well.
-   impl <K:VertexTrait+ EMPTY<K> + ToString> PartialOrd for Node<K> {
+   impl <K:VertexTrait+ EMPTY<K>> PartialOrd for Node<K> {
        fn partial_cmp(&self, other: &Node<K>) -> Option<Ordering> {
            Some(self.cmp(other))
        }
@@ -41,11 +47,11 @@ impl <K:VertexTrait+ EMPTY<K> + ToString>Ord for Node<K> {
 #[derive(Serialize, Deserialize)]
 pub struct Wasm_Edge(pub u8, pub u8, pub u8);
 
-fn init_node<K: VertexTrait+EMPTY<K>+ToString>(vertex: K)-> Node<K>{
+fn init_node<K: VertexTrait+EMPTY<K>>(vertex: K)-> Node<K>{
     return Node{vertex: vertex, cost: 1, f:0, parent: vertex.empty_definition()}
 }
 
-fn init_node_with_estimated_cost<K: VertexTrait+EMPTY<K>+ToString>(vertex: K, parent: K, cost: usize, f: usize)-> Node<K>{
+fn init_node_with_estimated_cost<K: VertexTrait+EMPTY<K>>(vertex: K, parent: K, cost: usize, f: usize)-> Node<K>{
   return Node{vertex: vertex, cost: cost, f:f, parent: parent}
 }
 
@@ -68,7 +74,7 @@ pub fn astar_shortest_path(edges_serialized: JsValue, start: JsValue, destinatio
 }
 
 use std::fmt::Debug;
-fn shortest_path<'a, K: VertexTrait + EMPTY<K> + ToString + Debug>
+fn shortest_path<'a, K: VertexTrait + EMPTY<K> + Debug>
 (edges: &mut Vec<Edge<K>>, 
    start: K, destination: K, 
    heuristic: &js_sys::Function)->Vec<K>{
@@ -95,6 +101,7 @@ fn shortest_path<'a, K: VertexTrait + EMPTY<K> + ToString + Debug>
       }
     }
    
+    // get the neighbour vertecies 
     for (neighbour, move_cost) in graph.find_neighbours(Vertex(vertex)){
       let new_cost = cost + move_cost;
       let h:usize;

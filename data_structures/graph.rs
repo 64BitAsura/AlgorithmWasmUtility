@@ -12,7 +12,7 @@ pub trait EMPTY<K> {
     fn empty_definition (&self) -> K;
 }
 
-pub trait VertexTrait: Sized + Clone + Eq + Ord +PartialOrd +Hash + Copy  {
+pub trait VertexTrait: Sized + Clone + Eq + Ord +PartialOrd +Hash + Copy + ToString {
 }
 
 #[derive(PartialEq, Clone, Eq, Ord, PartialOrd, Hash, Copy, Debug)]
