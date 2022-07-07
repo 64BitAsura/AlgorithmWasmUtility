@@ -1,3 +1,2 @@
-mod lib;
-#[cfg(test)]
-mod tests;
+pub mod algorithm;
+pub mod test;
