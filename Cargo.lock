@@ -3,18 +3,6 @@
 version = 3
 
 [[package]]
-name = "AlgorithmWasmUtility"
-version = "0.1.0"
-dependencies = [
- "data_structures",
- "js-sys",
- "serde",
- "serde-wasm-bindgen",
- "wasm-bindgen",
- "wasm-bindgen-test",
-]
-
-[[package]]
 name = "Astar-wasm"
 version = "0.1.0"
 dependencies = [

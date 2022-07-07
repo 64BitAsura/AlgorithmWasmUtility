@@ -2,7 +2,7 @@ name: Rust
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "**" ]
   pull_request:
     branches: [ "main" ]
 
@@ -17,8 +17,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: wasm-pack
-      run: sh -c "curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh" | cargo update --verbose
+      run: sh -c "curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh" | cargo install cargo-workspaces | cargo update --verbose
     - name: Build
-      run: wasm-pack build
+      run: cargo ws exec --no-bail wasm-pack build
     - name: Run tests
-      run: wasm-pack test --node
+      run: cargo ws exec wasm-pack test --node
