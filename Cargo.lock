@@ -3,19 +3,7 @@
 version = 3
 
 [[package]]
-name = "Astar-wasm"
-version = "0.1.0"
-dependencies = [
- "data_structures",
- "js-sys",
- "serde",
- "serde-wasm-bindgen",
- "wasm-bindgen",
- "wasm-bindgen-test",
-]
-
-[[package]]
-name = "Kruskals-wasm"
+name = "astar"
 version = "0.1.0"
 dependencies = [
  "data_structures",
@@ -71,6 +59,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c3fac17f7123a73ca62df411b1bf727ccc805daa070338fda671c86dac1bdc27"
 dependencies = [
  "wasm-bindgen",
+]
+
+[[package]]
+name = "kruskals"
+version = "0.1.0"
+dependencies = [
+ "data_structures",
+ "js-sys",
+ "serde",
+ "serde-wasm-bindgen",
+ "wasm-bindgen",
+ "wasm-bindgen-test",
 ]
 
 [[package]]

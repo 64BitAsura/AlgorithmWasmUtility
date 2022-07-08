@@ -1,67 +1,71 @@
 use serde::{Serialize, Deserialize};
-use wasm_bindgen::{JsObject, JsCast};
-use wasm_bindgen::describe::WasmDescribe;
 use wasm_bindgen::prelude::*;
-use std::string::ToString;
-use std::marker::{Sized};
-use std::hash::{Hash, Hasher};
-use std::rc::Rc;
+use std::hash::{Hash};
 use std::fmt;
 use std::collections::{BinaryHeap, HashMap};
 use std::collections::hash_map::Entry;
-use std::cell::{Cell, RefCell};
 use std::cmp::Ordering;
-use data_structures::{Graph, Edge, EMPTY, Vertex, VertexTrait};
+use data_structures::{Graph, Edge, Vertex, VertexTrait};
 
 #[cfg(feature = "wee_alloc")]
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
-#[derive(PartialEq, Clone, Eq, Hash, Copy, Serialize, Deserialize, Debug)]
-struct Node<K: VertexTrait + EMPTY<K>>{
+#[derive(Clone, Hash, Copy, Serialize, Deserialize, Debug)]
+struct Node<K: VertexTrait>{
     vertex: K,
     cost: usize,
-    parent: K,
     f: usize
 }
 
-impl <K:VertexTrait + EMPTY<K>  + Serialize + fmt::Display> VertexTrait for Node<K>{
+impl <K:VertexTrait + Serialize + fmt::Display> VertexTrait for Node<K>{
 }
 
-impl <K:VertexTrait+ EMPTY<K> + Serialize + fmt::Display> fmt::Display for Node<K>{
+impl <K:VertexTrait + Serialize + fmt::Display> fmt::Display for Node<K>{
   fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-    return write!(f, "Node ( vertex: {}, cost: {}, parent: {}, f: {} )",self.vertex, self.cost, self.parent, self.f);
+    return write!(f, "Node ( vertex: {}, cost: {}, f: {} )",self.vertex, self.cost, self.f);
   }
 }
 
-impl <K:VertexTrait+ EMPTY<K>>Ord for Node<K> {
+impl<K: VertexTrait> PartialEq for Node<K> {
+  fn eq(&self, other: &Self) -> bool {
+      self.f.eq(&other.f) && self.cost.eq(&other.cost)
+  }
+}
+
+impl<K: VertexTrait> Eq for Node<K> {}
+
+impl <K:VertexTrait>Ord for Node<K> {
        fn cmp(&self, other: &Node<K>) -> Ordering {
            // Notice that the we flip the ordering here
-           other.f.cmp(&self.f)
+           match other.f.cmp(&self.f){
+            Ordering::Equal => self.cost.cmp(&other.cost),
+            s=>s
+           }
        }
    }
   
    // `PartialOrd` needs to be implemented as well.
-   impl <K:VertexTrait+ EMPTY<K>> PartialOrd for Node<K> {
+   impl <K:VertexTrait> PartialOrd for Node<K> {
        fn partial_cmp(&self, other: &Node<K>) -> Option<Ordering> {
            Some(self.cmp(other))
        }
    }
 
 #[derive(Serialize, Deserialize)]
-pub struct Wasm_Edge(pub u8, pub u8, pub u8);
+pub struct WasmEdge(pub u8, pub u8, pub u8);
 
-fn init_node<K: VertexTrait+EMPTY<K>>(vertex: K)-> Node<K>{
-    return Node{vertex: vertex, cost: 1, f:0, parent: vertex.empty_definition()}
+fn init_node<K: VertexTrait>(vertex: K)-> Node<K>{
+    return Node{vertex: vertex, cost: 1, f:0}
 }
 
-fn init_node_with_estimated_cost<K: VertexTrait+EMPTY<K>>(vertex: K, parent: K, cost: usize, f: usize)-> Node<K>{
-  return Node{vertex: vertex, cost: cost, f:f, parent: parent}
+fn init_node_with_estimated_cost<K: VertexTrait>(vertex: K, cost: usize, f: usize)-> Node<K>{
+  return Node{vertex: vertex, cost: cost, f:f}
 }
 
 #[wasm_bindgen]
 pub fn astar_shortest_path(edges_serialized: JsValue, start: JsValue, destination: JsValue, heuristic: &js_sys::Function)-> Result<JsValue, serde_wasm_bindgen::Error>  {
-    let edges: Vec<Wasm_Edge> = serde_wasm_bindgen::from_value(edges_serialized)?;
+    let edges: Vec<WasmEdge> = serde_wasm_bindgen::from_value(edges_serialized)?;
 
     let start_node: u8 = serde_wasm_bindgen::from_value(start)?;
     let destination_node: u8 = serde_wasm_bindgen::from_value(destination)?;
@@ -78,7 +82,7 @@ pub fn astar_shortest_path(edges_serialized: JsValue, start: JsValue, destinatio
 }
 
 use std::fmt::Debug;
-fn shortest_path<'a, K: VertexTrait + EMPTY<K> + Debug>
+fn shortest_path<'a, K: VertexTrait + Debug>
 (edges: &mut Vec<Edge<K>>, 
    start: K, destination: K, 
    heuristic: &js_sys::Function)->Vec<K>{
@@ -91,11 +95,17 @@ fn shortest_path<'a, K: VertexTrait + EMPTY<K> + Debug>
   let mut open_heap: BinaryHeap<Node<K>> = BinaryHeap::new();
   let mut parents: HashMap<K, (K, usize)> = HashMap::new();
   open_heap.push(init_node(start));
-  let mut path = Vec::new();
-  while let Some(Node{vertex, cost, parent, ..}) = open_heap.pop() {
-    path.push(vertex);
+  while let Some(Node{vertex, cost, ..}) = open_heap.pop() {
     if vertex == destination {
       // return the found shortest path 
+      let mut path = Vec::new();
+      let mut node = destination;
+      path.push(node);
+      while node != start {
+        node = parents.get(&node).unwrap().0;
+        path.push(node);
+      }
+      path.reverse();
       return path;
     }
     // if current parent of node cost is higher than new found cost, then lets not process it
@@ -109,27 +119,23 @@ fn shortest_path<'a, K: VertexTrait + EMPTY<K> + Debug>
     for (neighbour, move_cost) in graph.find_neighbours(Vertex(vertex)){
       let new_cost = cost + move_cost;
       let h:usize;
-      let insert: bool;
-      match parents.entry(vertex){
+      match parents.entry(neighbour.0){
          Entry::Vacant(e)=>{
           h = serde_wasm_bindgen::from_value(heuristic.call1(&JsValue::undefined(), &JsValue::from_str(&vertex.to_string())).unwrap()).unwrap();
-          e.insert((neighbour.0, new_cost));
-          insert = true;
+          e.insert((vertex, new_cost));
          }
          Entry::Occupied(mut e)=>{
           if e.get().1 > new_cost{
             h = serde_wasm_bindgen::from_value(heuristic.call1(&JsValue::undefined(), &JsValue::from_str(&vertex.to_string())).unwrap()).unwrap();
-            e.insert((neighbour.0, new_cost));
-            insert = true;
+            e.insert((vertex, new_cost));
           }else {
-            h=0;
-            insert=false;
+           continue;
           }
          }
       }
-      if insert == true {
-        open_heap.push(init_node_with_estimated_cost(neighbour.0, vertex, new_cost, h+new_cost));
-      }
+      
+      open_heap.push(init_node_with_estimated_cost(neighbour.0, new_cost, h+new_cost));
+      
     }
   }
   
