@@ -1,8 +1,6 @@
 use std::marker::{Sized};
-use std::hash::{Hash, Hasher};
-use std::rc::Rc;
+use std::hash::{Hash};
 use std::cell::{RefCell};
-use std::cmp::Ordering;
 use std::collections::HashSet;
 use std::collections::HashMap;
 use std::collections::hash_map::Entry;
