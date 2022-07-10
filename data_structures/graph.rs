@@ -18,12 +18,10 @@ pub struct Vertex<K: VertexTrait>(pub K);
 #[derive(Debug)]
 pub struct Edge<K: VertexTrait>(pub Vertex<K>, pub Vertex<K>, pub usize);
 
-impl VertexTrait for u8{
-}
 
-impl EMPTY<u8> for u8 {
-    fn empty_definition (&self) -> u8{
-        return u8::MAX; 
+impl EMPTY<usize> for usize {
+    fn empty_definition (&self) -> usize{
+        usize::MAX
     }
 }
 
