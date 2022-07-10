@@ -53,7 +53,7 @@ impl <K:VertexTrait>Ord for Node<K> {
    }
 
 #[derive(Serialize, Deserialize)]
-pub struct WasmEdge(pub u8, pub u8, pub u8);
+pub struct WasmEdge(pub usize, pub usize, pub usize);
 
 fn init_node<K: VertexTrait>(vertex: K)-> Node<K>{
     return Node{vertex: vertex, cost: 1, f:0}
@@ -64,17 +64,17 @@ fn init_node_with_estimated_cost<K: VertexTrait>(vertex: K, cost: usize, f: usiz
 }
 
 #[wasm_bindgen]
-pub fn astar_shortest_path(edges_serialized: JsValue, start: JsValue, destination: JsValue, heuristic: &js_sys::Function)-> Result<JsValue, serde_wasm_bindgen::Error>  {
+pub fn shortest_path_for_js(edges_serialized: JsValue, start: JsValue, destination: JsValue, heuristic: &js_sys::Function)-> Result<JsValue, serde_wasm_bindgen::Error>  {
     let edges: Vec<WasmEdge> = serde_wasm_bindgen::from_value(edges_serialized)?;
 
-    let start_node: u8 = serde_wasm_bindgen::from_value(start)?;
-    let destination_node: u8 = serde_wasm_bindgen::from_value(destination)?;
+    let start_node = serde_wasm_bindgen::from_value(start)?;
+    let destination_node = serde_wasm_bindgen::from_value(destination)?;
 
-    let mut local_edges: Vec<Edge<u8>> = edges.iter().map(|edge|{
+    let mut local_edges: Vec<Edge<usize>> = edges.iter().map(|edge|{
       return Edge::new(edge.0, edge.1, edge.2.into());
     }).collect();
 
-    let sp: Vec<u8> = shortest_path(&mut local_edges, 
+    let sp: Vec<usize> = shortest_path(&mut local_edges, 
       start_node, 
       destination_node, 
        heuristic);

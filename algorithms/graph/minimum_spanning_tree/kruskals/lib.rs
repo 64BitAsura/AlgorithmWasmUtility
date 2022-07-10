@@ -7,13 +7,13 @@ use data_structures::{Graph, Edge, VertexTrait};
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 #[derive(Serialize, Deserialize)]
-pub struct WasmEdge(u8, u8, usize);
+pub struct WasmEdge(usize, usize, usize);
 
 
 #[wasm_bindgen]
 pub fn mst_for_js(edges_serialized: JsValue, vertices_count: usize) -> Result<JsValue, serde_wasm_bindgen::Error>  {
     let edges: Vec<WasmEdge> = serde_wasm_bindgen::from_value(edges_serialized)?;
-    let mut local_edges: Vec<Edge<u8>> = edges.iter().map(|edge|{ 
+    let mut local_edges: Vec<Edge<usize>> = edges.iter().map(|edge|{ 
       return Edge::new(edge.0, edge.1, edge.2);
     }).collect();
     let mst: Vec<WasmEdge> = mst(&mut local_edges, vertices_count).iter().map(|edge| WasmEdge(edge.0.0, edge.1.0,edge.2)).collect();
