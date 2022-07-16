@@ -1,0 +1,21 @@
+[package]
+name = "dijkstras"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["cdylib"]
+path="mod.rs"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde-wasm-bindgen = "0.1.0"
+wasm-bindgen = { version = "0.2.80", features = ["serde-serialize"] }
+js-sys = "0.3.57"
+data_structures = { path= "../../../../data_structures" }
+wasm-snip = { version = "0.4.0", default-features = false }
+
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.0"
