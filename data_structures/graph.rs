@@ -12,10 +12,10 @@ pub trait EMPTY<K> {
 pub trait VertexTrait: Sized + Clone + Eq + Ord +PartialOrd +Hash + Copy + ToString {
 }
 
-#[derive(PartialEq, Clone, Eq, Ord, PartialOrd, Hash, Copy, Debug)]
+#[derive(PartialEq, Clone, Eq, Ord, PartialOrd, Hash, Copy)]
 pub struct Vertex<K: VertexTrait>(pub K);
 
-#[derive(Debug)]
+
 pub struct Edge<K: VertexTrait>(pub Vertex<K>, pub Vertex<K>, pub usize);
 
 
@@ -35,7 +35,7 @@ impl <K: VertexTrait> Edge<K>{
   }
 }
 
-#[derive(Debug)]
+
 pub struct Graph<'l, K :  VertexTrait>{
     tree: RefCell<HashMap<&'l Vertex<K>, HashSet<(&'l Vertex<K>, usize)>>>,
     parents: RefCell<HashMap<&'l Vertex<K>, &'l Vertex<K>>>
