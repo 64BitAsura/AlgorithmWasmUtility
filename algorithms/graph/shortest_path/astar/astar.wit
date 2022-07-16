@@ -1,0 +1,5 @@
+type wasmedge = list<tuple<u64,u64,u64>>
+type start = u64
+type destination = u64
+heuristics: func(node: u64)-> u64
+shortestpathjs: func(wasmedges: wasmedge, start: start, destination : destination, heuristics: heuristics)-> list<u64>

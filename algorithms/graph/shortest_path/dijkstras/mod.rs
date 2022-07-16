@@ -1,1 +1,2 @@
-mod lib;
+pub mod algorithm;
+pub mod test;

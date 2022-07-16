@@ -5,6 +5,7 @@ opt-level='z'
 [workspace]
 members=[
     "algorithms/graph/shortest_path/astar",
+    "algorithms/graph/shortest_path/dijkstras",
     "algorithms/graph/minimum_spanning_tree/kruskals",
     "data_structures"
 ]

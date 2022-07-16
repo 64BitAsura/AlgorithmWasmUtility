@@ -141,6 +141,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "dijkstras"
+version = "0.1.0"
+dependencies = [
+ "data_structures",
+ "js-sys",
+ "serde",
+ "serde-wasm-bindgen",
+ "wasm-bindgen",
+ "wasm-bindgen-test",
+ "wasm-snip",
+]
+
+[[package]]
 name = "either"
 version = "1.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
