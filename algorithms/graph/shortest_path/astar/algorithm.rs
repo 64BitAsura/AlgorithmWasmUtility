@@ -11,7 +11,7 @@ use data_structures::{Graph, Edge, Vertex, VertexTrait};
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
-#[derive(Clone, Hash, Copy, Serialize, Deserialize, Debug)]
+#[derive(Clone, Hash, Copy, Serialize, Deserialize)]
 struct Node<K: VertexTrait>{
     vertex: K,
     cost: usize,
@@ -81,8 +81,7 @@ pub fn shortest_path_for_js(edges_serialized: JsValue, start: JsValue, destinati
     return serde_wasm_bindgen::to_value(&sp);
 }
 
-use std::fmt::Debug;
-fn shortest_path<'a, K: VertexTrait + Debug>
+fn shortest_path<'a, K: VertexTrait>
 (edges: &mut Vec<Edge<K>>, 
    start: K, destination: K, 
    heuristic: &js_sys::Function)->Vec<K>{
